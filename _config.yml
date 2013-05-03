@@ -1,0 +1,4 @@
+pygments: true
+permalink: /:year-:month-:day/:title.html
+url: http://scriptin.github.io
+baseurl: /

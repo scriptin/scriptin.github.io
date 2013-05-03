@@ -2,3 +2,4 @@ pygments: true
 permalink: /:year-:month-:day/:title.html
 url: http://scriptin.github.io
 baseurl: /
+exclude: ["Vagrantfile", "chef", "start_dev_server.sh"]

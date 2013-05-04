@@ -1,5 +1,8 @@
 title: little smart things
 subtitle: because there's already enough of big stupid things
+author_fullname: Dmitry Shpika
+author_nickname: scriptin
+
 pygments: true
 permalink: /:year-:month-:day/:title.html
 url: http://scriptin.github.io

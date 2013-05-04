@@ -2,4 +2,11 @@
 layout: default
 title: Welcome!
 ---
-main page content
+<ul class="unstyled">
+  {% for post in site.posts %}
+  <li>
+    <span class="post-date">{{ post.date | date_to_string }}</span>
+    <a href="{{ post.url }}">{{ post.title }}</a>
+  </li>
+  {% endfor %}
+</ul>

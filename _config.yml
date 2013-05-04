@@ -1,4 +1,5 @@
-title: "scriptin's blog"
+title: "little smart things"
+subtitle: "because there's already enough of big stupid things"
 pygments: true
 permalink: /:year-:month-:day/:title.html
 url: http://scriptin.github.io

@@ -1,0 +1,14 @@
+.header {
+    background-color: white;
+    margin-top: 2em;
+    padding-top: 4em;
+}
+.feed-link-container {
+    padding-top: 2em;
+    text-align: right;
+}
+.main-content {
+    background-color: white;
+    margin-bottom: 2em;
+    padding-bottom: 5em;
+}

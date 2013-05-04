@@ -4,6 +4,8 @@
     margin-top: 2em;
     margin-bottom: 2em;
 }
+
+/* header */
 .header {
     padding-top: 5em;
 }
@@ -19,6 +21,8 @@
     padding-left: 20px;
     background: url(/img/feed.png) no-repeat 0 2px;
 }
+
+/* content */
 .main-content {
     /**/
 }
@@ -26,6 +30,8 @@
     display: inline-block;
     width: 8em;
 }
+
+/* footer */
 .footer {
     padding-bottom: 6em;
 }

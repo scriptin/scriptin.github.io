@@ -25,3 +25,6 @@
 .footer {
     padding-bottom: 6em;
 }
+.footer p {
+    text-align: center;
+}

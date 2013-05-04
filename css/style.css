@@ -12,8 +12,8 @@
     text-align: right;
 }
 .feed-link-container a {
-    position: relative;
-    top: 1px; /* OCD */
+    padding-left: 20px;
+    background: url(/img/feed.png) no-repeat 0 2px;
 }
 .main-content {
     /**/

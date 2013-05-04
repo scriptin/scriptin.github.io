@@ -11,6 +11,10 @@
     padding-top: 2em;
     text-align: right;
 }
+.feed-link-container a {
+    position: relative;
+    top: 1px; /* OCD */
+}
 .main-content {
     /**/
 }

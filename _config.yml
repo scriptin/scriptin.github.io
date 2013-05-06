@@ -3,6 +3,8 @@ subtitle: on programming languages, tools and practices
 author_fullname: Dmitry Shpika
 author_nickname: scriptin
 
+safe: true
+lsi: false
 pygments: true
 permalink: /:year-:month-:day/:title.html
 url: http://scriptin.github.io

@@ -15,7 +15,7 @@
   <div class="container">
     <div class="row page">
 
-      <div class="row header">
+      <div class="row header hidden-print">
         <div class="span8 offset1">
           <h1><a href="/">{{ site.title }}</a></h1>
           <p class="muted">{{ site.subtitle }}</p>
@@ -27,13 +27,13 @@
 
       <div class="row main-content">
         <div class="span10 offset1">
-          <hr/>
+          <hr class="hidden-print" />
           {{ content }}
         </div>
       </div>
 
       <div class="row footer">
-        <div class="span10 offset1">
+        <div class="span10 offset1 hidden-print">
           <hr/>
           <p class="muted"><!-- license -->
             <small>
@@ -51,6 +51,18 @@
             <a href="https://github.com/scriptin">GitHub profile</a>
             <span class="muted">&mdash;</span>
             <a href="http://stackexchange.com/users/224676?tab=accounts">StackExchange profiles</a>
+          </p>
+        </div>
+        <div class="span10 offset1 visible-print">
+          <hr/>
+          <p>
+            &copy; {{ site.author_fullname }} aka {{ site.author_nickname }}
+            &mdash; {{ site.url }}
+          </p>
+          <p>
+            This document is licensed under a Creative Commons
+            Attribution-ShareAlike 3.0 Unported License:
+            http://creativecommons.org/licenses/by-sa/3.0/
           </p>
         </div>
       </div>

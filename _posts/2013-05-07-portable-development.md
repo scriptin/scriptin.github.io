@@ -63,4 +63,7 @@ Vagrant configuration is:
 - **Reproduceable**: you can tear down and rebuild your copy of VM with just one command whenever you want.
 - **Idempotent** (this actually depends on provisioner and some other things): provisioner keeps track of VM state, preventing of running same steps more than once.
 
+If you don't use Vagrant now, at least read the [documentation][vagrant_docs] to get an idea of how it can be benefitial to you. I use Vagrant for this blog and other projects. Later I'll write practical introduction post about Vagrant.
+
 [vagrant]: http://vagrantup.com
+[vagrant_docs]: http://docs.vagrantup.com/v2/

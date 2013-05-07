@@ -40,7 +40,11 @@ For example, here is my Emacs congiguration: [github.com/scriptin/.emacs.d](http
 
 ### Improvement #2(a): using virtual machine for development
 
-The team Jimmy got into could build a VM specifically to run their application. They could build it to mimic porduction environment as closely as possible, so a bunch of initial setup friction would be gone. However, building VM and sharing it as an image file has following disadvantages:
+Jimmy's team can build a <acronym title="Virtual Machine">VM</acronym> specifically to run their application. They could build it to mimic porduction environment as closely as possible, so a bunch of initial setup frustration would be gone.
+
+Additionaly, if thier project runs on multiple servers (i.e. has a load balancer, application and data servers, etc.), using VMs is the only way to make it runnable.
+
+However, building a VM (or multiple VMs) and sharing it as an image file has following disadvantages:
 
 - You have to syncronize the state of each copy of VM with production environment manually either by each team meber individually or by a single person who's responsible for this. In former case VMs of eac person on the team would get desynced very fast. In latter case each time a change is done each person would have to tear his/her VM down and get a new copy.
 - Sharing VM image file is inefficient bacause of it's size.

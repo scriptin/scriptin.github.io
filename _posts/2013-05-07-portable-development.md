@@ -76,3 +76,13 @@ You've probably heard about [Cloud9][] or similar web-based IDEs. Personally I'v
 [JSFiddle]: http://jsfiddle.net/
 [SQLFiddle]: http://sqlfiddle.com/
 [CodeMirror]: http://codemirror.net/
+
+### Alternative #2: Desktop virtualization
+
+[Desktop virtualization](http://en.wikipedia.org/wiki/Desktop_virtualization) is a way to get rid of development environment setup process by building a ready to use desktop environments in a cloud and then giving the developers remote access to the copies of those virtualized desktops.
+
+This can be a good solution for companies which outsource part of their development, because you can minimize developer's access to sensitive data and other resources while still being able to provide each developer with everything what's required to work on a project. However, this approach forces a developer to use whatever tools a company have chosen.
+
+I don't have any experience with this practice, so I leave further research up to you.
+
+*Please let me know in a comments if you have an experience with any of tools, technologies, and practices described above, and what do you think of it.*

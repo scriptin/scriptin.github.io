@@ -67,3 +67,12 @@ If you don't use Vagrant now, at least read the [documentation][vagrant_docs] to
 
 [vagrant]: http://vagrantup.com
 [vagrant_docs]: http://docs.vagrantup.com/v2/
+
+### Alternative #1: using online IDEs
+
+You've probably heard about [Cloud9][] or similar web-based IDEs. Personally I've never used anything more than [JSFiddle][], [SQLFiddle][], and [CodeMirror][], so I can't judge how good or bad it can be, but I can guess it is a tradeoff between simplicity of collaboration (which definitely should be simple), performance (of complex IDE in a browser, which can be bad), customization (I don't believe you can build Emacs in a browser), and a bunch of other factors.
+
+[Cloud9]: https://c9.io/
+[JSFiddle]: http://jsfiddle.net/
+[SQLFiddle]: http://sqlfiddle.com/
+[CodeMirror]: http://codemirror.net/

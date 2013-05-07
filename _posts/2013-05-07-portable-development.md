@@ -3,7 +3,7 @@ layout: post
 title: Portable development
 ---
 
-**Post summary**: Portable development is a software development practice in which initial setup of development environment (editor/IDE and virtual machine running the application under develoment) is done by just cloning repositories with code and configuration and running a few commands in a terminal. This is achived by using [Vagrant][vagrant] for virtual machine management and editors/IDEs which use configuration in textual formats, like Vim or Eclipse.
+**Post summary**: Portable development is a software development practice in which initial setup of development environment (editor/IDE and virtual machine running the application under develoment) is done by just cloning repositories with code and configuration and running a few commands in a terminal. This is achived by using [Vagrant][vagrant] for virtual machine management and editors/IDEs which use configuration in textual formats, like Vim or Emacs.
 
 ----
 

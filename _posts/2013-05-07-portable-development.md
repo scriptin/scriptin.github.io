@@ -53,6 +53,14 @@ However, building a VM (or multiple VMs) and sharing it as an image file has fol
 
 ### Improvement #2(b): using Vagrant
 
-[Vagrant][vagrant] is a much better alternative to building VMs manually.
+[Vagrant][vagrant] is a much better alternative for managing virtual development environments. With Vagrant Jimmy would have to write a special `Vagrantfile` (Vagrant's equivalent of `Makefile` and similar), which contains instructions of how to setup a VM. He would be able to use [provisioning](http://docs.vagrantup.com/v2/provisioning/index.html) scripts written in bash, Ruby or other formats, depending on chosen provisioning tool (I personnaly prefer [Chef solo](http://docs.vagrantup.com/v2/provisioning/chef_solo.html)).
+
+Vagrant configuration is:
+
+- **Compact**: it is just a set of text files, so it can (and should) be a part of project code.
+- **Editable**: it is a code, so it can (and should) be source controlled and edited but whole team.
+- **Visible**: you can see what exactly included in configuration.
+- **Reproduceable**: you can tear down and rebuild your copy of VM with just one command whenever you want.
+- **Idempotent** (this actually depends on provisioner and some other things): provisioner keeps track of VM state, preventing of running same steps more than once.
 
 [vagrant]: http://vagrantup.com

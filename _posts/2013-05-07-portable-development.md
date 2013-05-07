@@ -85,4 +85,4 @@ This can be a good solution for companies which outsource part of their developm
 
 I don't have any experience with this practice, so I leave further research up to you.
 
-*Please let me know in a comments if you have an experience with any of tools, technologies, and practices described above, and what do you think of it.*
+*Please let me know in the comments if you have an experience with any of tools, technologies, and practices described above, and what do you think of it.*

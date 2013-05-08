@@ -245,3 +245,5 @@ end
 It is bigger than a previous example, but yet small and readable enough. We're done.
 
 [Pygments]: http://pygments.org/
+
+*Feel free to ask your questions in the comments.*

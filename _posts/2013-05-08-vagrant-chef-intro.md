@@ -43,7 +43,7 @@ end
 - Line 4 specifies a relative path to directory with cookbooks. This you can change as you will.
 - Lines 5-7 add recipes to run list - if a recipe is not explicitly added here (or included by other recipe) it will not be executed. Names of recipes here are usually the same as name of a cookbook (and it's directory name). Examples: `apache2`, `php`, etc.
 
-Terminology:
+**Terminology**:
 
 - **[Cookbook][]** - unit of configuration in Chef. Each cookbook defines a scenario and contains all of the components that are required to support that scenario. Cookbooks contain recipes (one or more) as well as other things. Examples: Arache installation cookbook, MySQL installation cookbook, [ifconfig](http://en.wikipedia.org/wiki/Ifconfig) configuration cookbook, etc.
 - **[Recipe][]** - fundamental configuration element which defines an algorithm of how to configure some part of a system. Recipes may include each other.

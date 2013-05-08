@@ -58,3 +58,47 @@ Chef community provides you with [lots of ready to use cookbooks][Chef community
 It's important that you download cookbooks and keep them in you repository together with `Vagrantfile`. This ensures that nothing will break when you'll use this repository a year later.
 
 [Chef community cookbooks]: http://community.opscode.com/cookbooks
+
+### Step 3: Write your own resipes
+
+I will show you how to write simplest cookbooks. As a practical example I will use this blog's cookbooks - see [repository](https://github.com/scriptin/scriptin.github.io). If you'll need something more than that, you'll have to read [Chef documentation][].
+
+#### Example #1: Installing Jekyll
+
+[Jekyll][] is a static blog-aware site generator written in [Ruby][]. This blog is built on it.
+
+Jekyll is installed as a Ruby gem and Ruby itself will be installed on VM which is created by Vagrant because Vagrant and Chef require it to run, but there's bunch of other programs which Jekyll uses (e.g. Git) which are not included by default (or must be updated). Thankfully, there's a [build-essential](http://community.opscode.com/cookbooks/build-essential) cookbook which installs or updates these tools. Download this cookbook and extract it into derectory with cookbooks (`./chef/cookbooks/build-essential` in my example), and add a recipe:
+
+{% highlight ruby %}
+chef.add_recipe "build-essential"
+{% endhighlight %}
+
+Preparation is done, now create a directory `./chef/cookbooks/jekyll` with a `metadata.rb` file containing cookbook [metadata][Metadata], which should be clear by itself:
+
+{% highlight ruby %}
+name "jekyll"
+description "Installs Jekyll"
+maintainer "Dmitry Shpika"
+version "0.1"
+{% endhighlight %}
+
+Now we need to create an actual recipe which installs Jekyll. Create a subdirectory `./chef/cookbooks/jekyll/recipes` and a file `default.rb` in it:
+
+{% highlight ruby %}
+gem_package "jekyll" do
+  action :install
+end
+{% endhighlight %}
+
+`gem_package` is a [resource][Resource] used to manage Ruby gems. It is in fact a Ruby function which accepts gem name as first argument (`"jekyll"`) and Ruby block (`do ... end`). If you're not familiar with Ruby, just consider blocks in a Chef cookbooks as a way to contain configuration options for certain objects (gem in this case). Inside that block we specify an action we want to perform on a gem - installation.
+
+This is it! Just 2 files with 7 <acronym title="Lines of Code">LoC</acronym>.
+
+**Terminology**:
+
+- **[Metadata][]** - Information about cookbook itself, stored in `metadata.rb` file in a base directory of a cookbook.
+- **[Resource][]** - a block of code in a recipe defining some action, such as files/directories creation, starting/stopping services, installation of packages and so on.
+
+[Jekyll]: http://jekyllrb.com/
+[Metadata]: http://docs.opscode.com/essentials_cookbook_metadata.html
+[Resource]: http://docs.opscode.com/resource.html

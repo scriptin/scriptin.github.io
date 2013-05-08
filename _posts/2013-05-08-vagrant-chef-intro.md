@@ -6,9 +6,9 @@ First time I tried to use [Vagrant][] with [Chef][] solo as a [provisioner](http
 
 Before reading this post:
 
-- Make sure you know why to use [Vagrant][]. My post about [portable development]({% post_url 2013-05-07-portable-development %}) explains this.
+- Make sure you know why to use Vagrant. My post about [portable development]({% post_url 2013-05-07-portable-development %}) explains this.
 - Read some [Vagrant documentation][] - it's simple enough, so I decided not include it here. Feel free to skip sections about provisioners other than Chef solo and other stuff you think you will not need.
-- Make sure you know why to use [Chef][] (in short: it's better than tons of bash scripts) and what is [Chef solo][] (in short: it is a standalone open source version of Chef).
+- Make sure you know why to use Chef (in short: it's better than tons of bash scripts) and what is [Chef solo][] (in short: it is a standalone open source version of Chef).
 - If you don't know [Ruby][] at all, read [Just Enough Ruby for Chef](http://docs.opscode.com/just_enough_ruby_for_chef.html) from [Chef documentation][].
 
 [Vagrant]: http://vagrantup.com

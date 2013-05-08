@@ -28,7 +28,7 @@ Example of `Vagrantfile` contents:
 
 {% highlight ruby linenos %}
 Vagrant.configure("2") do |config|
-  # ...
+  # ... other configuration options
   config.vm.provision :chef_solo do |chef|
     chef.cookbooks_path = "chef/cookbooks"
     chef.add_recipe "recipe1"

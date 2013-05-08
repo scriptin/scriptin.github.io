@@ -11,7 +11,7 @@ Before reading this post:
 - Make sure you know why to use Chef (in short: it's better than tons of bash scripts) and what is [Chef solo][] (in short: it is a standalone open source version of Chef).
 - If you don't know [Ruby][] at all, read [Just Enough Ruby for Chef](http://docs.opscode.com/just_enough_ruby_for_chef.html) from [Chef documentation][].
 
-[Vagrant]: http://vagrantup.com
+[Vagrant]: http://www.vagrantup.com/
 [Vagrant documentation]: http://docs.vagrantup.com/v2/
 [Chef]: http://www.opscode.com/chef/
 [Chef documentation]: http://docs.opscode.com/

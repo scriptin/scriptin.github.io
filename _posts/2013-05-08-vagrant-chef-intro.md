@@ -17,3 +17,44 @@ Before reading this post:
 [Chef documentation]: http://docs.opscode.com/
 [Chef solo]: http://docs.opscode.com/chef_solo.html
 [Ruby]: http://www.ruby-lang.org/
+
+### Step 0: Installation
+
+You need to install only [VirtualBox](https://www.virtualbox.org/) and Vagrant, everything else is included in Vagrant distribution (at least it was for me). Just follow the installation instructions.
+
+### Step 1: Configure Vagrant to use Chef solo
+
+Example of `Vagrantfile` contents:
+
+{% highlight ruby linenos %}
+Vagrant.configure("2") do |config|
+  # ...
+  config.vm.provision :chef_solo do |chef|
+    chef.cookbooks_path = "chef/cookbooks"
+    chef.add_recipe "recipe1"
+    chef.add_recipe "recipe2"
+    chef.add_recipe "recipe3"
+    # ...
+  end
+end
+{% endhighlight %}
+
+- Line 3 tells Vagrant to use Chef solo as a provisioner.
+- Line 4 specifies a relative path to directory with cookbooks. This you can change as you will.
+- Lines 5-7 add recipes to run list - if a recipe is not explicitly added here (or included by other recipe) it will not be executed. Names of recipes here are usually the same as name of a cookbook (and it's directory name). Examples: `apache2`, `php`, etc.
+
+Terminology:
+
+- **[Cookbook][]** - unit of configuration in Chef. Each cookbook defines a scenario and contains all of the components that are required to support that scenario. Cookbooks contain recipes (one or more) as well as other things. Examples: Arache installation cookbook, MySQL installation cookbook, [ifconfig](http://en.wikipedia.org/wiki/Ifconfig) configuration cookbook, etc.
+- **[Recipe][]** - fundamental configuration element which defines an algorithm of how to configure some part of a system. Recipes may include each other.
+
+[Cookbook]: http://docs.opscode.com/essentials_cookbooks.html
+[Recipe]: http://docs.opscode.com/essentials_cookbook_recipes.html
+
+### Step 2: Get recipes
+
+Chef community provides you with lots of ready to use cookbooks: [Community cookbooks][]. In case you need to install some popular software package, you'd first look there. **Note**: not all cookbooks work with Chef solo, and sometimes the only way to know that for sure is to try.
+
+It's important that you download cookbooks and keep them in you repository together with `Vagrantfile`. This ensures that nothing will break when you'll use this repository a year later.
+
+[Community cookbooks]: http://community.opscode.com/cookbooks

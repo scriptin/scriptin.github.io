@@ -53,8 +53,8 @@ Terminology:
 
 ### Step 2: Get recipes
 
-Chef community provides you with lots of ready to use cookbooks: [Community cookbooks][]. In case you need to install some popular software package, you'd first look there. **Note**: not all cookbooks work with Chef solo, and sometimes the only way to know that for sure is to try.
+Chef community provides you with [lots of ready to use cookbooks][Chef community cookbooks]. In case you need to install some popular software package, you'd first look there. **Note**: not all cookbooks work with Chef solo, and sometimes the only way to know that for sure is to try.
 
 It's important that you download cookbooks and keep them in you repository together with `Vagrantfile`. This ensures that nothing will break when you'll use this repository a year later.
 
-[Community cookbooks]: http://community.opscode.com/cookbooks
+[Chef community cookbooks]: http://community.opscode.com/cookbooks

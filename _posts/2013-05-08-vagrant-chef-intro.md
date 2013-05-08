@@ -103,3 +103,145 @@ This is it! Just 2 files with 7 <acronym title="Lines of Code">LoC</acronym>.
 [Jekyll]: http://jekyllrb.com/
 [Metadata]: http://docs.opscode.com/essentials_cookbook_metadata.html
 [Resource]: http://docs.opscode.com/resource.html
+
+#### Example #2: Installing Pygments and generating CSS file for syntax highlighting
+
+Now let's try something more involved and look at more Chef resources.
+
+[Pygments][] is a syntax highlighter written in Python and [used by Jekyll](http://jekyllrb.com/docs/posts/).
+
+First let's create `./chef/cookbooks/pygments` directory and `metadata.rb` in it:
+
+{% highlight ruby %}
+name "pygments"
+description "Installs python-pygments"
+maintainer "Dmitry Shpika"
+version "0.1"
+{% endhighlight %}
+
+Then, analogously to previous example, `./recipes/default.rb`:
+
+{% highlight ruby %}
+package "python-pygments" do
+  action :install
+end
+{% endhighlight %}
+
+This installs Pygments (but this time with `package` resource, bacause Pygments is not a gem) and we may stop here, but just for the sake of learning let's make it so Pygments will generate CSS file with default syntax highlighting rules, but only if it's not already there. All code snippets below must go into `./chef/cookbooks/pygments/recipes/default.rb`.
+
+If you're not familiar with Ruby, here's the time to seriously go and read that [Just Enough Ruby for Chef][] article. In fact, I will go beyond that's described there, so I'll do my best to explain what I do, so bare with me. I actually have learned Ruby just before I started using Vagrant, Chef solo and Jekyll.
+
+First thing we need is to tell Pygments where we want our CSS file to be. By default, Vsgrant maps project root directory on your system (this is where `Vagrantfile` is) to `/vagrant` directory on VM it builds. Let's say we want this CSS to go into `/vagrant/css/syntax.css`. From terminal, it is just this command:
+
+    pygmentize -S default -f html > /vagrant/css/syntax.css
+
+But Chef doesn't know about Vagrant default directory. The way to tell it is to use `json` property of Chef object in `Vagrantfile`:
+
+{% highlight ruby %}
+Vagrant.configure("2") do |config|
+  # ...
+  config.vm.provision :chef_solo do |chef|
+    # ...
+    chef.json = {
+      "css_directory" => "/vagrant/css",
+      "pygments_css_file" => "syntax.css"
+    }
+  end
+end
+{% endhighlight %}
+
+To create a directory in Chef recipe, we must use [`directory` resourse](http://docs.opscode.com/resource_directory.html) like so:
+
+{% highlight ruby %}
+directory "/some/dir" do
+  owner "root"
+  group "root"
+  mode 00755
+  action :create
+end
+{% endhighlight %}
+
+In our case, we better first check if directory name is actually present and only then use it:
+
+{% highlight ruby %}
+if node["css_directory"]
+  directory node["css_directory"] do
+    # default owner/group permissions are OK, so we omit it
+    action :create
+  end
+end
+{% endhighlight %}
+
+`node` is an object you can use in your recipes, it represents current system under configuration. It is called "node" because full version of Chef uses client-server architecture to configure multiple systems ("nodes"), which may be virtual or physical machines connecting to a single server.
+
+`node["some_property"]` is a way to access some property we set in `chef.json` above. Properties can be set in differrent ways, but it goes beyond this post.
+
+Next, we finally need to generate the damn CSS. But to do that we need to check if the file name is given (same as with CSS directory) and that file is not already there. Here's the code:
+
+{% highlight ruby linenos %}
+if node["css_directory"] && node["pygments_css_file"]
+  directory node["css_directory"] do
+    # default owner/group permissions are OK, so we omit it
+    action :create
+  end
+
+  pygments_css_file = File.join(node["css_directory"], node["pygments_css_file"])
+
+  execute "generate-pygments-css" do
+    command "pygmentize -S default -f html > #{pygments_css_file}"
+    not_if { File.size?(pygments_css_file) }
+    action :nothing
+  end
+
+  file pygments_css_file do
+    action :create_if_missing
+    notifies :run, "execute[generate-pygments-css]", :immediately
+  end
+end
+{% endhighlight %}
+
+- Line 1: With `&&` (logical AND) operator we check that both `node["css_directory"]` and `node["pygments_css_file"]` values are present.
+- Line 7: Concatenate directory path with file name in a safe way using Ruby's `File` module and store it in `pygments_css_file` variable.
+- Lines 9-13: Create, but not execute right away, a task of generating a CSS file.
+  - Line 9: Using `execute` resource, give task a name `generate-pygments-css` to use later.
+  - Line 10: Specify a command itself. Here we use Ruby's string interpolation mechanism to inject file name.
+  - Line 11: Do not execute the task if file is not empty `File.size?()` checks exactly that.
+  - Line 12: Do not execute task right now, just create it and save for later.
+- Lines 15-18: Create an empty file if there isn't one and then execute a task created just before.
+  - Line 15: Using `file` resource with a file name - this is similar to using `directory` resourse.
+  - Line 16: I think you can guess.
+  - Line 17: Notify another resource to perform some action. In this case we notifying the task we created before to perform `:run` action right now (`:immediately`).
+
+We've used two new resources: `file` and `execute`. I recommend you to read [documentation about resources][Resource] to understand that they do. There's a lot of resources which you will conctantly use in your recipes.
+
+Here is the full version of `./chef/cookbooks/pygments/recipes/default.rb`:
+
+{% highlight ruby %}
+package "python-pygments" do
+  action :install
+end
+
+if node["css_directory"] && node["pygments_css_file"]
+  directory node["css_directory"] do
+    # default owner/group permissions are OK, so we omit it
+    action :create
+  end
+
+  pygments_css_file = File.join(node["css_directory"], node["pygments_css_file"])
+
+  execute "generate-pygments-css" do
+    command "pygmentize -S default -f html > #{pygments_css_file}"
+    not_if { File.size?(pygments_css_file) }
+    action :nothing
+  end
+
+  file pygments_css_file do
+    action :create_if_missing
+    notifies :run, "execute[generate-pygments-css]", :immediately
+  end
+end
+{% endhighlight %}
+
+It is bigger than a previous example, but yet small and readable enough. We're done.
+
+[Pygments]: http://pygments.org/

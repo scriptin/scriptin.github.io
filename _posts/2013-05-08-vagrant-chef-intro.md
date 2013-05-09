@@ -2,7 +2,7 @@
 title: Minimal practical introduction to Vagrant and Chef solo
 layout: post
 ---
-First time I tried to use [Vagrant][] with [Chef][] solo as a [provisioner](http://docs.vagrantup.com/v2/provisioning/index.html) I got stuck with too much irrelevant information on the topic. So here is the short introduction to get you started.
+First time I tried to use [Vagrant][] with [Chef][] solo as a [provisioner](http://docs.vagrantup.com/v2/provisioning/index.html) I got stuck with too much irrelevant information on the topic. So here is the short introduction to get you started. I wanted it to be as simple as possible, so maybe you'll find some of my explainations a bit redundant.
 
 Before reading this post:
 
@@ -21,7 +21,7 @@ Before reading this post:
 
 ### Step 0: Installation
 
-You need to install only [VirtualBox](https://www.virtualbox.org/) and Vagrant, everything else is included in Vagrant distribution (at least it was for me). Just follow the installation instructions.
+You need to install only [VirtualBox](https://www.virtualbox.org/) and Vagrant, everything else is included in Vagrant distribution (at least it was for me). Just follow the [installation instructions](http://docs.vagrantup.com/v2/installation/index.html).
 
 ### Step 1: Configure Vagrant to use Chef solo
 
@@ -40,23 +40,23 @@ Vagrant.configure("2") do |config|
 end
 {% endhighlight %}
 
-- Line 3 tells Vagrant to use Chef solo as a provisioner.
-- Line 4 specifies a relative path to directory with cookbooks. This you can change as you will.
-- Lines 5-7 add recipes to run list - if a recipe is not explicitly added here (or included by other recipe) it will not be executed. Names of recipes here are usually the same as name of a cookbook (and it's directory name). Examples: `apache2`, `php`, etc.
+- Line 3: Tell Vagrant to use Chef solo as a provisioner.
+- Line 4: Specifies a relative path to directory with cookbooks. This you can change as you will.
+- Lines 5-7: Add recipes to run list. If a recipe is not explicitly added here (or included by other recipe) it will not be executed. Names of recipes here are usually the same as name of a cookbook (and it's directory name). Examples: `apache2`, `php`, etc.
 
 **Terminology**:
 
-- **[Cookbook][]** - unit of configuration in Chef. Each cookbook defines a scenario and contains all of the components that are required to support that scenario. Cookbooks contain recipes (one or more) as well as other things. Examples: Arache installation cookbook, MySQL installation cookbook, [ifconfig](http://en.wikipedia.org/wiki/Ifconfig) configuration cookbook, etc.
-- **[Recipe][]** - fundamental configuration element which defines an algorithm of how to configure some part of a system. Recipes may include each other.
+- **[Cookbook][]** - unit of configuration in Chef. Each cookbook defines a scenario and contains all of the components that are required to support that scenario. Cookbooks contain recipes (one or more) as well as other things which are out of scope of this post. Examples: [Apache](http://community.opscode.com/cookbooks/apache2), [MySQL](http://community.opscode.com/cookbooks/mysql), [iptables](http://community.opscode.com/cookbooks/iptables), etc.
+- **[Recipe][]** - fundamental configuration element which defines an algorithm of how to configure some part of a system. Recipes may execute another recipes.
 
 [Cookbook]: http://docs.opscode.com/essentials_cookbooks.html
 [Recipe]: http://docs.opscode.com/essentials_cookbook_recipes.html
 
 ### Step 2: Get recipes
 
-Chef community provides you with [lots of ready to use cookbooks][Chef community cookbooks]. In case you need to install some popular software package, you'd first look there. **Note**: not all cookbooks work with Chef solo, and sometimes the only way to know that for sure is to try.
+Chef community provides you with [lots of premade cookbooks][Chef community cookbooks]. In case you need to install some popular software package, you'd first look there. **Note**: not all cookbooks work with Chef solo, and sometimes the only way to know that for sure is to try.
 
-It's important that you download cookbooks and keep them in you repository together with `Vagrantfile`. This ensures that nothing will break when you'll use this repository a year later.
+It's important that you download cookbooks and keep them in you repository together with `Vagrantfile`. This gives you some guarantees that your project will not break when you'll try to build it a long time after you created it, because cookbooks are likely to change over time.
 
 [Chef community cookbooks]: http://community.opscode.com/cookbooks
 
@@ -68,7 +68,7 @@ I will show you how to write simplest cookbooks. As a practical example I will u
 
 [Jekyll][] is a static blog-aware site generator written in [Ruby][]. This blog is built on it.
 
-Jekyll is installed as a Ruby gem and Ruby itself will be installed on VM which is created by Vagrant because Vagrant and Chef require it to run, but there's bunch of other programs which Jekyll uses (e.g. Git) which are not included by default (or must be updated). Thankfully, there's a [build-essential](http://community.opscode.com/cookbooks/build-essential) cookbook which installs or updates these tools. Download this cookbook and extract it into derectory with cookbooks (`./chef/cookbooks/build-essential` in my example), and add a recipe:
+Jekyll is installed as a Ruby gem and Ruby itself will be installed on VM which is created by Vagrant, because Vagrant and Chef require it to run, but there's bunch of other programs which Jekyll uses (e.g. Git) which are not included by default (or must be updated). Thankfully, there's a [build-essential](http://community.opscode.com/cookbooks/build-essential) cookbook which installs or updates these tools. Download this cookbook and extract it into the directory with cookbooks (`./chef/cookbooks` in my example, so the cookbook must be in `./chef/cookbooks/build-essential`), and add a recipe:
 
 {% highlight ruby %}
 chef.add_recipe "build-essential"
@@ -119,7 +119,7 @@ maintainer "Dmitry Shpika"
 version "0.1"
 {% endhighlight %}
 
-Then, analogously to previous example, `./recipes/default.rb`:
+Then, analogously to previous example, `./chef/cookbooks/pygments/recipes/default.rb`:
 
 {% highlight ruby %}
 package "python-pygments" do
@@ -127,11 +127,11 @@ package "python-pygments" do
 end
 {% endhighlight %}
 
-This installs Pygments (but this time with `package` resource, bacause Pygments is not a gem) and we may stop here, but just for the sake of learning let's make it so Pygments will generate CSS file with default syntax highlighting rules, but only if it's not already there. All code snippets below must go into `./chef/cookbooks/pygments/recipes/default.rb`.
+This installs Pygments (but this time with `package` resource, bacause this is not a gem) and we may stop here, but just for the sake of learning let's make it so Pygments will generate CSS file with default syntax highlighting rules, but only if it's not already there. All code snippets below must go into `./chef/cookbooks/pygments/recipes/default.rb`.
 
-If you're not familiar with Ruby, here's the time to seriously go and read that [Just Enough Ruby for Chef][] article. In fact, I will go beyond that's described there, so I'll do my best to explain what I do, so bare with me. I actually have learned Ruby just before I started using Vagrant, Chef solo and Jekyll.
+If you're not familiar with Ruby, here's the time to seriously go and read that [Just Enough Ruby for Chef][] article. In fact, I will go beyond that's described there and will do my best to explain what I do, so bare with me. I've actually learned Ruby just before I started using Vagrant, Chef solo and Jekyll.
 
-First thing we need is to tell Pygments where we want our CSS file to be. By default, Vsgrant maps project root directory on your system (this is where `Vagrantfile` is) to `/vagrant` directory on VM it builds. Let's say we want this CSS to go into `/vagrant/css/syntax.css`. From terminal, it is just this command:
+First thing we need is to tell Pygments where we want our CSS file to be. By default, Vagrant maps the project root directory on your system (this is where `Vagrantfile` is) to `/vagrant` directory on VM it builds. Let's say we want this CSS to go into `/vagrant/css/syntax.css`. From terminal, it is just this command:
 
     pygmentize -S default -f html > /vagrant/css/syntax.css
 
@@ -172,9 +172,9 @@ if node["css_directory"]
 end
 {% endhighlight %}
 
-`node` is an object you can use in your recipes, it represents current system under configuration. It is called "node" because full version of Chef uses client-server architecture to configure multiple systems ("nodes"), which may be virtual or physical machines connecting to a single server.
+`node` is an object you can use in your recipes, it contains attributes of the system under configuration. It is called "node" because full version of Chef uses client-server architecture to configure multiple systems ("nodes"), which may be virtual or physical machines connecting to a single server.
 
-`node["some_property"]` is a way to access some property we set in `chef.json` above. Properties can be set in differrent ways, but it goes beyond this post.
+`node["some_property"]` is a way to access some property we set in `chef.json` above. Properties can be set in differrent ways, but we'll stick with that.
 
 Next, we finally need to generate the damn CSS. But to do that we need to check if the file name is given (same as with CSS directory) and that file is not already there. Here's the code:
 
@@ -200,19 +200,18 @@ if node["css_directory"] && node["pygments_css_file"]
 end
 {% endhighlight %}
 
-- Line 1: With `&&` (logical AND) operator we check that both `node["css_directory"]` and `node["pygments_css_file"]` values are present.
+- Line 1: Check that both `node["css_directory"]` and `node["pygments_css_file"]` values are present.
 - Line 7: Concatenate directory path with file name in a safe way using Ruby's `File` module and store it in `pygments_css_file` variable.
 - Lines 9-13: Create, but not execute right away, a task of generating a CSS file.
   - Line 9: Using `execute` resource, give task a name `generate-pygments-css` to use later.
   - Line 10: Specify a command itself. Here we use Ruby's string interpolation mechanism to inject file name.
-  - Line 11: Do not execute the task if file is not empty `File.size?()` checks exactly that.
+  - Line 11: Do not execute the task if file is not empty - `File.size?()` checks exactly that.
   - Line 12: Do not execute task right now, just create it and save for later.
 - Lines 15-18: Create an empty file if there isn't one and then execute a task created just before.
   - Line 15: Using `file` resource with a file name - this is similar to using `directory` resourse.
-  - Line 16: I think you can guess.
   - Line 17: Notify another resource to perform some action. In this case we notifying the task we created before to perform `:run` action right now (`:immediately`).
 
-We've used two new resources: `file` and `execute`. I recommend you to read [documentation about resources][Resource] to understand that they do. There's a lot of resources which you will conctantly use in your recipes.
+We've used two new resources: `file` and `execute`. I recommend you to read [documentation about resources][Resource] to understand that they do. There's a lot of resources which you will constantly use in your recipes.
 
 Here is the full version of `./chef/cookbooks/pygments/recipes/default.rb`:
 

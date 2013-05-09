@@ -1,2 +1,2 @@
 #! /bin/bash
-sudo jekyll serve --watch --host 192.168.111.111 --port 80
+sudo jekyll serve --watch --host 0.0.0.0 --port 80

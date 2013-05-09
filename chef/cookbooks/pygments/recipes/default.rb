@@ -12,8 +12,8 @@ if %w{ base_directory css_directory pygments_css_file }.all? { |attr| node[attr]
 
   execute "generate-pygments-css" do
     command "pygmentize -S default -f html > #{pygments_css_file}"
-    not_if { File.size?(pygments_css_file) } # generate default CSS if it's empty
-    action :nothing # executed after empty file was creted
+    not_if { File.size?(pygments_css_file) } # do not generate CSS if there is one already
+    action :nothing # execute this only after an empty file was created
   end
 
   file pygments_css_file do

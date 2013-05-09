@@ -1,13 +1,17 @@
 title: scriptin's thoughts
 subtitle: on programming languages, tools and practices
+
 author_fullname: Dmitry Shpika
 author_nickname: scriptin
+
+url: http://scriptin.github.io
 production_url: http://scriptin.github.io
+baseurl: /
+
+permalink: /:year-:month-:day/:title.html
 
 safe: true
 lsi: false
 pygments: true
-permalink: /:year-:month-:day/:title.html
-url: http://scriptin.github.io
-baseurl: /
+
 exclude: ["Vagrantfile", "chef", "start_dev_server.sh"]

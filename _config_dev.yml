@@ -4,7 +4,7 @@ subtitle: on programming languages, tools and practices
 author_fullname: Dmitry Shpika
 author_nickname: scriptin
 
-environment: production
+environment: development
 url: http://scriptin.github.io
 production_url: http://scriptin.github.io
 baseurl: /

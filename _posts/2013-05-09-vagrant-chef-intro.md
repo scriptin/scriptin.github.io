@@ -245,4 +245,10 @@ It is bigger than a previous example, but yet small and readable enough. We're d
 
 [Pygments]: http://pygments.org/
 
+### Further reading
+
+- [How to create a virtual host using Vagrant and Chef solo?](http://stackoverflow.com/q/16568924/484666) - <acronym title="Stack Overflow">SO</acronym> question with my answer.
+- [Foodcritic](http://acrmp.github.io/foodcritic/) - lint tool for Chef cookbooks. Page contains a list of good/bad examples of code you would typically use in your cookbooks.
+- [Vagrant/Chef tutorial by Alex Dergachev](https://gist.github.com/dergachev/3866825) - covers concepts of databags and VM packaging
+
 *Feel free to ask your questions in the comments.*

@@ -27,12 +27,12 @@ You need to install only [VirtualBox](https://www.virtualbox.org/) and Vagrant, 
 
 Example of `Vagrantfile` contents:
 
-{% highlight ruby linenos %}
+{% highlight ruby %}
 Vagrant.configure("2") do |config|
   # ... other configuration options
-  config.vm.provision :chef_solo do |chef|
-    chef.cookbooks_path = "chef/cookbooks"
-    chef.add_recipe "recipe1"
+  config.vm.provision :chef_solo do |chef| # A
+    chef.cookbooks_path = "chef/cookbooks" # B
+    chef.add_recipe "recipe1" # C
     chef.add_recipe "recipe2"
     chef.add_recipe "recipe3"
     # ...
@@ -40,9 +40,9 @@ Vagrant.configure("2") do |config|
 end
 {% endhighlight %}
 
-- Line 3: Tell Vagrant to use Chef solo as a provisioner.
-- Line 4: Specifies a relative path to directory with cookbooks. This you can change as you will.
-- Lines 5-7: Add recipes to run list. If a recipe is not explicitly added here (or included by other recipe) it will not be executed. Names of recipes here are usually the same as name of a cookbook (and it's directory name). Examples: `apache2`, `php`, etc.
+- (A) Tell Vagrant to use Chef solo as a provisioner.
+- (B) Specifies a relative path to directory with cookbooks. This you can change as you will.
+- (C) Add recipes to run list. If a recipe is not explicitly added here (or included by other recipe) it will not be executed. Names of recipes here are usually the same as name of a cookbook (and it's directory name). Examples: `apache2`, `php`, etc.
 
 **Terminology**:
 
@@ -178,38 +178,38 @@ end
 
 Next, we finally need to generate the damn CSS. But to do that we need to check if the file name is given (same as with CSS directory) and that file is not already there. Here's the code:
 
-{% highlight ruby linenos %}
-if node["css_directory"] && node["pygments_css_file"]
+{% highlight ruby %}
+if node["css_directory"] && node["pygments_css_file"] # A
   directory node["css_directory"] do
     # default owner/group permissions are OK, so we omit it
     action :create
   end
 
-  pygments_css_file = File.join(node["css_directory"], node["pygments_css_file"])
+  pygments_css_file = File.join(node["css_directory"], node["pygments_css_file"]) # B
 
-  execute "generate-pygments-css" do
+  execute "generate-pygments-css" do # C
     command "pygmentize -S default -f html > #{pygments_css_file}"
     not_if { File.size?(pygments_css_file) }
     action :nothing
   end
 
-  file pygments_css_file do
+  file pygments_css_file do # D
     action :create_if_missing
     notifies :run, "execute[generate-pygments-css]", :immediately
   end
 end
 {% endhighlight %}
 
-- Line 1: Check that both `node["css_directory"]` and `node["pygments_css_file"]` values are present.
-- Line 7: Concatenate directory path with file name in a safe way using Ruby's `File` module and store it in `pygments_css_file` variable.
-- Lines 9-13: Create, but not execute right away, a task of generating a CSS file.
-  - Line 9: Using `execute` resource, give task a name `generate-pygments-css` to use later.
-  - Line 10: Specify a command itself. Here we use Ruby's string interpolation mechanism to inject file name.
-  - Line 11: Do not execute the task if file is not empty - `File.size?()` checks exactly that.
-  - Line 12: Do not execute task right now, just create it and save for later.
-- Lines 15-18: Create an empty file if there isn't one and then execute a task created just before.
-  - Line 15: Using `file` resource with a file name - this is similar to using `directory` resourse.
-  - Line 17: Notify another resource to perform some action. In this case we notifying the task we created before to perform `:run` action right now (`:immediately`).
+- (A) Check that both `node["css_directory"]` and `node["pygments_css_file"]` values are present.
+- (B) Concatenate directory path with file name in a safe way using Ruby's `File` module and store it in `pygments_css_file` variable.
+- (C) Create, but not execute right away, a task of generating a CSS file.
+  - Using `execute` resource, give task a name `"generate-pygments-css"` to use later.
+  - Specify a command as a string. Note we use Ruby's string interpolation mechanism to inject the file name.
+  - `not_if`: do not execute the task if file is not empty - `File.size?()` checks exactly that.
+  - `action :nothing`: do not execute task right now, just create it and save for later.
+- (D) Create an empty file if there isn't one and then execute a task created just before.
+  - Use `file` resource with a file name - similar to `directory` resourse.
+  - Notify another resource to perform some action. In this case we notifying the task we created before (`"execute[generate-pygments-css]"` is a sring which acts as a reference to the task) to perform `:run` action right now (`:immediately`).
 
 We've used two new resources: `file` and `execute`. I recommend you to read [documentation about resources][Resource] to understand that they do. There's a lot of resources which you will constantly use in your recipes.
 

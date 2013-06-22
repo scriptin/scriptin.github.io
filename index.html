@@ -2,7 +2,9 @@
 layout: default
 title: Welcome!
 ---
-<ul class="unstyled">
+<h4>Posts</h4>
+
+<ul class="posts unstyled">
   {% for post in site.posts %}
   <li>
     <span class="post-date">{{ post.date | date_to_string }}</span>
@@ -10,3 +12,24 @@ title: Welcome!
   </li>
   {% endfor %}
 </ul>
+
+<div class="row">
+  <div class="about-author span5">
+    <h4>About me</h4>
+    <p>
+      Dmitry Shpika <span class="muted">['&#x0283;pik&#x0251;]</span>, software developer
+      and programming enthusiast from Russia.
+      Programming is both my job and  main hobby, but other then that I enjoy anime,
+      <a href="https://en.wikipedia.org/wiki/Critical_thinking">critical thinking</a> and mathematics.
+    </p>
+  </div>
+  <div class="about-blog span5">
+    <h4>About this blog</h4>
+    <p>
+      Powered by <a href="http://jekyllrb.com/">Jekyll</a> and <a href="https://disqus.com/">Disqus</a>,
+      hosted on <a href="http://pages.github.com/">GitHub pages</a>.
+      As I try to improve it, I can edit any content at any time without notice &mdash;
+      see <a href="https://github.com/scriptin/scriptin.github.io">repository</a> for the history of changes.
+    </p>
+  </div>
+</div>

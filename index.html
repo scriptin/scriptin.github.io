@@ -2,34 +2,25 @@
 layout: default
 title: Welcome!
 ---
-<h4>Posts</h4>
-
-<ul class="posts unstyled">
-  {% for post in site.posts %}
-  <li>
-    <span class="post-date">{{ post.date | date_to_string }}</span>
-    <a href="{{ post.url }}">{{ post.title }}</a>
-  </li>
-  {% endfor %}
+<h1>Posts</h1>
+<ul class="posts list-unstyled">
+    {% for post in site.posts %}
+    <li class="row">
+        <div class="col-lg-2 col-md-2 col-sm-2 published-date">{{ post.date | date_to_string }}</div>
+        <div class="col-lg-10 col-md-10 col-sm-10">
+            <a href="{{ post.url }}">{{ post.title }}</a>
+        </div>
+    </li>
+    {% endfor %}
 </ul>
 
 <div class="row">
-  <div class="about-author span5">
-    <h4>About me</h4>
-    <p>
-      Dmitry Shpika <span class="muted">['&#x0283;pik&#x0251;]</span>, software developer
-      and programming enthusiast from Russia.
-      Programming is both my job and  main hobby, but other then that I enjoy anime,
-      <a href="https://en.wikipedia.org/wiki/Critical_thinking">critical thinking</a> and mathematics.
-    </p>
-  </div>
-  <div class="about-blog span5">
-    <h4>About this blog</h4>
-    <p>
-      Powered by <a href="http://jekyllrb.com/">Jekyll</a> and <a href="https://disqus.com/">Disqus</a>,
-      hosted on <a href="http://pages.github.com/">GitHub pages</a>.
-      As I try to improve it, I can edit any content at any time without notice &mdash;
-      see <a href="https://github.com/scriptin/scriptin.github.io">repository</a> for the history of changes.
-    </p>
-  </div>
+    <div class="col-lg-6 col-md-6">
+        <h3>About me</h3>
+        <p>Dmitry Shpika, software developer and programming enthusiast from Russia. I code mostly in Java, PHP and JavaScript, but also love functional languages. Programming is both my job and main hobby, but other then that I enjoy anime, <a href="https://en.wikipedia.org/wiki/Critical_thinking">critical thinking</a> and mathematics.</p>
+    </div>
+    <div class="col-lg-6 col-md-6">
+        <h3>About this blog</h3>
+        <p>Powered by <a href="http://jekyllrb.com/">Jekyll</a>, <a href="http://lesscss.org/">Less</a>, <a href="http://getbootstrap.com/">Bootstrap</a> and <a href="http://www.vagrantup.com/">Vagrant</a>+<a href="http://www.getchef.com/">Chef (Solo)</a>. Hosted on <a href="https://pages.github.com/">GitHub pages</a>. As I try to improve it, I can edit any content at any time without notice &mdash; see <a href="https://github.com/scriptin/scriptin.github.io">repository</a> for the history of changes.</p>
+    </div>
 </div>

@@ -1,0 +1,20 @@
+author:
+  fullname: Dmitry Shpika
+  nickname: scriptin
+  homepage: http://scriptin.github.io/
+
+important_links:
+  - url: https://www.google.com/+DmitryShpika?rel=author
+    title: +Dmitry
+  - url: /atom.xml
+    title: "&lt;/&gt;&nbsp;Feed&nbsp;(Atom)"
+
+links:
+  - url: https://github.com/scriptin
+    title: GitHub profile
+  - url: http://stackexchange.com/users/224676?tab=accounts
+    title: StackExchange profiles
+
+license:
+  url: http://creativecommons.org/licenses/by-sa/3.0/
+  title: Creative Commons Attribution-ShareAlike 3.0 Unported License

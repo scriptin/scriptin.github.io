@@ -1,13 +1,7 @@
-title: scriptin's thoughts
+title: Dmitry Shpika
 subtitle: on programming languages, tools and practices
 
-author_fullname: Dmitry Shpika
-author_nickname: scriptin
-
 environment: development
-url: http://scriptin.github.io
-production_url: http://scriptin.github.io
-baseurl: /
 
 permalink: /:year-:month-:day/:title.html
 

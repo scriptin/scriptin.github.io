@@ -1,0 +1,259 @@
+@slightly: 5%;
+@significantly: 15%;
+
+// Palette: http://www.colourlovers.com/palette/3417960/sekel
+@darker-grey: #27353B;
+@dark-grey: #607780;
+@light-grey: #B1BFC4;
+@lighter-grey: lighten(@light-grey, @significantly);
+@white: #F3F3F3;
+@orange: #E66819;
+@darker-orange: darken(@orange, @significantly);
+@brown: #662711;
+
+// mixins
+
+.fancy-font() {
+    font-family: 'Roboto Slab', sans-serif;
+}
+
+.text-shadow(@x: 0; @y: 0; @blur: 1px; @color: #000) {
+    -webkit-text-shadow: @arguments;
+    -moz-text-shadow: @arguments;
+    -ms-text-shadow: @arguments;
+    -o-text-shadow: @arguments;
+    text-shadow: @arguments;
+}
+.box-shadow(@type: inset; @x: 0; @y: 0; @blur: 1px; @color: #000) {
+    -webkit-box-shadow: @arguments;
+    -moz-box-shadow: @arguments;
+    -ms-box-shadow: @arguments;
+    -o-box-shadow: @arguments;
+    box-shadow: @arguments;
+}
+
+.uppercase() {
+    text-transform: uppercase;
+}
+
+.no-padding() {
+    padding: 0;
+}
+.no-margin() {
+    margin: 0;
+}
+
+.round-corners(@radius) {
+    -webkit-border-radius: @radius;
+    -moz-border-radius: @radius;
+    -ms-border-radius: @radius;
+    -o-border-radius: @radius;
+    border-radius: @radius;
+}
+
+.no-round-corners() {
+    .round-corners(0);
+}
+
+// general styles
+
+@base-font-size: 16px;
+
+body {
+    color: @darker-grey;
+    background-color: @light-grey;
+    font-size: @base-font-size;
+}
+
+a {
+    color: @brown;
+    &:link, &:visited {
+        color: @brown;
+        text-decoration: underline;
+    }
+    &:hover, &:active {
+        color: @orange;
+        text-decoration: none;
+    }
+}
+
+.wrapper {
+    padding: @base-font-size*2 0 @base-font-size*2 0;
+}
+#content {
+    padding-top: @base-font-size; // because it starts with h1
+}
+
+.loop(@i) when (@i > 0) {
+    h@{i} {
+        .fancy-font;
+        margin: @base-font-size 0 @base-font-size 0;
+    }
+    .loop(@i - 1);
+}
+.loop(6);
+
+h1 {
+    color: @orange;
+    .text-shadow(1px, 1px, 0, @brown);
+}
+
+p, ul, ol, table, table.table {
+    margin: 0 0 @base-font-size 0;
+}
+
+code, kbd, pre {
+    .no-round-corners;
+    border: 0;
+}
+
+code {
+    color: @darker-grey;
+    background-color: lighten(@light-grey, @slightly);
+}
+
+kbd {
+    .round-corners(3px);
+    .text-shadow(0, -1px, 0, darken(@dark-grey, @significantly));
+    .box-shadow(inset, -1px, -2px, 0, darken(@dark-grey, @significantly));
+    border: 0;
+    background-color: @dark-grey;
+    color: @white;
+}
+
+pre {
+    background-color: @lighter-grey;
+    font-size: @base-font-size * 0.9;
+    padding: @base-font-size 1.5 * @base-font-size;
+}
+
+table.table {
+    @table-border-color: darken(@light-grey, @significantly);
+    border-color: @table-border-color;
+    tbody, thead, tfoot {
+        border-color: @table-border-color;
+    }
+    tr {
+        border-color: @table-border-color;
+        th, td {
+            border-color: @table-border-color;
+        }
+    }
+}
+table.table-striped {
+    tr:nth-child(odd) td {
+        background-color: lighten(@light-grey, @significantly);
+    }
+}
+table.table-hover {
+    tr:hover td {
+        background-color: lighten(@light-grey, @significantly);
+    }
+}
+
+blockquote {
+    border-left-color: @orange;
+    footer {
+        color: @dark-grey;
+    }
+}
+blockquote.blockquote-reverse {
+    border-right-color: @orange;
+}
+
+hr {
+    border: 0;
+    border-top: 1px solid darken(@light-grey, @significantly);
+    border-bottom: 1px solid lighten(@light-grey, @significantly);
+}
+
+// connections between header, content and footer
+
+#header, #content {
+    border-bottom: 1px solid darken(@light-grey, @significantly);
+}
+#content, #footer {
+    border-top: 1px solid lighten(@light-grey, @significantly);
+}
+
+// header
+
+#header {
+    @title-height: 120px;
+    padding-top: @base-font-size*2 + 10px;
+    background-image: url(../imgs/bg-stripe.png);
+    background-repeat: repeat-x;
+    .title {
+        .fancy-font;
+        .text-shadow(1px, 2px, 0, @brown);
+        .uppercase;
+        font-size: @title-height / 2;
+        line-height: @title-height / 2;
+        font-weight: bold;
+        a:link, a:visited, a:hover, a:active {
+            color: @orange;
+            text-decoration: none;
+        }
+    }
+    .subtitle {
+        font-size: @title-height / 10;
+        color: @brown;
+        font-style: italic;
+        padding: 0;
+    }
+    a.important-link {
+        @feed-link-font-size: @base-font-size*0.8;
+        display: inline-block;
+        .round-corners(3px);
+        .box-shadow(inset, -1px, -2px, 0, darken(@orange, @significantly));
+        .text-shadow(0, -1px, 0, darken(@orange, @significantly));
+        background-color: @orange;
+        color: @white;
+        padding: (@feed-link-font-size/3 - 1) @feed-link-font-size/2 @feed-link-font-size/3 @feed-link-font-size/2;
+        margin: 0 4px 4px 0;
+        font-size: @feed-link-font-size;
+        position: relative;
+        top: @feed-link-font-size/2;
+        &:link, &:visited {
+            text-decoration: none;
+        }
+        &:hover, &:active {
+            background-color: @brown;
+            .box-shadow(inset, -1px, -2px, 0, darken(@brown, @significantly));
+            .text-shadow(0, -1px, 0, darken(@brown, @significantly));
+        }
+    }
+}
+
+// content
+
+#content {
+    .published-date {
+        font-size: @base-font-size * 0.8;
+        color: @dark-grey;
+    }
+    .posts {
+        .published-date {
+            font-size: @base-font-size;
+        }
+        a {
+            &:link, &:visited {
+                text-decoration: none;
+            }
+        }
+        li {
+            margin-bottom: @base-font-size / 4;
+        }
+    }
+}
+
+// footer
+
+#footer {
+    .license-note {
+        font-size: @base-font-size * 0.8
+    }
+    a {
+        text-decoration: none;
+    }
+}

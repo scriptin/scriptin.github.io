@@ -14,6 +14,7 @@ Vagrant.configure("2") do |config|
     chef.add_recipe "rvm::system"
     chef.add_recipe "pygments"
     chef.add_recipe "nodejs"
+    chef.add_recipe "less"
 
     chef.json = {
       "base_directory" => "/vagrant", # absolute path to the project shared directory on VM

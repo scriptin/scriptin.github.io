@@ -10,13 +10,20 @@ Vagrant.configure("2") do |config|
   config.vm.provision :chef_solo do |chef|
     chef.cookbooks_path = "chef/cookbooks"
     chef.add_recipe "build-essential"
+    chef.add_recipe "apt"
+    chef.add_recipe "rvm::system"
     chef.add_recipe "pygments"
-    chef.add_recipe "jekyll"
+    chef.add_recipe "nodejs"
 
     chef.json = {
-      "base_directory" => "/vagrant", # absolute path to the projectq shared directory on VM
+      "base_directory" => "/vagrant", # absolute path to the project shared directory on VM
       "css_directory" => "css",
-      "pygments_css_file" => "syntax.css"
+      "pygments_css_file" => "syntax.css",
+      "rvm" => {
+        "global_gems" => [
+          {"name" => "jekyll"}
+        ]
+      }
     }
   end
 end

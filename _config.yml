@@ -13,6 +13,6 @@ permalink: /:year-:month-:day/:title.html
 
 safe: true
 lsi: false
-pygments: true
+highlighter: pygments
 
 exclude: ["Vagrantfile", "chef", "start_dev_server.sh"]

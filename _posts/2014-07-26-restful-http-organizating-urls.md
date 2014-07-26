@@ -3,16 +3,16 @@ layout: post
 title: "RESTful HTTP: organizing URLs"
 ---
 
-For the last few week I've been working a lot on designing/implementing some web services, moslty [REST][REST]ful, so I decided to write down the most important things I've learned so far. This post is about oraganizing URLs of resources in a web service in a smart way.
+For the last few week I've been working a lot on designing/implementing some web services, moslty [REST][]ful, so I decided to write down the most important things I've learned so far. This post is about oraganizing URLs of resources in a web service in a smart way.
 
 Few basic things before I start:
 
-- [REST][REST] is neither a technology, nor a standart. It is a set of architectural principles
-- REST can be used over various protocols, but I'm going to talk only about HTTP. If you're not familiar with specification of this protocol, you might want to read [RFC 2616][HTTP 1.1]
-- REST can use various data formats (XML, CSV, binary, etc.), I'll stick with [JSON][JSON]
+- [REST][] is neither a technology, nor a standart. It is a set of architectural principles
+- REST can be used over various protocols, but I'm going to talk only about HTTP. If you're not familiar with specification of this protocol, you might want to read [RFC 2616][]
+- REST can use various data formats (XML, CSV, binary, etc.), I'll stick with [JSON][]
 
 [REST]: https://en.wikipedia.org/wiki/Representational_state_transfer
-[HTTP 1.1]: http://tools.ietf.org/html/rfc2616
+[RFC 2616]: http://tools.ietf.org/html/rfc2616
 [JSON]: http://json.org/
 
 ----
@@ -130,7 +130,7 @@ I would not recommend this approach because it can cause collisions - situations
 
 > Option 3: WebDAV MOVE method
 
-`MOVE` method of [WebDAV][WebDAV] is nice bacause it uses only 1 request, so it's atomic if server performs this action atomically. Disadvantage is that not all client software support this. Read this about the support in major browsers: [Are the PUT, DELETE, HEAD, etc methods available in most web browsers?](http://stackoverflow.com/q/165779/484666)
+`MOVE` method of [WebDAV][] is nice bacause it uses only 1 request, so it's atomic if server performs this action atomically. Disadvantage is that not all client software support this. Read this about the support in major browsers: [Are the PUT, DELETE, HEAD, etc methods available in most web browsers?](http://stackoverflow.com/q/165779/484666)
 
 Request:
 

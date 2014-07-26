@@ -1,8 +1,8 @@
 ---
-title: Minimal practical introduction to Vagrant and Chef solo
+title: Minimal practical introduction to Vagrant and Chef
 layout: post
 ---
-First time I tried to use [Vagrant][] with [Chef][] solo as a [provisioner](http://docs.vagrantup.com/v2/provisioning/index.html) I got stuck with too much irrelevant information on the topic. So here is the short introduction to get you started. I wanted it to be as simple as possible, so maybe you'll find some of my explainations a bit redundant.
+First time I tried to use [Vagrant][] with [Chef][] ([solo version][Chef solo]) as a [provisioner](http://docs.vagrantup.com/v2/provisioning/index.html) I got stuck with too much irrelevant information on the topic. So here is the short introduction to get you started. I wanted it to be as simple as possible, so maybe you'll find some of my explainations a bit redundant.
 
 Before reading this post:
 
@@ -13,17 +13,17 @@ Before reading this post:
 
 [Vagrant]: http://www.vagrantup.com/
 [Vagrant documentation]: http://docs.vagrantup.com/v2/
-[Chef]: http://www.opscode.com/chef/
-[Chef documentation]: http://docs.opscode.com/
-[Chef solo]: http://docs.opscode.com/chef_solo.html
+[Chef]: http://www.getchef.com/
+[Chef documentation]: http://docs.getchef.com/
+[Chef solo]: http://docs.getchef.com/chef_solo.html
 [Ruby]: http://www.ruby-lang.org/
-[Just Enough Ruby for Chef]: http://docs.opscode.com/just_enough_ruby_for_chef.html
+[Just Enough Ruby for Chef]: http://docs.getchef.com/just_enough_ruby_for_chef.html
 
-### Step 0: Installation
+## Step 0: Installation
 
 You need to install only [VirtualBox](https://www.virtualbox.org/) and Vagrant, everything else is included in Vagrant distribution (at least it was for me). Just follow the [installation instructions](http://docs.vagrantup.com/v2/installation/index.html).
 
-### Step 1: Configure Vagrant to use Chef solo
+## Step 1: Configure Vagrant to use Chef solo
 
 Example of `Vagrantfile` contents:
 
@@ -46,29 +46,29 @@ end
 
 **Terminology**:
 
-- **[Cookbook][]** - unit of configuration in Chef. Each cookbook defines a scenario and contains all of the components that are required to support that scenario. Cookbooks contain recipes (one or more) as well as other things which are out of scope of this post. Examples: [Apache](http://community.opscode.com/cookbooks/apache2), [MySQL](http://community.opscode.com/cookbooks/mysql), [iptables](http://community.opscode.com/cookbooks/iptables), etc.
+- **[Cookbook][]** - unit of configuration in Chef. Each cookbook defines a scenario and contains all of the components that are required to support that scenario. Cookbooks contain recipes (one or more) as well as other things which are out of scope of this post. Examples: [Apache](https://supermarket.getchef.com/cookbooks/apache2), [MySQL](https://supermarket.getchef.com/cookbooks/mysql), [iptables](https://supermarket.getchef.com/cookbooks/iptables), etc.
 - **[Recipe][]** - fundamental configuration element which defines an algorithm of how to configure some part of a system. Recipes may execute another recipes.
 
-[Cookbook]: http://docs.opscode.com/essentials_cookbooks.html
-[Recipe]: http://docs.opscode.com/essentials_cookbook_recipes.html
+[Cookbook]: http://docs.getchef.com/essentials_cookbooks.html
+[Recipe]: http://docs.getchef.com/essentials_cookbook_recipes.html
 
-### Step 2: Get recipes
+## Step 2: Get recipes
 
-Chef community provides you with [lots of premade cookbooks][Chef community cookbooks]. In case you need to install some popular software package, you'd first look there. **Note**: not all cookbooks work with Chef solo, and sometimes the only way to know that for sure is to try.
+Chef community provides you with [lots of cookbooks][Chef cookbooks]. In case you need to install some popular software package, you'd first look there. **Note**: not all cookbooks work with Chef solo, and sometimes the only way to know that for sure is to try.
 
 It's important that you download cookbooks and keep them in you repository together with `Vagrantfile`. This gives you some guarantees that your project will not break when you'll try to build it a long time after you created it, because cookbooks are likely to change over time.
 
-[Chef community cookbooks]: http://community.opscode.com/cookbooks
+[Chef cookbooks]: https://supermarket.getchef.com/cookbooks
 
-### Step 3: Write your own resipes
+## Step 3: Write your own resipes
 
 I will show you how to write simplest cookbooks. As a practical example I will use this blog's cookbooks - see [repository](https://github.com/scriptin/scriptin.github.io). If you'll need something more than that, you'll have to read [Chef documentation][].
 
-#### Example #1: Installing Jekyll
+### Example 1: Installing Jekyll
 
 [Jekyll][] is a static blog-aware site generator written in [Ruby][]. This blog is built on it.
 
-Jekyll is installed as a Ruby gem and Ruby itself will be installed on VM which is created by Vagrant, because Vagrant and Chef require it to run, but there's bunch of other programs which Jekyll uses (e.g. Git) which are not included by default (or must be updated). Thankfully, there's a [build-essential](http://community.opscode.com/cookbooks/build-essential) cookbook which installs or updates these tools. Download this cookbook and extract it into the directory with cookbooks (`./chef/cookbooks` in my example, so the cookbook must be in `./chef/cookbooks/build-essential`), and add a recipe:
+Jekyll is installed as a Ruby gem and Ruby itself will be installed on VM which is created by Vagrant, because Vagrant and Chef require it to run, but there's bunch of other programs which Jekyll uses (e.g. Git) which are not included by default (or must be updated). Thankfully, there's a [build-essential](https://supermarket.getchef.com/cookbooks/build-essential) cookbook which installs or updates these tools. Download this cookbook and extract it into the directory with cookbooks (`./chef/cookbooks` in my example, so the cookbook must be in `./chef/cookbooks/build-essential`), and add a recipe:
 
 {% highlight ruby %}
 chef.add_recipe "build-essential"
@@ -101,10 +101,10 @@ This is it! Just 2 files with 7 <acronym title="Lines of Code">LoC</acronym>.
 - **[Resource][]** - a block of code in a recipe defining some action, such as files/directories creation, starting/stopping services, installation of packages and so on.
 
 [Jekyll]: http://jekyllrb.com/
-[Metadata]: http://docs.opscode.com/essentials_cookbook_metadata.html
-[Resource]: http://docs.opscode.com/resource.html
+[Metadata]: http://docs.getchef.com/essentials_cookbook_metadata.html
+[Resource]: http://docs.getchef.com/resource.html
 
-#### Example #2: Installing Pygments and generating CSS file for syntax highlighting
+### Example 2: Installing Pygments and generating CSS file for syntax highlighting
 
 Now let's try something more involved and look at more Chef resources.
 
@@ -150,7 +150,7 @@ Vagrant.configure("2") do |config|
 end
 {% endhighlight %}
 
-To create a directory in Chef recipe, we must use [`directory` resourse](http://docs.opscode.com/resource_directory.html) like so:
+To create a directory in Chef recipe, we must use [`directory` resourse](http://docs.getchef.com/resource_directory.html) like so:
 
 {% highlight ruby %}
 directory "/some/dir" do
@@ -245,10 +245,8 @@ It is bigger than a previous example, but yet small and readable enough. We're d
 
 [Pygments]: http://pygments.org/
 
-### Further reading
+## Further reading
 
 - [How to create a virtual host using Vagrant and Chef solo?](http://stackoverflow.com/q/16568924/484666) - <acronym title="Stack Overflow">SO</acronym> question with my answer.
 - [Foodcritic](http://acrmp.github.io/foodcritic/) - lint tool for Chef cookbooks. Page contains a list of good/bad examples of code you would typically use in your cookbooks.
 - [Vagrant/Chef tutorial by Alex Dergachev](https://gist.github.com/dergachev/3866825) - covers concepts of databags and VM packaging
-
-*Feel free to ask your questions in the comments.*

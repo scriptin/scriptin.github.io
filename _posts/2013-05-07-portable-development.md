@@ -13,7 +13,7 @@ Imagine the situation when a new developer (let's call him Jimmy) comes to a con
 
 Let's look at the few imaginary cases of how could Jimmy setup his environment.
 
-### Worst case scenario: manual setup
+## Worst case scenario: manual setup
 
 The team Jimmy came into working on legacy PHP application. The company guys work for forces them to use Windows on their workstations. In order to develop PHP on Windows, Jimmy uses something like XAMPP/WAMP/EasyPHP, which itself can lead to a problem, because production server runs Linux, and it is easy to screw things up - for example, if you use `"/"` or `"\"` instead of `DIRECTORY_SEPARATOR` in some functions. Even if Jimmy is aware of all such cases, there will be situations when his development environment is different from production server in a way that leads to a disaster.
 
@@ -29,7 +29,7 @@ Next Jimmy gets a copy of project's repository (it should be simple) and then fa
 
 Jimmy finds himself in a situation where his boss expects him to start fixing some 2 years old bug which noone wants to take on, but the first time when Jimmy can actually see the application working on his computer is at least a week away. So Jimmy starts hacking the code directly on production server, yay! Just kidding... Or not.
 
-### Improvement #1: using editor/IDE with portable confuguration
+## Improvement 1: using editor/IDE with portable confuguration
 
 The thing I personally don't like about Eclipse and similar IDEs is it's unportable (or hardly portable) configuration. Better alternative would be having IDE's configuration files stored in repository, and that is possible for Vim and Emacs. For example, here is my Emacs configuration: [github.com/scriptin/.emacs.d](https://github.com/scriptin/.emacs.d) (at the moment of writing this post it cannot be used as an IDE, but I work on it).
 
@@ -40,7 +40,7 @@ If I were in Jimmy's shoes, I'd just clone my configuration to my new workstatio
 - share your configuration with other people.
 - use your configuration as an example to teach other people and learn from them in a same way.
 
-### Improvement #2a: using virtual machine for development
+## Improvement 2: using virtual machine for development
 
 Jimmy's team can build a <acronym title="Virtual Machine">VM</acronym> which mimics production environment as closely as possible to run their application. If thier project runs on multiple servers (i.e. has a load balancer, application and data servers, etc.), using VMs is the only way to make it runnable on a single computer.
 
@@ -51,7 +51,7 @@ However, building a VM (or multiple VMs) and sharing it as an image file has fol
 - It's not clear how exactly environment is set up: which packages, modules, extentions are used, what settings HTTP server use, etc.
 - VM is detached from the code it is supposed to run.
 
-### Improvement #2b: using Vagrant
+## Improvement 3: using Vagrant
 
 [Vagrant][vagrant] is a much better alternative for managing virtual development environments. With Vagrant Jimmy would have to write a special `Vagrantfile` (Vagrant's equivalent of `Makefile` and similar), which contains instructions of how to setup a VM. He would be able to use [provisioning](http://docs.vagrantup.com/v2/provisioning/index.html) scripts/configurations written in bash, Ruby or other formats, depending on chosen provisioning tool (I personnaly prefer [Chef solo](http://docs.vagrantup.com/v2/provisioning/chef_solo.html)).
 
@@ -70,7 +70,7 @@ If you don't use Vagrant now, at least read the [documentation][vagrant_docs] to
 [vagrant]: http://vagrantup.com
 [vagrant_docs]: http://docs.vagrantup.com/v2/
 
-### Alternative #1: using online IDEs
+## Alternative 1: using online IDEs
 
 You've probably heard about [Cloud9][] or similar web-based IDEs. Personally I've never used anything more than [JSFiddle][], [SQLFiddle][], and [CodeMirror][], so I can't judge how good or bad it can be, but I can guess it is a tradeoff between simplicity of collaboration (which seems to be very simple), performance (complex IDE in a browser can be slow just because of network latency), customization (I don't believe you can build Emacs in a browser), and a bunch of other factors.
 
@@ -79,12 +79,8 @@ You've probably heard about [Cloud9][] or similar web-based IDEs. Personally I'v
 [SQLFiddle]: http://sqlfiddle.com/
 [CodeMirror]: http://codemirror.net/
 
-### Alternative #2: Desktop virtualization
+## Alternative 2: Desktop virtualization
 
 [Desktop virtualization](http://en.wikipedia.org/wiki/Desktop_virtualization) is a way to get rid of development environment setup process by building a ready to use desktop environments in a cloud and then giving the developers remote access to the copies of those virtualized desktops.
 
 This can be a good solution for companies which outsource part of their development, because you can minimize developer's access to sensitive data and other resources while still being able to provide each developer with everything what's required to work on a project. However, this approach forces a developer to use whatever tools a company have chosen.
-
-I don't have any experience with this practice, so I leave further research up to you.
-
-*Please let me know in the comments if you have an experience with any of tools, technologies, and practices described above, and what do you think of it.*

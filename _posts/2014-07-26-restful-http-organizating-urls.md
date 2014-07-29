@@ -96,3 +96,8 @@ Response:
 I will not discuss WebDAV approach in detail, this is just information to start with. Read the [RFC 4918][WebDAV] if client support issues are not relevant to your case.
 
 [WebDAV]: http://tools.ietf.org/html/rfc4918
+
+## Further reading
+
+- [The RESTful CookBook](http://restcookbook.com/) - online book about REST, both basic and advanced topics
+- [Why trailing slashes on URIs are important](http://cdivilly.wordpress.com/2014/03/11/why-trailing-slashes-on-uris-are-important/) - kinda controversial article about trailing slashes on collections. I do not recommend to follow this rule since it's not obvious unless you've read this article. Initially I included this as a rule but after some snooping around popular REST APIs changed my mind. Note how URL of this article ends with slash when it shouldn't =)

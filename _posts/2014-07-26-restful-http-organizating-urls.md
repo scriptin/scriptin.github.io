@@ -8,12 +8,18 @@ For the last few week I've been working a lot on designing/implementing some web
 Few basic things before I start:
 
 - [REST][] is neither a technology, nor a standart. It is a set of architectural principles
-- REST can be used over various protocols, but I'm going to talk only about HTTP. If you're not familiar with specification of this protocol, you might want to read [RFC 2616][]
+- REST can be used over various protocols, but I'm going to talk only about HTTP. If you're not familiar with specification of this protocol, you might want to read <del>[RFC 2616][]</dev> [RFC 7230][], [RFC 7231][], [RFC 7232][], [RFC 7233][], [RFC 7234][], [RFC 7235][]
 - REST can use various data formats (XML, CSV, binary, etc.), I'll stick with [JSON][]
 
 [REST]: https://en.wikipedia.org/wiki/Representational_state_transfer
-[RFC 2616]: http://tools.ietf.org/html/rfc2616
 [JSON]: http://json.org/
+[RFC 2616]: http://tools.ietf.org/html/rfc2616
+[RFC 7230]: http://tools.ietf.org/html/rfc7230
+[RFC 7231]: http://tools.ietf.org/html/rfc7231
+[RFC 7232]: http://tools.ietf.org/html/rfc7232
+[RFC 7233]: http://tools.ietf.org/html/rfc7233
+[RFC 7234]: http://tools.ietf.org/html/rfc7234
+[RFC 7235]: http://tools.ietf.org/html/rfc7235
 
 ----
 

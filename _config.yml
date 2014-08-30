@@ -2,6 +2,7 @@ title: Dmitry Shpika
 subtitle: on programming languages, tools and practices
 
 environment: production
+production_url: http://scriptin.github.io
 
 permalink: /:year-:month-:day/:title.html
 

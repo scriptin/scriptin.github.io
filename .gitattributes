@@ -13,3 +13,5 @@
 *.conf text
 *.yml text
 *.yaml text
+
+*.* binary

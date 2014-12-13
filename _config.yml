@@ -11,4 +11,4 @@ lsi: false
 markdown: kramdown
 highlighter: pygments
 
-exclude: ["Vagrantfile", "chef", "start_dev_server.sh"]
+exclude: ["update_css.sh", "README.md", "Dockerfile"]

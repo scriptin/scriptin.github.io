@@ -2,12 +2,11 @@ author:
   fullname: Dmitry Shpika
   nickname: scriptin
   homepage: http://scriptin.github.io/
+  gplus: https://www.google.com/+DmitryShpika
 
-important_links:
-  - url: https://www.google.com/+DmitryShpika?rel=author
-    title: +Dmitry
-  - url: /atom.xml
-    title: "&lt;/&gt;&nbsp;Feed&nbsp;(Atom)"
+atom:
+  url: /atom.xml
+  title: "&lt;/&gt;&nbsp;Feed&nbsp;(Atom)"
 
 links:
   - url: https://github.com/scriptin

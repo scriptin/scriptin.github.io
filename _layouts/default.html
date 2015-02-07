@@ -15,6 +15,7 @@
         <![endif]-->
         <link href="/atom.xml" rel="alternate" type="application/atom+xml" title="Atom feed">
         <link href="/favicon.ico" rel="shortcut icon">
+        <link href="{{ site.data.template.author.gplus }}" rel="author">
     </head>
     <body>
         <div id="header" class="wrapper">
@@ -27,11 +28,9 @@
                         <div class="subtitle">{{ site.subtitle }}</div>
                     </div>
                     <div class="col-lg-3 col-md-4">
-                        {% for link in site.data.template.important_links %}
-                        <a class="important-link" href="{{ link.url }}">
-                            {{ link.title }}
+                        <a class="important-link" href="{{ site.data.template.atom.url }}">
+                            {{ site.data.template.atom.title }}
                         </a>
-                        {% endfor %}
                     </div>
                 </div>
             </div>

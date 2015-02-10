@@ -2,7 +2,7 @@
 title: Minimal practical introduction to Vagrant and Chef
 layout: post
 ---
-First time I tried to use [Vagrant][] with [Chef][] ([solo version][Chef solo]) as a [provisioner](http://docs.vagrantup.com/v2/provisioning/index.html) I got stuck with too much irrelevant information on the topic. So here is the short introduction to get you started. I wanted it to be as simple as possible, so maybe you'll find some of my explainations a bit redundant.
+First time I tried to use [Vagrant][] with [Chef][] ([solo version][Chef solo]) as a [provisioner](http://docs.vagrantup.com/v2/provisioning/index.html) I got stuck with too much irrelevant information on the topic. So here is the short introduction to get you started. I wanted it to be as simple as possible, so maybe you'll find some of my explanations a bit redundant.
 
 Before reading this post:
 
@@ -60,7 +60,7 @@ It's important that you download cookbooks and keep them in you repository toget
 
 [Chef cookbooks]: https://supermarket.getchef.com/cookbooks
 
-## Step 3: Write your own resipes
+## Step 3: Write your own recipes
 
 I will show you how to write simplest cookbooks. As a practical example I will use this blog's cookbooks - see [repository](https://github.com/scriptin/scriptin.github.io). If you'll need something more than that, you'll have to read [Chef documentation][].
 
@@ -127,7 +127,7 @@ package "python-pygments" do
 end
 {% endhighlight %}
 
-This installs Pygments (but this time with `package` resource, bacause this is not a gem) and we may stop here, but just for the sake of learning let's make it so Pygments will generate CSS file with default syntax highlighting rules, but only if it's not already there. All code snippets below must go into `./chef/cookbooks/pygments/recipes/default.rb`.
+This installs Pygments (but this time with `package` resource, because this is not a gem) and we may stop here, but just for the sake of learning let's make it so Pygments will generate CSS file with default syntax highlighting rules, but only if it's not already there. All code snippets below must go into `./chef/cookbooks/pygments/recipes/default.rb`.
 
 If you're not familiar with Ruby, here's the time to seriously go and read that [Just Enough Ruby for Chef][] article. In fact, I will go beyond that's described there and will do my best to explain what I do, so bare with me. I've actually learned Ruby just before I started using Vagrant, Chef solo and Jekyll.
 
@@ -174,7 +174,7 @@ end
 
 `node` is an object you can use in your recipes, it contains attributes of the system under configuration. It is called "node" because full version of Chef uses client-server architecture to configure multiple systems ("nodes"), which may be virtual or physical machines connecting to a single server.
 
-`node["some_property"]` is a way to access some property we set in `chef.json` above. Properties can be set in differrent ways, but we'll stick with that.
+`node["some_property"]` is a way to access some property we set in `chef.json` above. Properties can be set in different ways, but we'll stick with that.
 
 Next, we finally need to generate the damn CSS. But to do that we need to check if the file name is given (same as with CSS directory) and that file is not already there. Here's the code:
 
@@ -208,8 +208,8 @@ end
   - `not_if`: do not execute the task if file is not empty - `File.size?()` checks exactly that.
   - `action :nothing`: do not execute task right now, just create it and save for later.
 - (D) Create an empty file if there isn't one and then execute a task created just before.
-  - Use `file` resource with a file name - similar to `directory` resourse.
-  - Notify another resource to perform some action. In this case we notifying the task we created before (`"execute[generate-pygments-css]"` is a sring which acts as a reference to the task) to perform `:run` action right now (`:immediately`).
+  - Use `file` resource with a file name - similar to `directory` resource.
+  - Notify another resource to perform some action. In this case we notifying the task we created before (`"execute[generate-pygments-css]"` is a string which acts as a reference to the task) to perform `:run` action right now (`:immediately`).
 
 We've used two new resources: `file` and `execute`. I recommend you to read [documentation about resources][Resource] to understand that they do. There's a lot of resources which you will constantly use in your recipes.
 

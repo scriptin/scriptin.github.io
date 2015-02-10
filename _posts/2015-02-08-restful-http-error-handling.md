@@ -7,7 +7,7 @@ Error handling in web services (REST, JSON-RPC, etc.) is a process of catching e
 
 - **HTTP-compliant**: responding with proper statuses, proper headers for that statuses, and so on.
 - **Logging properly**: configuring logging system so logs can be efficiently used to find, analyze, and fix bugs.
-- **Human-readable error messages**: for example, saying *"You can't delete X bacause it is used in Y"* and not *"org.hibernate.exception.ConstraintViolationException: Could not execute JDBC batch update"*. Of course, responses should also be machine-readable (JSON/XML).
+- **Human-readable error messages**: for example, saying *"You can't delete X because it is used in Y"* and not *"org.hibernate.exception.ConstraintViolationException: Could not execute JDBC batch update"*. Of course, responses should also be machine-readable (JSON/XML).
 
 I use Java in my examples, but this should be similar for any decent OOP language.
 
@@ -18,7 +18,7 @@ I use Java in my examples, but this should be similar for any decent OOP languag
 - "Overriding" exceptions thrown inside `try` blocks by [exceptions thrown inside `catch` or `finally` blocks][fail-safe-handling].
 - Breaking stack trace by catching an exception and throwing another without setting the previous one as the cause.
 - Exposing the "guts" to a client: full stack trace, environment variables' values, etc.
-- Too implemenation-specific or "low-level" error messages, e.g. *"com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (\`foo\`.\`bar\`, CONSTRAINT \`baz_ibfk_1\` FOREIGN KEY (\`id\`) REFERENCES \`qux\` (\`id\`))"*.
+- Too implementation-specific or "low-level" error messages, e.g. *"com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (\`foo\`.\`bar\`, CONSTRAINT \`baz_ibfk_1\` FOREIGN KEY (\`id\`) REFERENCES \`qux\` (\`id\`))"*.
 - Too generic error messages. Like "failed to delete X" (why?), "request processing error" (what happened?), etc.
 - Guessing the cause of an error by parsing exception message. You'd need a strong AI for that, yet you use good ol' regular expressions.
 - Throwing and catching general-purpose exceptions to convey business-specific information. Like throwing `NullPointerException` to say "there's no record with given ID in database", and then assuming all NPEs you catch mean exactly that.
@@ -59,7 +59,7 @@ I know you've skipped it, so here's a summary: there are different layers in you
 ### Bottom and middle layer
 
 - Do NOT log errors here!
-- If error occured outside of your code (in some library or framework you're using):
+- If error occurred outside of your code (in some library or framework you're using):
     - handle it, if possible,
     - if not, enrich it by wrapping into *domain-specific* exception classes and rethrow,
     - use [exception handling templates][handling-templates].
@@ -161,5 +161,5 @@ As you can see, those codes provide the same information as messages do, but are
 - "Swallow" exceptions completely or break stack trace chain.
 - Use general-purpose exception classes to convey domain-specific meaning.
 - Parse message text to figure out what caused an error.
-- Show "raw" error messages to a client, revealing implemenation details.
+- Show "raw" error messages to a client, revealing implementation details.
 - Log everything multiple times, putting too much irrelevant, duplicate or excess messages into logs.

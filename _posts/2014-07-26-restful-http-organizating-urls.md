@@ -3,11 +3,11 @@ layout: post
 title: "RESTful HTTP: organizing URLs"
 ---
 
-For the last few week I've been working a lot on designing/implementing some web services, moslty [REST][]ful, so I decided to write down the most important things I've learned so far. This post is about oraganizing URLs of resources in a web service in a smart way.
+For the last few week I've been working a lot on designing/implementing some web services, mostly [REST][]ful, so I decided to write down the most important things I've learned so far. This post is about organizing URLs of resources in a web service in a smart way.
 
 Few basic things before I start:
 
-- [REST][] is neither a technology, nor a standart. It is a set of architectural principles
+- [REST][] is neither a technology, nor a standard. It is a set of architectural principles
 - REST can be used over various protocols, but I'm going to talk only about HTTP. If you're not familiar with specification of this protocol, you might want to read <del>[RFC 2616][]</del> ([obsolete since June 2014][rfc-2616-obsolete]), [RFC 7230][], [RFC 7231][], [RFC 7232][], [RFC 7233][], [RFC 7234][], [RFC 7235][]
 - REST can use various data formats (XML, CSV, binary, etc.), I'll stick with [JSON][]
 
@@ -83,11 +83,11 @@ This is very simple because no additional methods need to be supported.
     DELETE /groups/123/users/456 - delete old resource
     POST /groups/789/users/      - create new resource with new ID
 
-I do not recommend this approach bacause it is not atomic. If something goes wrong after `DELETE` request, the data can be *lost forever*.
+I do not recommend this approach because it is not atomic. If something goes wrong after `DELETE` request, the data can be *lost forever*.
 
 > Option 2: WebDAV MOVE method
 
-`MOVE` method of [WebDAV][] is nice bacause it uses only 1 request, so it's atomic if server performs this action atomically.
+`MOVE` method of [WebDAV][] is nice because it uses only 1 request, so it's atomic if server performs this action atomically.
 
 Request:
 

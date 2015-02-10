@@ -16,7 +16,7 @@ This is known as the **lost update problem**:
    if something has changed* between the moment the record was read and the moment
    it is to be saved. Example: $1 was added.
 
-Result: **$99 is gone** bacause second update overridden the first one. The first
+Result: **$99 is gone** because second update overridden the first one. The first
 one is lost, hence the name of the problem.
 
 Sequence diagram: [Optimistic Offline Lock][lost-update-diag] in Martin Fowler's
@@ -34,7 +34,7 @@ best fits the case of RESTful APIs:
    together with data itself. In HTTP, this is done via 
    [`ETag` header](http://en.wikipedia.org/wiki/HTTP_ETag)
    Example: the version is `ETag: W/"1"`. It can be any string, usually 
-   a ordinal number or a checksum of data. `W/` means "weak" validation, 
+   an ordinal number or a checksum of data. `W/` means "weak" validation, 
    which is semantic equivalence instead of byte-to-byte equality.
 2. Agent B reads the same records with the same version.
 3. Agent A modifies some fields in the record and saves the record, 
@@ -50,7 +50,7 @@ best fits the case of RESTful APIs:
 - **No read locking**. It's *optimistic* because it assumes that most of the time
   it's fine to allow reading the data being edited at the moment. Reading doesn't
   imply that update will follow next.
-- No session is required to keep track of locking. The lack of session is requred
+- No session is required to keep track of locking. The lack of session is required
   in order to comply REST principles: it must be *stateless* to be RESTful.
 - Simple to implement on top of HTTP. In fact, you just need to read 
   [RFC 7232](http://tools.ietf.org/html/rfc7232).
@@ -63,7 +63,7 @@ best fits the case of RESTful APIs:
   changes? Maybe it is "Jack Smith", but this would require a human to decide.
   There are, of course, much more complex cases.
 
-And that's the only one real disadvatage I'm aware of.
+And that's the only one real disadvantage I'm aware of.
 
 ## Support by frameworks
 

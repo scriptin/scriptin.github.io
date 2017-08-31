@@ -1,5 +1,5 @@
 FROM ruby:2.1
-MAINTAINER Dmitry Shpika <***REMOVED***>
+MAINTAINER Dmitry Shpika
 
 RUN apt-get update \
   && apt-get install -y \

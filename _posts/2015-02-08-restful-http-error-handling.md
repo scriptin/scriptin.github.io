@@ -114,10 +114,10 @@ Code might look like this:
     // Caught another domain-specific exception
     response.setStatus(503);
     response.setMessage("You have insufficient privileges to perform this action.");
-} catch (Throwable unhandledError) {
+} catch (Exception unhandledException) {
     // Catch-all case
-    logger.error("Unhandled error!", unhandledError); // Log full stack trace
-    systemAlarm.unhandledError(unhandledError.getMessage()); // Notify admins
+    logger.error("Unhandled exception!", unhandledException); // Log full stack trace
+    systemAlarm.unhandledException(unhandledException.getMessage()); // Notify admins
     response.setStatus(500);
     response.setMessage("Sorry, something is broken. We'll look into that.");
 }

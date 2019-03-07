@@ -42,11 +42,11 @@ Longer list:
 3. Third item
 4. Last item
 
-{% highlight ruby %}
+```ruby
 File.readlines('file.txt').each do |line|
   puts line
 end
-{% endhighlight %}
+```
 
 <table class="table table-bordered table-striped table-hover">
     <thead>
@@ -82,7 +82,7 @@ end
     </tfoot>
 </table>
 
-{% highlight ruby linenos %}
+```ruby
 class Person
   attr_reader :name, :age
   def initialize(name, age)
@@ -103,9 +103,9 @@ group = [
 ]
 
 puts group.sort.reverse
-{% endhighlight %}
+```
 
-{% highlight scala linenos %}
+```scala
 class Point(
     // adding `val` here automatically creates
     // public accessor methods named `x` and `y`
@@ -138,6 +138,6 @@ object Point {
     math.sqrt(xDist*xDist + yDist*yDist)
   }
 }
-{% endhighlight %}
+```
 
 [google]: http://google.com

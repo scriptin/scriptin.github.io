@@ -78,7 +78,7 @@ By saying "domain-specific" I mean related to business domain (area of knowledge
 
 API-specific exceptions are different from domain-specific exceptions because the latter can be used elsewhere. Also API-specific exceptions should help you determining which response status and message should be presented to a client. Typically you just display error messages from those exceptions to a client, so they should be clear. For example:
 
-{% highlight java %}
+```java
 // Assume that all those exception classes extend some base class `ApiException`
 
 throw new ApiNotFoundException(404, "Entity with id=" + id + " not found.");
@@ -89,7 +89,7 @@ throw new ApiConstraintViolationException(422, // WebDAV, Unprocessable Entity
     "Entity with id=" + id + " cannot be deleted " +
     "because it is a parent of entity with id=" + childId + ". "
     "Delete all children first.");
-{% endhighlight %}
+```
 
 ### Error interceptor/wrapper/handler layer
 
@@ -99,8 +99,8 @@ throw new ApiConstraintViolationException(422, // WebDAV, Unprocessable Entity
 
 Code might look like this:
 
-{% highlight java %}
-...
+```java
+    // ...
 } catch (ApiException e) {
     // Caught ApiException or one of its subclasses
     // Can safely use its error message and status
@@ -121,7 +121,7 @@ Code might look like this:
     response.setStatus(500);
     response.setMessage("Sorry, something is broken. We'll look into that.");
 }
-{% endhighlight %}
+```
 
 ## Error handling flow
 

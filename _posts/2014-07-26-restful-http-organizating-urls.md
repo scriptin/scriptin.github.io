@@ -40,21 +40,21 @@ Bad things may happen when the same resource can be changed or deleted using dif
 
 To prevent such things, you should leave only one way of accessing each resource - `/users/456` in this case. To express the relation between two types of resources, you should use special fields:
 
-{% highlight json %}
+```json
 {
     "id": 123,
     "name": "Group 1",
     "users": [456, 42]
 }
-{% endhighlight %}
+```
 
-{% highlight json %}
+```json
 {
     "id": 456,
     "name": "John Doe",
     "groups": [123, 789]
 }
-{% endhighlight %}
+```
 
 Now to add/remove user to/from a group, you can update (using PUT request) either `"users"` list in a `/group/XXX` resource or `"groups"` list in `/users/YYY` resource - whatever works better.
 

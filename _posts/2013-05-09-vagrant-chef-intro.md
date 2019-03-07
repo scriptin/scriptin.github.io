@@ -27,7 +27,7 @@ You need to install only [VirtualBox](https://www.virtualbox.org/) and Vagrant, 
 
 Example of `Vagrantfile` contents:
 
-{% highlight ruby %}
+```ruby
 Vagrant.configure("2") do |config|
   # ... other configuration options
   config.vm.provision :chef_solo do |chef| # A
@@ -38,7 +38,7 @@ Vagrant.configure("2") do |config|
     # ...
   end
 end
-{% endhighlight %}
+```
 
 - (A) Tell Vagrant to use Chef solo as a provisioner.
 - (B) Specifies a relative path to directory with cookbooks. This you can change as you will.
@@ -70,26 +70,26 @@ I will show you how to write simplest cookbooks. As a practical example I will u
 
 Jekyll is installed as a Ruby gem and Ruby itself will be installed on VM which is created by Vagrant, because Vagrant and Chef require it to run, but there's bunch of other programs which Jekyll uses (e.g. Git) which are not included by default (or must be updated). Thankfully, there's a [build-essential](https://supermarket.getchef.com/cookbooks/build-essential) cookbook which installs or updates these tools. Download this cookbook and extract it into the directory with cookbooks (`./chef/cookbooks` in my example, so the cookbook must be in `./chef/cookbooks/build-essential`), and add a recipe:
 
-{% highlight ruby %}
+```ruby
 chef.add_recipe "build-essential"
-{% endhighlight %}
+```
 
 Preparation is done, now create a directory `./chef/cookbooks/jekyll` with a `metadata.rb` file containing cookbook [metadata][Metadata], which should be clear by itself:
 
-{% highlight ruby %}
+```ruby
 name "jekyll"
 description "Installs Jekyll"
 maintainer "Dmitry Shpika"
 version "0.1"
-{% endhighlight %}
+```
 
 Now we need to create an actual recipe which installs Jekyll. Create a subdirectory `./chef/cookbooks/jekyll/recipes` and a file `default.rb` in it:
 
-{% highlight ruby %}
+```ruby
 gem_package "jekyll" do
   action :install
 end
-{% endhighlight %}
+```
 
 `gem_package` is a [resource][Resource] used to manage Ruby gems. It is in fact a Ruby function which accepts gem name as first argument (`"jekyll"`) and Ruby block (`do ... end`). If you're not familiar with Ruby, just consider blocks in a Chef cookbooks as a way to contain configuration options for certain objects (gem in this case). Inside that block we specify an action we want to perform on a gem - installation.
 
@@ -112,20 +112,20 @@ Now let's try something more involved and look at more Chef resources.
 
 First let's create `./chef/cookbooks/pygments` directory and `metadata.rb` in it:
 
-{% highlight ruby %}
+```ruby
 name "pygments"
 description "Installs python-pygments"
 maintainer "Dmitry Shpika"
 version "0.1"
-{% endhighlight %}
+```
 
 Then, analogously to previous example, `./chef/cookbooks/pygments/recipes/default.rb`:
 
-{% highlight ruby %}
+```ruby
 package "python-pygments" do
   action :install
 end
-{% endhighlight %}
+```
 
 This installs Pygments (but this time with `package` resource, because this is not a gem) and we may stop here, but just for the sake of learning let's make it so Pygments will generate CSS file with default syntax highlighting rules, but only if it's not already there. All code snippets below must go into `./chef/cookbooks/pygments/recipes/default.rb`.
 
@@ -137,7 +137,7 @@ First thing we need is to tell Pygments where we want our CSS file to be. By def
 
 But Chef doesn't know about Vagrant default directory. The way to tell it is to use `json` property of Chef object in `Vagrantfile`:
 
-{% highlight ruby %}
+```ruby
 Vagrant.configure("2") do |config|
   # ...
   config.vm.provision :chef_solo do |chef|
@@ -148,29 +148,29 @@ Vagrant.configure("2") do |config|
     }
   end
 end
-{% endhighlight %}
+```
 
 To create a directory in Chef recipe, we must use [`directory` resourse](http://docs.getchef.com/resource_directory.html) like so:
 
-{% highlight ruby %}
+```ruby
 directory "/some/dir" do
   owner "root"
   group "root"
   mode 00755
   action :create
 end
-{% endhighlight %}
+```
 
 In our case, we better first check if directory name is actually present and only then use it:
 
-{% highlight ruby %}
+```ruby
 if node["css_directory"]
   directory node["css_directory"] do
     # default owner/group permissions are OK, so we omit it
     action :create
   end
 end
-{% endhighlight %}
+```
 
 `node` is an object you can use in your recipes, it contains attributes of the system under configuration. It is called "node" because full version of Chef uses client-server architecture to configure multiple systems ("nodes"), which may be virtual or physical machines connecting to a single server.
 
@@ -178,7 +178,7 @@ end
 
 Next, we finally need to generate the damn CSS. But to do that we need to check if the file name is given (same as with CSS directory) and that file is not already there. Here's the code:
 
-{% highlight ruby %}
+```ruby
 if node["css_directory"] && node["pygments_css_file"] # A
   directory node["css_directory"] do
     # default owner/group permissions are OK, so we omit it
@@ -198,7 +198,7 @@ if node["css_directory"] && node["pygments_css_file"] # A
     notifies :run, "execute[generate-pygments-css]", :immediately
   end
 end
-{% endhighlight %}
+```
 
 - (A) Check that both `node["css_directory"]` and `node["pygments_css_file"]` values are present.
 - (B) Concatenate directory path with file name in a safe way using Ruby's `File` module and store it in `pygments_css_file` variable.
@@ -215,7 +215,7 @@ We've used two new resources: `file` and `execute`. I recommend you to read [doc
 
 Here is the full version of `./chef/cookbooks/pygments/recipes/default.rb`:
 
-{% highlight ruby %}
+```ruby
 package "python-pygments" do
   action :install
 end
@@ -239,7 +239,7 @@ if node["css_directory"] && node["pygments_css_file"]
     notifies :run, "execute[generate-pygments-css]", :immediately
   end
 end
-{% endhighlight %}
+```
 
 It is bigger than a previous example, but yet small and readable enough. We're done.
 

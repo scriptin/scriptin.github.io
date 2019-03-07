@@ -9,6 +9,6 @@ permalink: /:year-:month-:day/:title.html
 safe: true
 lsi: false
 markdown: kramdown
-highlighter: pygments
+highlighter: rouge
 
 exclude: ["update_css.sh", "README.md", "Dockerfile"]

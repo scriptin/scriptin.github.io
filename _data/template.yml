@@ -6,16 +6,16 @@ author:
 
 atom:
   url: /atom.xml
-  title: "&lt;/&gt;&nbsp;Feed&nbsp;(Atom)"
+  title: "&lt;feed&nbsp;type=&quot;xml/atom&quot;&nbsp;/&gt;"
 
 links:
   - url: https://github.com/scriptin
-    title: GitHub profile
+    title: GitHub
   - url: http://stackexchange.com/users/224676?tab=accounts
-    title: StackExchange profiles
+    title: StackExchange
   - url: http://careers.stackoverflow.com/scriptin
     title: CV
 
 license:
-  url: http://creativecommons.org/licenses/by-sa/3.0/
-  title: Creative Commons Attribution-ShareAlike 3.0 Unported License
+  url: https://creativecommons.org/licenses/by-sa/4.0/
+  title: Creative Commons Attribution-ShareAlike 4.0 International

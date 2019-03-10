@@ -200,32 +200,24 @@ header {
         }
     }
     .subtitle {
-        font-size: @title-height / 10;
-        color: @brown;
-        font-style: italic;
+        font-size: @title-height / 8;
+        color: @dark-grey;
         padding: 0;
     }
     a.important-link {
         @feed-link-font-size: @base-font-size*0.8;
-        display: inline-block;
         float: right;
-        .round-corners(3px);
-        .box-shadow(inset, -1px, -2px, 0, darken(@orange, @significantly));
-        .text-shadow(0, -1px, 0, darken(@orange, @significantly));
-        background-color: @orange;
-        color: @white;
-        padding: (@feed-link-font-size/3 - 1) @feed-link-font-size/2 @feed-link-font-size/3 @feed-link-font-size/2;
-        margin: 0 4px 4px 0;
+        color: @orange;
         font-size: @feed-link-font-size;
-        position: relative;
-        top: @feed-link-font-size/2;
+        font-family: monospace;
+        border-bottom: 1px solid @orange;
         &:link, &:visited {
             text-decoration: none;
         }
         &:hover, &:active {
-            background-color: @brown;
-            .box-shadow(inset, -1px, -2px, 0, darken(@brown, @significantly));
-            .text-shadow(0, -1px, 0, darken(@brown, @significantly));
+            text-decoration: none;
+            color: @brown;
+            border-color: @brown;
         }
     }
 }

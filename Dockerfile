@@ -7,4 +7,10 @@ VOLUME /src
 WORKDIR /src
 EXPOSE 4000
 
-ENTRYPOINT ["jekyll", "serve", "--drafts", "--host", "0.0.0.0", "--port", "4000", "--config", "_config.yml,_config_dev.yml"]
+ENTRYPOINT [
+    "jekyll", "serve",
+    "--drafts",
+    "--host", "0.0.0.0",
+    "--port", "4000",
+    "--config", "_config.yml,_config_dev.yml"
+]

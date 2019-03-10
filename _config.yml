@@ -11,4 +11,4 @@ lsi: false
 markdown: kramdown
 highlighter: rouge
 
-exclude: ["update_css.sh", "README.md", "Dockerfile"]
+exclude: ["update_css.sh", "README.md", "Dockerfile", ".editorconfig"]

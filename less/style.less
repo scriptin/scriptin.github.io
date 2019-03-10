@@ -204,22 +204,6 @@ header {
         color: @dark-grey;
         padding: 0;
     }
-    a.important-link {
-        @feed-link-font-size: @base-font-size*0.8;
-        float: right;
-        color: @orange;
-        font-size: @feed-link-font-size;
-        font-family: monospace;
-        border-bottom: 1px solid @orange;
-        &:link, &:visited {
-            text-decoration: none;
-        }
-        &:hover, &:active {
-            text-decoration: none;
-            color: @brown;
-            border-color: @brown;
-        }
-    }
 }
 
 // content
@@ -265,5 +249,9 @@ footer {
     }
     a {
         text-decoration: none;
+    }
+    a.important-link {
+        font-size: @base-font-size * 0.8;
+        font-family: monospace;
     }
 }

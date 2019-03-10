@@ -4,6 +4,7 @@ layout: default
 <h1>{{ page.title }}</h1>
 
 <p class="published-date">Published on {{ page.date | date_to_string }}</p>
+{% include reading_time.html %}
 
 {{ content }}
 

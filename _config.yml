@@ -2,7 +2,7 @@ title: Dmitry Shpika
 subtitle: I'm a software developer
 
 environment: production
-production_url: http://scriptin.github.io
+production_url: https://scriptin.github.io
 
 permalink: /:year-:month-:day/:title.html
 

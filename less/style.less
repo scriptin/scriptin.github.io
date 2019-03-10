@@ -233,7 +233,7 @@ header {
 // content
 
 main {
-    .published-date, .reading-time {
+    .published-date, .reading-time, .separator {
         font-size: @base-font-size * 0.8;
         color: @dark-grey;
     }
@@ -243,6 +243,16 @@ main {
     .posts {
         .published-date {
             font-size: @base-font-size;
+            .day, .month, .year {
+                display: inline-block;
+            }
+            .month {
+                width: 2.5em;
+            }
+        }
+        .separator {
+            font-size: @base-font-size;
+            margin: 0 0.5em;
         }
         a {
             &:link, &:visited {

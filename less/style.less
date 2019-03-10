@@ -80,7 +80,7 @@ a {
 .wrapper {
     padding: @base-font-size*2 0 @base-font-size*2 0;
 }
-#content {
+main {
     padding-top: @base-font-size; // because it starts with h1
 }
 
@@ -168,16 +168,16 @@ hr {
 
 // connections between header, content and footer
 
-#header, #content {
+header, main {
     border-bottom: 1px solid darken(@light-grey, @significantly);
 }
-#content, #footer {
+main, footer {
     border-top: 1px solid lighten(@light-grey, @significantly);
 }
 
 // header
 
-#header {
+header {
     @title-height: 120px;
     padding-top: @base-font-size*2 + 10px;
     background-image: url(../imgs/bg-stripe.png);
@@ -203,6 +203,7 @@ hr {
     a.important-link {
         @feed-link-font-size: @base-font-size*0.8;
         display: inline-block;
+        float: right;
         .round-corners(3px);
         .box-shadow(inset, -1px, -2px, 0, darken(@orange, @significantly));
         .text-shadow(0, -1px, 0, darken(@orange, @significantly));
@@ -226,7 +227,7 @@ hr {
 
 // content
 
-#content {
+main {
     .published-date {
         font-size: @base-font-size * 0.8;
         color: @dark-grey;
@@ -248,7 +249,7 @@ hr {
 
 // footer
 
-#footer {
+footer {
     .license-note {
         font-size: @base-font-size * 0.8
     }

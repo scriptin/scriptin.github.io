@@ -11,6 +11,8 @@
 @darker-orange: darken(@orange, @significantly);
 @brown: #662711;
 
+@code-light-grey: #d0d0d0;
+
 // mixins
 
 .fancy-font() {
@@ -124,6 +126,9 @@ kbd {
 pre {
     font-size: @base-font-size * 0.9;
     padding: @base-font-size 1.5 * @base-font-size;
+    code {
+        color: @code-light-grey;
+    }
 }
 
 table.table {

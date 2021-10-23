@@ -1,2 +1,2 @@
 #!/bin/bash
-lessc -x less/style.less > /src/css/style.min.css
+lessc less/style.less --clean-css > /src/css/style.min.css

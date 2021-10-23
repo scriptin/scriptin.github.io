@@ -6,9 +6,4 @@ production_url: https://scriptin.github.io
 
 permalink: /:year-:month-:day/:title.html
 
-safe: true
-lsi: false
-markdown: kramdown
-highlighter: rouge
-
 exclude: ["update_css.sh", "README.md", "Dockerfile", ".editorconfig"]

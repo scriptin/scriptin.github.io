@@ -2,6 +2,18 @@
 layout: default
 title: Welcome!
 ---
+<div class="row">
+    <div class="col-md-8">
+        <h3>About me</h3>
+        <p>
+            I am a software developer from Russia, coding mostly webapps,
+            interested in functional programming and cyber-security.
+            Programming is both my job and hobby, but other than that I enjoy
+            space-related sciences, math, sci-fi, natural and programming languages, digital art.
+        </p>
+    </div>
+</div>
+
 <h1>Posts</h1>
 <ul class="posts list-unstyled">
     {% for post in site.posts %}
@@ -16,24 +28,3 @@ title: Welcome!
     </li>
     {% endfor %}
 </ul>
-
-<div class="row">
-    <div class="col-lg-6 col-md-6">
-        <h3>About me</h3>
-        <p>
-            I am a software developer from Russia, coding mostly in JVM and front-end.
-            Programming is both my job and hobby, but other than that I enjoy
-            learning (natural) languages, art, and science.
-        </p>
-    </div>
-    <div class="col-lg-6 col-md-6">
-        <h3>About this blog</h3>
-        <p>
-            Powered by <a href="http://jekyllrb.com/">Jekyll</a>, <a href="http://lesscss.org/">Less</a>,
-            <a href="http://getbootstrap.com/">Bootstrap</a> and <a href="https://www.docker.com/">Docker</a>.
-            Hosted on <a href="https://pages.github.com/">GitHub pages</a>.
-            As I try to improve it, I can edit any content at any time without notice &mdash;
-            see <a href="https://github.com/scriptin/scriptin.github.io">repository</a> for the history of changes.
-        </p>
-    </div>
-</div>

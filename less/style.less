@@ -10,13 +10,14 @@
 @orange: #E66819;
 @darker-orange: darken(@orange, @significantly);
 @brown: #662711;
+@brown-semitransparent: fadeout(@brown, 20%);
 
 @code-light-grey: #d0d0d0;
 
 // mixins
 
 .fancy-font() {
-    font-family: 'Roboto Slab', sans-serif;
+    font-family: 'Oswald', sans-serif;
 }
 
 .text-shadow(@x: 0; @y: 0; @blur: 1px; @color: #000) {
@@ -98,7 +99,7 @@ main {
 
 h1 {
     color: @orange;
-    .text-shadow(1px, 1px, 0, @brown);
+    .text-shadow(1px, 1px, 0, @brown-semitransparent);
 }
 
 p, ul, ol, table, table.table {
@@ -186,15 +187,14 @@ main, footer {
 header {
     @title-height: 120px;
     padding-top: (@base-font-size*2 + 10px);
-    background-image: url(../imgs/bg-stripe.png);
-    background-repeat: repeat-x;
     .title {
         .fancy-font;
-        .text-shadow(1px, 2px, 0, @brown);
+        .text-shadow(1px, 1px, 0, @brown-semitransparent);
         .uppercase;
         font-size: (@title-height / 2);
+        letter-spacing: -0.1rem;
         line-height: (@title-height / 2);
-        font-weight: bold;
+        font-weight: 300;
         a:link, a:visited, a:hover, a:active {
             color: @orange;
             text-decoration: none;

@@ -65,6 +65,7 @@ body {
     color: @darker-grey;
     background-color: @light-grey;
     font-size: @base-font-size;
+    overflow-x: hidden;
 }
 
 a {
@@ -80,7 +81,7 @@ a {
 }
 
 .wrapper {
-    padding: @base-font-size*2 0 @base-font-size*2 0;
+    padding: (@base-font-size*2) 0 (@base-font-size*2) 0;
 }
 main {
     padding-top: @base-font-size; // because it starts with h1
@@ -210,33 +211,20 @@ header {
 
 main {
     .published-date, .reading-time, .separator {
-        font-size: (@base-font-size * 0.8);
         color: @dark-grey;
     }
-    .published-date {
-        margin-bottom: 0.3em;
-    }
     .posts {
-        .published-date {
-            font-size: @base-font-size;
-            .day, .month, .year {
+        .post {
+            margin-bottom: 0.5rem;
+            time {
                 display: inline-block;
+                min-width: 12ch;
             }
-            .month {
-                width: 2.5em;
+            a {
+                &:link, &:visited {
+                    text-decoration: none;
+                }
             }
-        }
-        .separator {
-            font-size: @base-font-size;
-            margin: 0 0.5em;
-        }
-        a {
-            &:link, &:visited {
-                text-decoration: none;
-            }
-        }
-        li {
-            margin-bottom: (@base-font-size / 4);
         }
     }
 }

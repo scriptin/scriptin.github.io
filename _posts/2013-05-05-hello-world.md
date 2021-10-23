@@ -3,7 +3,9 @@ layout: post
 title: Hello world!
 published: false
 ---
-### First post
+## Heading 2
+
+### Heading 3
 
 Inline code: `code`
 
@@ -22,25 +24,16 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
 - Third item
 - Last item
 
-1. List item 1
-2. Item 2
-3. Third item
-4. Last item
-
-Longer list:
+* List item 1
+* Item 2
+* Third item
+* Last item
 
 1. List item 1
 2. Item 2
 3. Third item
 4. Last item
-1. List item 1
-2. Item 2
-3. Third item
-4. Last item
-1. List item 1
-2. Item 2
-3. Third item
-4. Last item
+
 
 ```ruby
 File.readlines('file.txt').each do |line|

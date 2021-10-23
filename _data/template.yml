@@ -3,10 +3,6 @@ author:
   nickname: scriptin
   homepage: https://scriptin.github.io/
 
-atom:
-  url: /atom.xml
-  title: "&lt;feed&nbsp;type=&quot;xml/atom&quot;&nbsp;/&gt;"
-
 links:
   - url: https://github.com/scriptin
     title: GitHub

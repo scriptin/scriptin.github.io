@@ -10,9 +10,11 @@
 @orange: #E66819;
 @darker-orange: darken(@orange, @significantly);
 @brown: #662711;
-@brown-semitransparent: fadeout(@brown, 20%);
+@brown-semitransparent: fadeout(@brown, @significantly);
 
 @code-light-grey: #d0d0d0;
+
+@small-screen: 768px;
 
 // mixins
 
@@ -60,12 +62,13 @@
 
 // general styles
 
-@base-font-size: 16px;
+@font-size-normal: 16px;
+@font-size-small: 14px;
 
 body {
     color: @darker-grey;
     background-color: @light-grey;
-    font-size: @base-font-size;
+    font-size: @font-size-normal;
     overflow-x: hidden;
 }
 
@@ -82,16 +85,16 @@ a {
 }
 
 .wrapper {
-    padding: (@base-font-size*2) 0 (@base-font-size*2) 0;
+    padding: (@font-size-normal*2) 0 (@font-size-normal*2) 0;
 }
 main {
-    padding-top: @base-font-size; // because it starts with h1
+    padding-top: @font-size-normal; // because it starts with h1
 }
 
 .loop(@i) when (@i > 0) {
     h@{i} {
         .fancy-font;
-        margin: @base-font-size 0 @base-font-size 0;
+        margin: @font-size-normal 0 @font-size-normal 0;
     }
     .loop(@i - 1);
 }
@@ -103,7 +106,7 @@ h1 {
 }
 
 p, ul, ol, table, table.table {
-    margin: 0 0 @base-font-size 0;
+    margin: 0 0 @font-size-normal 0;
 }
 
 code, kbd, pre {
@@ -126,8 +129,8 @@ kbd {
 }
 
 pre {
-    font-size: (@base-font-size * 0.9);
-    padding: @base-font-size (1.5 * @base-font-size);
+    font-size: @font-size-small;
+    padding: @font-size-normal (1.5 * @font-size-normal);
     code {
         color: @code-light-grey;
     }
@@ -186,7 +189,7 @@ main, footer {
 
 header {
     @title-height: 120px;
-    padding-top: (@base-font-size*2 + 10px);
+    padding-top: (@font-size-normal * 2 + 10px);
     .title {
         .fancy-font;
         .text-shadow(1px, 1px, 0, @brown-semitransparent);
@@ -215,9 +218,15 @@ main {
     }
     .posts {
         .post {
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.7rem;
             time {
                 display: inline-block;
+                @media screen and (max-width: @small-screen) {
+                    & {
+                        display: block;
+                        font-size: @font-size-small;
+                    }
+                }
                 min-width: 12ch;
             }
             a {
@@ -233,13 +242,13 @@ main {
 
 footer {
     .license-note {
-        font-size: (@base-font-size * 0.8)
+        font-size: @font-size-small
     }
     a {
         text-decoration: none;
     }
     a.important-link {
-        font-size: (@base-font-size * 0.8);
+        font-size: @font-size-small;
         font-family: monospace;
     }
 }

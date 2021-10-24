@@ -25,6 +25,10 @@
     font-family: 'Oswald', sans-serif;
 }
 
+.brown-shadow {
+    text-shadow: 0.08rem 0.08rem 0 @brown-semitransparent;
+}
+
 // https://css-tricks.com/snippets/css/prevent-long-urls-from-breaking-out-of-container/
 .dont-break-out {
     overflow-wrap: break-word;
@@ -76,7 +80,7 @@ a {
 
 h1 {
     color: @orange;
-    text-shadow: 1px 1px 0 @brown-semitransparent;
+    .brown-shadow;
 }
 
 p, ul, ol, pre, table, table.table {
@@ -200,7 +204,7 @@ header {
     padding-bottom: 2rem;
     .title {
         .fancy-font;
-        text-shadow: 0.1rem 0.1rem 0 @brown-semitransparent;
+        .brown-shadow;
         text-transform: uppercase;
         font-size: (@title-height / 2);
         letter-spacing: -0.1rem;
@@ -212,7 +216,7 @@ header {
         }
         // Precise alignment by letter shape
         position: relative;
-        left: -0.4rem;
+        left: -0.3rem;
     }
     .subtitle {
         font-size: (@title-height / 8);
@@ -268,7 +272,6 @@ main {
 
 footer {
     padding-top: 1rem;
-    text-align: center;
     .license-note {
         font-size: @font-size-small
     }

@@ -8,75 +8,52 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;700&display=swap" rel="stylesheet">
-        <link href="/css/bootstrap.min.css" rel="stylesheet" type="text/css">
         <link href="/css/style.min.css" rel="stylesheet" type="text/css">
-        <link href="/css/syntax.css" rel="stylesheet" type="text/css">
-        <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-        <![endif]-->
         <link href="/favicon.ico" rel="shortcut icon">
         <link href="{{ site.data.template.author.homepage }}" rel="author">
     </head>
     <body>
-        <header class="wrapper">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-10 col-lg-offset-1 col-md-12">
-                        <div class="title">
-                            <a href="/">{{ site.title }}</a>
-                        </div>
-                        <div class="subtitle">{{ site.subtitle }}</div>
-                    </div>
-                </div>
+        <header>
+            <div class="title">
+                <a href="/">{{ site.title }}</a>
             </div>
+            <div class="subtitle">{{ site.subtitle }}</div>
         </header>
-        <main class="wrapper">
-            <div class="container">
-                <div class="row">
-                    <article class="col-lg-10 col-lg-offset-1">
-                        {{ content }}
-                    </article>
-                </div>
-            </div>
+        <main>
+            <article>
+                {{ content }}
+            </article>
         </main>
-        <footer class="wrapper text-center">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-10 col-lg-offset-1">
-                        <p class="about-author">
-                            <span class="vcard">
-                                <a class="fn url" href="{{ site.data.template.author.homepage }}">
-                                    {{- site.data.template.author.fullname -}}
-                                </a>
-                                aka
-                                <span class="nickname">
-                                    {{ site.data.template.author.nickname }}
-                                </span>
-                            </span>
-                            {% for link in site.data.template.links %}
-                            &ndash;
-                            <a href="{{ link.url }}">{{ link.title }}</a>
-                            {% endfor %}
-                        </p>
-                        <p class="about-site">
-                            ❤️ Powered by:
-                            <a href="http://jekyllrb.com/">Jekyll</a>,
-                            <a href="http://lesscss.org/">Less</a>,
-                            <a href="http://getbootstrap.com/">Bootstrap</a>,
-                            <a href="https://www.docker.com/">Docker</a>,
-                            <a href="https://pages.github.com/">GitHub pages</a>
-                            &mdash;
-                            <a href="https://github.com/scriptin/scriptin.github.io">GitHub repo</a>
-                        </p>
-                        <p class="license-note">
-                            <a href="{{ site.data.template.license.url }}" rel="license">
-                                {{ site.data.template.license.title }}
-                            </a>
-                        </p>
-                    </div>
-                </div>
-            </div>
+        <footer>
+            <p class="about-author">
+                <span class="vcard">
+                    <a class="fn url" href="{{ site.data.template.author.homepage }}">
+                        {{- site.data.template.author.fullname -}}
+                    </a>
+                    aka
+                    <span class="nickname">
+                        {{ site.data.template.author.nickname }}
+                    </span>
+                </span>
+                {% for link in site.data.template.links %}
+                &mdash;
+                <a href="{{ link.url }}">{{ link.title }}</a>
+                {% endfor %}
+            </p>
+            <p class="about-site">
+                ❤️ Powered by:
+                <a href="http://jekyllrb.com/">Jekyll</a>,
+                <a href="http://lesscss.org/">Less</a>,
+                <a href="https://www.docker.com/">Docker</a>,
+                <a href="https://pages.github.com/">GitHub pages</a>
+                &mdash;
+                <a href="https://github.com/scriptin/scriptin.github.io">GitHub repo</a>
+            </p>
+            <p class="license-note">
+                <a href="{{ site.data.template.license.url }}" rel="license">
+                    {{ site.data.template.license.title }}
+                </a>
+            </p>
         </footer>
         {% if site.environment == 'production' %}
         {% include google_analytics.html %}

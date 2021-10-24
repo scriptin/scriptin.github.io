@@ -8,10 +8,10 @@ layout: default
 
 {{ content }}
 
-<hr/>
-
-{% if site.environment == 'production' %}
-{% include comments.html %}
-{% else %}
-<p>Comments are disabled in development mode.</p>
-{% endif %}
+<div class="comments">
+    {% if site.environment == 'production' %}
+        {% include comments.html %}
+    {% else %}
+        <p>Comments are disabled in development mode.</p>
+    {% endif %}
+</div>

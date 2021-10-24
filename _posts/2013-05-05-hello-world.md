@@ -7,7 +7,15 @@ published: false
 
 ### Heading 3
 
+#### Heading 4
+
+##### Heading 5
+
+###### Heading 6
+
 Inline code: `code`
+
+Keyboard: <kbd>Alt</kbd>+<kbd>Shift</kbd>
 
 Link: [google][]
 
@@ -17,7 +25,7 @@ Link: [google][]
 Long paragraph with too many text in it.
 We should break it down to multiple lines as well.
 
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim <kbd>Alt</kbd>+<kbd>Shift</kbd> ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
 - List item 1
 - Item 2
@@ -44,33 +52,33 @@ end
 <table class="table table-bordered table-striped table-hover">
     <thead>
         <tr>
-            <th>header 1</th>
-            <th>header 2</th>
-            <th>header 3</th>
+            <th>Foo</th>
+            <th>Bar</th>
+            <th>Baz</th>
         </tr>
     </thead>
     <tbody>
         <tr>
-            <td>cell 1-1</td>
-            <td>cell 1-2</td>
-            <td>cell 1-3</td>
+            <td>Windows</td>
+            <td>Linux</td>
+            <td>OS X</td>
         </tr>
         <tr>
-            <td>cell 2-1</td>
-            <td>cell 2-2</td>
-            <td>cell 2-3</td>
+            <td>Mobile</td>
+            <td>Tablet</td>
+            <td>Desktop</td>
         </tr>
         <tr>
-            <td>cell 3-1</td>
-            <td>cell 3-2</td>
-            <td>cell 3-3</td>
+            <td>16 bit</td>
+            <td>32 bit</td>
+            <td>64 bit</td>
         </tr>
     </tbody>
     <tfoot>
         <tr>
-            <th>footer 1</th>
-            <th>footer 2</th>
-            <th>footer 2</th>
+            <th>Foo</th>
+            <th>Bar</th>
+            <th>Baz</th>
         </tr>
     </tfoot>
 </table>

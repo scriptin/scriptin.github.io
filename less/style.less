@@ -132,12 +132,13 @@ pre {
     }
 }
 
-ul li {
+// Make sure that we don't override nested lists by providing a more specific rules
+ul li, ol ul li {
     list-style: disc outside;
     margin-left: 2rem;
 }
 
-ol li {
+ol li, ul ol li {
     list-style: decimal outside;
     margin-left: 2rem;
 }

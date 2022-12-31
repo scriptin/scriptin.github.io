@@ -6,6 +6,8 @@
 
 @small-screen: 90ch;
 
+@line-height: 1.4;
+
 // Palette: http://www.colourlovers.com/palette/3417960/sekel
 @darker-grey: #27353B;
 @dark-grey: #607780;
@@ -84,7 +86,8 @@ h1 {
 }
 
 p, ul, ol, pre, table, table.table {
-    margin: 0 0 @font-size-normal 0;
+    margin: 0 0 (@font-size-normal * @line-height) 0;
+    line-height: @line-height;
 }
 
 ul ul, ul ol, ol ol, ol ul {

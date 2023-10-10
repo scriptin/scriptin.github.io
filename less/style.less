@@ -27,6 +27,10 @@
     font-family: 'Oswald', sans-serif;
 }
 
+.code-font() {
+    font-family: 'JetBrains Mono', monospace;
+}
+
 .brown-shadow {
     text-shadow: 0.08rem 0.08rem 0 @brown-semitransparent;
 }
@@ -45,8 +49,8 @@
 
 // general styles
 
-@font-size-normal: 1.2rem;
-@font-size-small: 1rem;
+@font-size-normal: 1.1rem;
+@font-size-small: 0.9rem;
 
 body {
     font-family: sans-serif;
@@ -72,7 +76,7 @@ a {
 .loop(@i) when (@i > 0) {
     h@{i} {
         .fancy-font;
-        font-size: ((6 - @i) * 0.5rem + @font-size-small);
+        font-size: ((6 - @i) * 0.5rem + @font-size-normal);
         line-height: 1em;
         margin: @font-size-normal 0 @font-size-normal 0;
     }
@@ -103,7 +107,7 @@ strong {
 }
 
 code, kbd, pre {
-    font-family: 'JetBrains Mono', monospace;
+    .code-font;
 }
 
 :not(pre) > code {
@@ -127,7 +131,7 @@ kbd {
 
 pre {
     white-space: pre;
-    font-size: @font-size-small;
+    font-size: @font-size-normal;
     padding: 1rem;
     overflow-y: auto;
     code {
@@ -243,6 +247,7 @@ main {
     .published-date, .reading-time, .separator {
         color: @dark-grey;
         font-size: @font-size-small;
+        .code-font;
     }
     p.published-date {
         margin-bottom: 0;
@@ -277,13 +282,9 @@ main {
 footer {
     padding-top: 1rem;
     .license-note {
-        font-size: @font-size-small
+        font-size: @font-size-normal
     }
     a {
         text-decoration: none;
-    }
-    a.important-link {
-        font-size: @font-size-small;
-        font-family: monospace;
     }
 }

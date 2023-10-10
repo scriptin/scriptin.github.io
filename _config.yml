@@ -12,5 +12,7 @@ exclude:
   - "devbox.json"
   - "devbox.lock"
   - ".devbox"
+  - "package.json"
+  - "package-lock.json"
   - ".editorconfig"
   - ".idea"

@@ -1,0 +1,16 @@
+{
+  "name": "scriptin.github.io",
+  "private": true,
+  "version": "1.0.0",
+  "description": "My personal blog",
+  "main": "index.js",
+  "scripts": {
+    "styles": "lessc less/style.less --clean-css css/style.min.css"
+  },
+  "author": "Dmitry Shpika",
+  "license": "CC-BY-SA-4.0",
+  "devDependencies": {
+    "less": "^4.2.0",
+    "less-plugin-clean-css": "^1.5.1"
+  }
+}

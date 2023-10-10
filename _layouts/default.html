@@ -27,19 +27,26 @@
         </main>
         <footer>
             <p class="about-author">
+                &copy;
                 <span class="vcard">
                     <a class="fn url" href="{{ site.data.template.author.homepage }}">
                         {{- site.data.template.author.fullname -}}
                     </a>
                     aka
                     <span class="nickname">
-                        {{ site.data.template.author.nickname }}
-                    </span>
+                        {{- site.data.template.author.nickname -}}
+                    </span>,
+                    2013&mdash;{{- 'now' | date: "%Y" -}}
                 </span>
                 {% for link in site.data.template.links %}
                 &mdash;
                 <a href="{{ link.url }}">{{ link.title }}</a>
                 {% endfor %}
+            </p>
+            <p class="license-note">
+                <a href="{{ site.data.template.license.url }}" rel="license">
+                    {{ site.data.template.license.title }}
+                </a>
             </p>
             <p class="about-site">
                 Powered by
@@ -49,11 +56,6 @@
                 <a href="https://pages.github.com/">GitHub Pages</a>
                 &mdash;
                 <a href="https://github.com/scriptin/scriptin.github.io">source code</a>
-            </p>
-            <p class="license-note">
-                <a href="{{ site.data.template.license.url }}" rel="license">
-                    {{ site.data.template.license.title }}
-                </a>
             </p>
         </footer>
         {% if site.environment == 'production' %}

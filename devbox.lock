@@ -1,23 +1,17 @@
 {
   "lockfile_version": "1",
   "packages": {
-    "bundler@latest": {
-      "last_modified": "2023-09-27T18:02:17Z",
-      "resolved": "github:NixOS/nixpkgs/517501bcf14ae6ec47efd6a17dda0ca8e6d866f9#bundler",
+    "bundler@2.1.4": {
+      "last_modified": "2021-06-29T14:40:08Z",
+      "resolved": "github:NixOS/nixpkgs/db6e089456cdddcd7e2c1d8dac37a505c797e8fa#bundler",
       "source": "devbox-search",
-      "version": "2.4.19",
+      "version": "2.1.4",
       "systems": {
-        "aarch64-darwin": {
-          "store_path": "/nix/store/c0c0pd6rgjlpyhg16a3vi7s7rip5kgz2-bundler-2.4.19"
-        },
-        "aarch64-linux": {
-          "store_path": "/nix/store/cijz14mfm7zz7j9g888frqpyqvh3b582-bundler-2.4.19"
-        },
         "x86_64-darwin": {
-          "store_path": "/nix/store/wgwmcqbb2zn9pwk6qhx1dxdzxjpx8kwm-bundler-2.4.19"
+          "store_path": "/nix/store/703a0nzrin20c31rk3fg49dyp84hp2dm-bundler-2.1.4"
         },
         "x86_64-linux": {
-          "store_path": "/nix/store/10q2lhdmzsrifpavmd6nb1r4kdapaprl-bundler-2.4.19"
+          "store_path": "/nix/store/drbssj04lbhnhbcy91vdms357vk4p69z-bundler-2.1.4"
         }
       }
     },

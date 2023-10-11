@@ -4,6 +4,9 @@ layout: default
 <h1>{{ page.title }}</h1>
 
 <p class="published-date">Published on {{ page.date | date_to_string }}</p>
+{% if page.last_updated %}
+    <p class="updated-date">Last updated on {{ page.last_updated | date_to_string }}</p>
+{% endif %}
 {% include reading_time.html %}
 
 {{ content }}

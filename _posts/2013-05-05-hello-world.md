@@ -49,7 +49,7 @@ File.readlines('file.txt').each do |line|
 end
 ```
 
-<table class="table table-bordered table-striped table-hover">
+<table>
     <thead>
         <tr>
             <th>Foo</th>
@@ -82,6 +82,12 @@ end
         </tr>
     </tfoot>
 </table>
+
+| A | B | C |
+|---|---|---|
+| D | E | F |
+| G | H | I |
+| J | K | L |
 
 ```ruby
 class Person

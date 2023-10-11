@@ -131,8 +131,10 @@ kbd {
 
 pre {
     white-space: pre;
-    font-size: @font-size-normal;
-    padding: 1rem;
+    font-size: @font-size-small;
+    outline: @font-size-small solid @darker-grey;
+    /* Extra bottom margin to account for outline */
+    margin-bottom: @font-size-small * (@line-height + 1);
     overflow-y: auto;
     code {
         color: @code-light-grey;
@@ -156,19 +158,18 @@ ul.list-unstyled li, ol.list-unstyled li {
 }
 
 table {
-    @table-border-color: darken(@light-grey, @significantly);
-    border-color: @table-border-color;
-    tbody, thead, tfoot {
-        border-color: @table-border-color;
-    }
+    border-radius: 0.3rem;
+    overflow: hidden;
+    background-color: @lighter-grey;
     tr {
-        border-color: @table-border-color;
+        &:nth-child(2n) {
+            background-color: darken(@lighter-grey, @slightly);
+        }
         th {
-            background-color: @dark-grey;
+            background-color: @darker-grey;
             color: @white;
         }
         th, td {
-            border: 0.01rem solid @table-border-color;
             padding: 0.4rem 0.8rem;
             font-size: @font-size-small;
         }

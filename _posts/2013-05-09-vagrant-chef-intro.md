@@ -185,7 +185,10 @@ if node["css_directory"] && node["pygments_css_file"] # A
     action :create
   end
 
-  pygments_css_file = File.join(node["css_directory"], node["pygments_css_file"]) # B
+  pygments_css_file = File.join( # B
+    node["css_directory"],
+    node["pygments_css_file"]
+  )
 
   execute "generate-pygments-css" do # C
     command "pygmentize -S default -f html > #{pygments_css_file}"
@@ -226,7 +229,10 @@ if node["css_directory"] && node["pygments_css_file"]
     action :create
   end
 
-  pygments_css_file = File.join(node["css_directory"], node["pygments_css_file"])
+  pygments_css_file = File.join(
+    node["css_directory"],
+    node["pygments_css_file"]
+  )
 
   execute "generate-pygments-css" do
     command "pygmentize -S default -f html > #{pygments_css_file}"

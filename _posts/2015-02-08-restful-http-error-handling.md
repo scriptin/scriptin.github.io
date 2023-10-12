@@ -79,16 +79,25 @@ By saying "domain-specific" I mean related to business domain (area of knowledge
 API-specific exceptions are different from domain-specific exceptions because the latter can be used elsewhere. Also API-specific exceptions should help you determining which response status and message should be presented to a client. Typically you just display error messages from those exceptions to a client, so they should be clear. For example:
 
 ```java
-// Assume that all those exception classes extend some base class `ApiException`
+// Assume that all those exception classes
+// extend some base class `ApiException`
 
-throw new ApiNotFoundException(404, "Entity with id=" + id + " not found.");
+throw new ApiNotFoundException(
+    404,
+    "Entity with id=" + id + " not found."
+);
 
-throw new ApiDatabaseUnavailableException(502, "Database server is unavailable. Retry later.")
+throw new ApiDatabaseUnavailableException(
+    502,
+    "Database server is unavailable. Retry later."
+);
 
-throw new ApiConstraintViolationException(422, // WebDAV, Unprocessable Entity
+throw new ApiConstraintViolationException(
+    422, // WebDAV, Unprocessable Entity
     "Entity with id=" + id + " cannot be deleted " +
-    "because it is a parent of entity with id=" + childId + ". "
-    "Delete all children first.");
+    "because it is a parent of entity with id=" + childId + ". " +
+    "Delete all children first."
+);
 ```
 
 ### Error interceptor/wrapper/handler layer
@@ -107,19 +116,30 @@ Code might look like this:
     response.setStatus(((ApiException) e).getStatus());
     response.setMessage(e.getMessage());
 } catch (DomainMailServerUnavailableException e) {
-    // Caught domain-specific exception which says that mail server is down
+    // Caught a domain-specific exception
+    // which says that mail server is down
     response.setStatus(502);
     response.setMessage("Mail server is unavailable. Retry later.");
 } catch (DomainAccessDeniedException e) {
     // Caught another domain-specific exception
     response.setStatus(503);
-    response.setMessage("You have insufficient privileges to perform this action.");
+    response.setMessage(
+        "You have insufficient privileges to perform this action."
+    );
 } catch (Exception unhandledException) {
-    // Catch-all case
-    logger.error("Unhandled exception!", unhandledException); // Log full stack trace
-    systemAlarm.unhandledException(unhandledException.getMessage()); // Notify admins
+    // Catch-all case:
+    // 1. Log the exception
+    logger.error(
+        "Unhandled exception!",
+        unhandledException
+    );
+    // 2. Notify devs/admins
+    systemAlarm.unhandledException(unhandledException.getMessage());
+    // 3. Show a generic error to users
     response.setStatus(500);
-    response.setMessage("Sorry, something is broken. We'll look into that.");
+    response.setMessage(
+        "Sorry, something is broken. We're looking into that."
+    );
 }
 ```
 

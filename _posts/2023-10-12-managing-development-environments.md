@@ -1,7 +1,6 @@
 ---
 layout: post
 title: "Managing development environments: through the spectrum"
-published: false
 ---
 
 ## The search

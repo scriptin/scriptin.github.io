@@ -11,7 +11,7 @@
     ],
     "scripts": {
       "serve": [
-        "bundle exec $GEM_HOME/bin/jekyll serve --livereload --drafts --unpublished --future --host 0.0.0.0 --port 4000 --config _config.yml,_config_dev.yml"
+        "bundle exec $GEM_HOME/bin/jekyll serve --livereload --drafts --unpublished --host 0.0.0.0 --port 4000 --config _config.yml,_config_dev.yml"
       ],
       "styles": [
         "npm run styles"

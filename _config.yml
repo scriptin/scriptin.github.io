@@ -3,7 +3,7 @@ subtitle: // Hacking HTML since 2005
 
 environment: production
 production_url: https://scriptin.github.io
-
+future: true
 permalink: /:year-:month-:day/:title.html
 
 exclude:

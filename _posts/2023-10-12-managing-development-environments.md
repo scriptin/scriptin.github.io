@@ -67,3 +67,5 @@ If you still want to try out a cloud environment, at least pick the least evil v
 ## Conclusion
 
 I'll still use Docker when I need to, and I'll still use the products of Microsoft and GitHub. Being a maximalist is something I cannot afford. But I've learnt my lessons to not put all eggs into one basket, to not put all hope into one corporation (and, for that matter, any philosophy, idea, or a government).
+
+Do some research, pick whatever makes the job done, and hope to not get screwed by the corporate greed.

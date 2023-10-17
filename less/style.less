@@ -67,20 +67,15 @@ a {
     }
 }
 
-.loop(@i) when (@i > 0) {
-    h@{i} {
-        .fancy-font;
-        font-size: ((6 - @i) * 0.5rem + @font-size-normal);
-        line-height: 1em;
-        margin: @font-size-normal 0 @font-size-normal 0;
-    }
-    .loop(@i - 1);
+h1, h2, h3, h4, h5, h6 {
+    .fancy-font;
+    line-height: 1em;
+    margin: @font-size-normal 0 @font-size-normal 0;
 }
-.loop(6);
-
-h1 {
-    color: @brown;
-}
+h1 { font-size: @font-size-normal * 4; }
+h2 { font-size: @font-size-normal * 2; }
+h3 { font-size: @font-size-normal * 1.25; }
+h4, h5, h6 { font-size: @font-size-normal; }
 
 p, ul, ol, pre, table, table.table {
     margin: 0 0 (@font-size-normal * @line-height) 0;

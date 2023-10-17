@@ -15,9 +15,7 @@
 @lighter-grey: lighten(@light-grey, @significantly);
 @white: #F3F3F3;
 @orange: #E66819;
-@darker-orange: darken(@orange, @significantly);
 @brown: #662711;
-@brown-semitransparent: fadeout(@brown, @significantly);
 
 @code-light-grey: #d0d0d0;
 
@@ -29,10 +27,6 @@
 
 .code-font() {
     font-family: 'JetBrains Mono', monospace;
-}
-
-.brown-shadow {
-    text-shadow: 0.08rem 0.08rem 0 @brown-semitransparent;
 }
 
 // https://css-tricks.com/snippets/css/prevent-long-urls-from-breaking-out-of-container/
@@ -54,8 +48,8 @@
 
 body {
     font-family: sans-serif;
-    color: @darker-grey;
-    background-color: @light-grey;
+    color: darken(@darker-grey, @significantly);
+    background-color: @lighter-grey;
     font-size: @font-size-normal;
     overflow-x: auto;
 }
@@ -85,8 +79,7 @@ a {
 .loop(6);
 
 h1 {
-    color: @orange;
-    .brown-shadow;
+    color: @brown;
 }
 
 p, ul, ol, pre, table, table.table {
@@ -120,12 +113,12 @@ code, kbd, pre {
 
 kbd {
     font-size: @font-size-small;
-    padding: 0.1rem 0.2rem 0.2rem 0.2rem;
+    padding: 0.1rem 0.4rem 0.2rem 0.4rem;
     border-radius: 0.2rem;
     text-shadow: 0 -0.05rem 0 darken(@dark-grey, @significantly);
-    box-shadow: inset -0.1rem -0.2rem 0 darken(@dark-grey, @significantly);
+    box-shadow: inset -0.1rem -0.2rem 0 darken(@darker-grey, @significantly);
     border: 0;
-    background-color: @dark-grey;
+    background-color: @darker-grey;
     color: @white;
 }
 
@@ -177,10 +170,10 @@ table {
 }
 
 blockquote {
-    border-left: 0.2rem solid @orange;
+    border-left: 0.2rem solid @brown;
     padding: 0 1rem;
     footer {
-        color: @dark-grey;
+        color: @darker-grey;
     }
 }
 
@@ -200,10 +193,10 @@ header, main, footer {
 // connections between header, content and footer
 
 header, main {
-    border-bottom: 0.1rem solid darken(@light-grey, @significantly);
+    border-bottom: 0.1rem solid darken(@lighter-grey, @significantly);
 }
 main, footer {
-    border-top: 0.1rem solid lighten(@light-grey, @significantly);
+    border-top: 0.1rem solid lighten(@lighter-grey, @significantly);
 }
 
 // header
@@ -213,13 +206,16 @@ header {
     padding-bottom: 2rem;
     .title {
         .fancy-font;
-        .brown-shadow;
         text-transform: uppercase;
         font-size: (@title-height / 2);
         letter-spacing: -0.1rem;
         line-height: (@title-height / 2);
         font-weight: 300;
-        a:link, a:visited, a:hover, a:active {
+        a:link, a:visited, a:active {
+            color: @brown;
+            text-decoration: none;
+        }
+        a:hover {
             color: @orange;
             text-decoration: none;
         }
@@ -230,7 +226,7 @@ header {
     .subtitle {
         .code-font;
         font-size: (@title-height / 8);
-        color: @dark-grey;
+        color: @darker-grey;
         padding: 0;
         margin-top: (@title-height / 16);
     }
@@ -247,7 +243,7 @@ main {
         border-radius: 40px;
     }
     .published-date, .updated-date, .reading-time, .separator {
-        color: @dark-grey;
+        color: @darker-grey;
         font-size: @font-size-small;
         .code-font;
     }

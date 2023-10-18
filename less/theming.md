@@ -1,3 +1,6 @@
+Example theme with commented classes:
+
+```less
 @darker-grey: #27353B;
 
 .highlight pre { background-color: @darker-grey }
@@ -70,3 +73,4 @@
 .highlight .vg { color: #40ffff } /* Name.Variable.Global */
 .highlight .vi { color: #40ffff } /* Name.Variable.Instance */
 .highlight .il { color: #3677a9 } /* Literal.Number.Integer.Long */
+```

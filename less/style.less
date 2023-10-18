@@ -1,5 +1,9 @@
 @import (inline) "reset.css";
-@import "syntax.less";
+@import (inline) "syntax.css";
+// Override
+.highlight {
+    background-color: darken(@darker-grey, @slightly) !important;
+}
 
 @slightly: 5%;
 @significantly: 15%;
@@ -120,7 +124,7 @@ kbd {
 pre {
     white-space: pre;
     font-size: @font-size-small;
-    outline: @font-size-small solid @darker-grey;
+    outline: @font-size-small solid darken(@darker-grey, @slightly);
     /* Extra bottom margin to account for outline */
     margin-bottom: @font-size-small * (@line-height + 1);
     overflow-y: auto;

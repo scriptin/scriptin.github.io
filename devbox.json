@@ -14,6 +14,7 @@
         "bundle exec $GEM_HOME/bin/jekyll serve --livereload --drafts --unpublished --future --host 0.0.0.0 --port 4000 --config _config.yml,_config_dev.yml"
       ],
       "styles": [
+        "rougify style thankful_eyes > less/syntax.css",
         "npm run styles"
       ]
     }

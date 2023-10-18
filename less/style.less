@@ -211,13 +211,15 @@ header {
         letter-spacing: -0.1rem;
         line-height: (@title-height / 2);
         font-weight: 300;
-        a:link, a:visited, a:active {
-            color: @brown;
+        a:link, a:visited, a:hover, a:active {
+            text-shadow: 0.05rem 0.05rem darken(@darker-grey, @significantly);
             text-decoration: none;
+        }
+        a:link, a:visited, a:active {
+            color: @darker-grey;
         }
         a:hover {
             color: @orange;
-            text-decoration: none;
         }
         // Precise alignment by letter shape
         position: relative;

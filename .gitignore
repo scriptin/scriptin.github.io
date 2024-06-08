@@ -1,6 +1,10 @@
+# IDEA
 .idea
 *.ipr
 *.iws
+
+# OS
+.DS_Store
 
 # Node
 node_modules

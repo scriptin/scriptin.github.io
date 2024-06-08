@@ -7,8 +7,50 @@
         <title>{{ page.title }} - {{ site.title }}</title>
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;700&display=swap" rel="stylesheet">
+        <style>
+            @font-face {
+                font-family: "JetBrains Mono";
+                font-style: normal;
+                font-weight: 400;
+                font-display: swap;
+                src: url(/fonts/JetBrainsMono.ttf) format("truetype");
+            }
+            @font-face {
+                font-family: "JetBrains Mono";
+                font-style: normal;
+                font-weight: 700;
+                font-display: swap;
+                src: url(/fonts/JetBrainsMono.ttf) format("truetype");
+            }
+            @font-face {
+                font-family: "JetBrains Mono";
+                font-style: italic;
+                font-weight: 400;
+                font-display: swap;
+                src: url(/fonts/JetBrainsMono-Italic.ttf) format("truetype");
+            }
+            @font-face {
+                font-family: "JetBrains Mono";
+                font-style: italic;
+                font-weight: 700;
+                font-display: swap;
+                src: url(/fonts/JetBrainsMono-Italic.ttf) format("truetype");
+            }
+            @font-face {
+                font-family: "Oswald";
+                font-style: normal;
+                font-weight: 300;
+                font-display: swap;
+                src: url(/fonts/Oswald.ttf) format("truetype");
+            }
+            @font-face {
+                font-family: "Oswald";
+                font-style: normal;
+                font-weight: 400;
+                font-display: swap;
+                src: url(/fonts/Oswald.ttf) format("truetype");
+            }
+        </style>
         <link href="/css/style.min.css" rel="stylesheet" type="text/css">
         <link href="/favicon.ico" rel="shortcut icon">
         <link href="{{ site.data.template.author.homepage }}" rel="author">

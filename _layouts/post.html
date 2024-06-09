@@ -10,11 +10,3 @@ layout: default
 {% include reading_time.html %}
 
 {{ content }}
-
-<div class="comments">
-    {% if site.environment == 'production' %}
-        {% include comments.html %}
-    {% else %}
-        <p>Comments are disabled in development mode.</p>
-    {% endif %}
-</div>

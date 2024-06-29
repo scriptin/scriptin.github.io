@@ -6,6 +6,7 @@ author:
 links:
   - url: https://github.com/scriptin
     title: GitHub
+    show_in_header: true # default
   - url: https://www.linkedin.com/in/dmitry-shpika/
     title: LinkedIn
   - url: https://stackexchange.com/users/224676/scriptin?tab=accounts
@@ -14,6 +15,7 @@ links:
     title: NPM
   - url: https://tatoeba.org/en/user/profile/scriptin
     title: Tatoeba.org
+    show_in_header: false
 
 license:
   url: https://creativecommons.org/licenses/by-sa/4.0/

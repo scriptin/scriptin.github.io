@@ -203,9 +203,9 @@ header {
     .title {
         .fancy-font;
         text-transform: uppercase;
-        font-size: (@title-height / 2);
+        font-size: (@title-height / 2.5);
         letter-spacing: -0.1rem;
-        line-height: (@title-height / 2);
+        line-height: (@title-height / 2.5);
         font-weight: 300;
         a:link, a:visited, a:hover, a:active {
             text-shadow: 0.05rem 0.05rem darken(@darker-grey, @significantly);
@@ -216,17 +216,24 @@ header {
         }
         a:hover {
             color: @orange;
+            .comment-mute {
+                color: lighten(@orange, @significantly);
+            }
         }
         // Precise alignment by letter shape
         position: relative;
         left: -0.3rem;
+
+        .comment-mute {
+            color: @dark-grey;
+        }
     }
     .subtitle {
         .code-font;
         font-size: (@title-height / 8);
         color: @darker-grey;
         padding: 0;
-        margin-top: (@title-height / 16);
+        margin-top: (@title-height / 8);
     }
 }
 

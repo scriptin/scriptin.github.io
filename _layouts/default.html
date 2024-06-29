@@ -56,9 +56,23 @@
     <body>
         <header>
             <div class="title">
-                <a href="/">{{ site.title }}</a>
+                <a href="/">
+                    {{ site.data.template.author.fullname }}
+                    <span class="comment-mute"> //&nbsp;{{- site.data.template.author.nickname -}}</span>
+                </a>
             </div>
-            <div class="subtitle">{{ site.subtitle }}</div>
+            <div class="subtitle">
+                type Contacts =
+                {% for link in site.data.template.links %}
+                    {%- if link.show_in_header == false -%}
+                        {%- if forloop.last -%};{%- endif -%}
+                    {%- else -%}
+                        {% unless forloop.first %} | {% endunless %}
+                        <a href="{{ link.url }}">{{- link.title -}}</a>
+                        {%- if forloop.last -%};{%- endif -s%}
+                    {%- endif -%}
+                {% endfor %}
+            </div>
         </header>
         <main>
             <article>
@@ -87,10 +101,10 @@
             </p>
             <p>
                 {% for link in site.data.template.links %}
-                    {% if forloop.first == false %}
+                    {% unless forloop.first %}
                     &bull;
-                    {% endif %}
-                <a href="{{ link.url }}">{{ link.title }}</a>
+                    {% endunless %}
+                    <a href="{{ link.url }}">{{ link.title }}</a>
                 {% endfor %}
             </p>
             <p class="about-site">

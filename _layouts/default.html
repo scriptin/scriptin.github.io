@@ -76,7 +76,13 @@
                     <span class="nickname">
                         {{- site.data.template.author.nickname -}}
                     </span>,
-                    2013&mdash;{{- 'now' | date: "%Y" -}}
+                    2013&mdash;{{- 'now' | date: "%Y" -}}.
+                </span>
+                <span class="license-note">
+                    All materials on this site are licensed under
+                    <a href="{{ site.data.template.license.url }}" rel="license">
+                        {{ site.data.template.license.title }}
+                    </a>
                 </span>
             </p>
             <p>
@@ -86,11 +92,6 @@
                     {% endif %}
                 <a href="{{ link.url }}">{{ link.title }}</a>
                 {% endfor %}
-            </p>
-            <p class="license-note">
-                <a href="{{ site.data.template.license.url }}" rel="license">
-                    {{ site.data.template.license.title }}
-                </a>
             </p>
             <p class="about-site">
                 Powered by

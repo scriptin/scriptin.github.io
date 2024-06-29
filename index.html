@@ -16,55 +16,57 @@ title: Welcome!
         >
         <div class="speech-bubble">Hello there!</div>
     </div>
-    <p>
-        I code for a living and as a hobby, mostly web applications and libraries in TypeScript.
-        Starting from my teenage years, I tried programming languages from Assembly
-        to <a href="https://coq.inria.fr/">Coq</a>, and have written and read tons
-        of code, in projects ranging from hello-worlds to cloud-based apps with millions of users.
-        My other interests include natural languages, science, sci-fi, cyber-security,
-        and art (I can draw some fancy pixel-art).
+    <p class="card">
+        I create software for a living and as a hobby, mostly web applications and libraries in TypeScript.
+        Starting from my teenage years, I experimented with a wide variety of programming languages,
+        ranging from Assembly to functional programming, and have written and read tons
+        of code, in projects of all sizes.
     </p>
-    <p>
-        You can find some of my pet projects
-        <a href="https://github.com/scriptin">on GitHub</a>:
-    </p>
-    <ul>
-        <li>
-            <a href="https://github.com/scriptin/jmdict-simplified">jmdict-simplified</a>
-            is a converted version of <a href="http://www.edrdg.org/jmdict/j_jmdict.html">JMdict</a>,
-            JMnedict, Kanjidic, and Kradfile/Radkfile in a user-friendly JSON format (see
-            <a href="https://scriptin.github.io/jmdict-simplified/">documentation</a>),
-            created out of frustration after struggling with the original XML files.
-        </li>
-        <li>
-            <a href="https://scriptin.github.io/kanji-frequency/">Kanji Frequency</a>
-            is a unique dataset of usage data of Japanese kanji characters, maintained since 2015.
-            Originally created for my Japanese dream app - which never happened - it includes
-            data from multiple corpora, covering most styles (e.g. academic writing, or fiction books)
-            of Japanese language.
-        </li>
-        <li>
-            <a href="https://github.com/scriptin/is-han">is-han</a> is a small Node.js library
-            for properly detecting Han characters (Kanji, Hanzi, Hanja). Because, apparently,
-            it's not as simple as just using a regex with two code points.
-        </li>
-    </ul>
-    <p>
+    <p class="card">
         I have a degree in IT security, and even though I've never worked
         as a security engineer, SQL injections are things I know about and look for
         when I write or review code. I even made a small research project about
         <a href="https://github.com/scriptin/node-timing-attack">timing attacks in Node.js</a>.
     </p>
-    <p>
+    <p class="card">
         You can also find
         <a href="https://tatoeba.org/en/user/profile/scriptin">me on Tatoeba.org</a>,
-        where I study languages and contribute sentences.
+        where I study foreign languages and contribute sentences.
     </p>
+    <h2>
+        My FOSS projects
+    </h2>
+    <div class="projects">
+        <div class="card-light">
+            <strong><a href="https://github.com/scriptin/jmdict-simplified">jmdict-simplified</a></strong>
+            is a user-friendly JSON version of <a href="http://www.edrdg.org/jmdict/j_jmdict.html">JMdict</a>,
+            JMnedict, Kanjidic, and Kradfile/Radkfile (see
+            <a href="https://scriptin.github.io/jmdict-simplified/">documentation</a>),
+            created out of frustration after struggling with the original XML files.
+            Includes Node.js libraries.
+        </div>
+        <div class="card-light">
+            <strong><a href="https://scriptin.github.io/kanji-frequency/">Kanji Frequency</a></strong>
+            is a unique dataset of frequencies of Japanese kanji characters, maintained since 2015.
+            Includes data from multiple corpora, covering most styles (e.g. academic writing, fiction books)
+            of Japanese language.
+        </div>
+        <div class="card-light">
+            <strong><a href="https://github.com/scriptin/is-han">is-han</a></strong> is a small Node.js library
+            for properly detecting Han characters (Kanji, Hanzi, Hanja). Because, apparently,
+            it's not as simple as just using a regex with two code points.
+        </div>
+        <div class="card-light">
+            <strong><a href="https://github.com/scriptin/topokanji">TopoKanji</a></strong> is an attempt to create
+            a meaningful ordering of Japanese kanji characters for foreign learners
+            based on character decomposition and frequency in texts.
+        </div>
+    </div>
 </section>
 
 <section>
-    <h2>Posts</h2>
-    <ul class="posts list-unstyled">
+    <h2>Blog</h2>
+    <ul class="posts list-unstyled card-light">
         {% for post in site.posts %}
         <li class="post">
             <time class="published-date" datetime="{{ post.date | date: '%Y-%m-%d' }}">

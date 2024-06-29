@@ -30,6 +30,28 @@
     font-family: 'JetBrains Mono', monospace;
 }
 
+.card() {
+    background: linear-gradient(to top right, @light-grey, darken(@light-grey, @slightly * 2));
+    border-radius: .5rem;
+}
+
+.card-light() {
+    background: linear-gradient(to top right, darken(@lighter-grey, @slightly), darken(@lighter-grey, @slightly * 2));
+    border-radius: .5rem;
+}
+
+// reusable components
+
+.card {
+    .card;
+    padding: 1rem 1.5rem;
+}
+
+.card-light {
+    .card-light;
+    padding: 1rem 1.5rem;
+}
+
 // https://css-tricks.com/snippets/css/prevent-long-urls-from-breaking-out-of-container/
 .dont-break-out {
     overflow-wrap: break-word;
@@ -199,7 +221,7 @@ main, footer {
 
 header {
     @title-height: 8rem;
-    padding-bottom: 2rem;
+    padding-bottom: 1.5rem;
     .title {
         .fancy-font;
         text-transform: uppercase;
@@ -252,12 +274,15 @@ header {
 
     .avatar {
         border: .1rem solid @light-grey;
+        float: left;
+        margin: 0.2rem 1rem 0.2rem 0;
+        border-radius: 40px;
     }
 
     .speech-bubble {
         position: relative;
         display: block;
-        background: linear-gradient(to top right, @light-grey, darken(@light-grey, @slightly));
+        .card;
         padding: .5rem 1rem;
         border-radius: .5rem .5rem .5rem 0;
         font-size: @font-size-normal * 1.2;
@@ -284,13 +309,26 @@ header {
 // content
 
 main {
-    padding-bottom: 2rem;
+    padding-bottom: .5rem;
     .dont-break-out;
-    .avatar {
-        float: left;
-        margin: 0.2rem 1rem 0.2rem 0;
-        border-radius: 40px;
+
+    .projects {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr;
+        justify-items: start;
+        align-items: stretch;
+        justify-content: start;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
     }
+
+    @media screen and (min-width: 700px) {
+        .projects {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
     .published-date, .updated-date, .reading-time, .separator {
         color: @darker-grey;
         font-size: @font-size-small;
@@ -302,6 +340,9 @@ main {
     .posts {
         .post {
             margin-bottom: 0.7rem;
+            &:last-child {
+                margin-bottom: 0;
+            }
             time {
                 display: inline-block;
                 @media screen and (max-width: @small-screen) {
@@ -324,7 +365,7 @@ main {
 // footer
 
 footer {
-    padding-top: 1rem;
+    padding-top: 1.5rem;
     a {
         text-decoration: none;
     }

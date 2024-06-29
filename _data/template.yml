@@ -12,6 +12,8 @@ links:
     title: StackExchange
   - url: https://www.npmjs.com/~scriptin
     title: NPM
+  - url: https://tatoeba.org/en/user/profile/scriptin
+    title: Tatoeba.org
 
 license:
   url: https://creativecommons.org/licenses/by-sa/4.0/

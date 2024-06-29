@@ -78,8 +78,12 @@
                     </span>,
                     2013&mdash;{{- 'now' | date: "%Y" -}}
                 </span>
+            </p>
+            <p>
                 {% for link in site.data.template.links %}
-                &mdash;
+                    {% if forloop.first == false %}
+                    &bull;
+                    {% endif %}
                 <a href="{{ link.url }}">{{ link.title }}</a>
                 {% endfor %}
             </p>

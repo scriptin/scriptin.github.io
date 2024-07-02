@@ -10,15 +10,6 @@ const OUTPUT_DIR = './assets/css';
 
 const targets = browserslistToTargets(browserslist('>= 0.25%'))
 
-function replaceRelativeImports(fileContents, filePath) {
-    const pathPrefixParts = filePath.split('/')
-    pathPrefixParts.pop();
-    const pathPrefix = pathPrefixParts.join('/');
-    return fileContents
-        .replaceAll(/@import \(inline\) "(.*)";/g, `@import (inline) "./${pathPrefix}/$1";`)
-        .replaceAll(/@import "(.*)";/g, `@import "./${pathPrefix}/$1";`);
-}
-
 function renderCss(filePath) {
     return bundle({
         filename: filePath,

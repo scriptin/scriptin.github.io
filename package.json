@@ -4,8 +4,10 @@
   "version": "1.0.0",
   "description": "My personal blog",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "styles": "lessc less/style.less --clean-css css/style.min.css"
+    "styles:build": "lessc less/style.less --clean-css css/style.min.css",
+    "styles:watch": "node watch-styles.js"
   },
   "author": "Dmitry Shpika",
   "license": "CC-BY-SA-4.0",

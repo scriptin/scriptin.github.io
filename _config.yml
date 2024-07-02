@@ -9,7 +9,7 @@ exclude:
   - "devbox.json"
   - "devbox.lock"
   - ".devbox"
-  - "less"
+  - "styles"
   - "node_modules"
   - "package.json"
   - "package-lock.json"

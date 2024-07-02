@@ -1,12 +1,14 @@
 import { watch, readFileSync, writeFileSync, readdirSync, unlinkSync } from 'node:fs';
 import path from 'node:path';
 import { createHash } from 'node:crypto';
-import less from 'less';
-import PluginCleanCSS from 'less-plugin-clean-css';
+import browserslist from 'browserslist';
+import { bundle, browserslistToTargets } from 'lightningcss';
 
-const SOURCE_PATH = './less';
-const ROOT_FILE_PATH = `${SOURCE_PATH}/style.less`;
+const SOURCE_PATH = './styles';
+const ROOT_FILE_PATH = `${SOURCE_PATH}/main.css`;
 const OUTPUT_DIR = './assets/css';
+
+const targets = browserslistToTargets(browserslist('>= 0.25%'))
 
 function replaceRelativeImports(fileContents, filePath) {
     const pathPrefixParts = filePath.split('/')
@@ -17,11 +19,12 @@ function replaceRelativeImports(fileContents, filePath) {
         .replaceAll(/@import "(.*)";/g, `@import "./${pathPrefix}/$1";`);
 }
 
-async function renderCss(filePath) {
-    const fileContents = readFileSync(filePath, { encoding: 'utf8' });
-    const css = replaceRelativeImports(fileContents, filePath);
-    const cleanCSSPlugin = new PluginCleanCSS({ advanced: true });
-    return less.render(css, { env: 'production', plugins: [cleanCSSPlugin] });
+function renderCss(filePath) {
+    return bundle({
+        filename: filePath,
+        minify: true,
+        targets,
+    });
 }
 
 function getContentHash(s) {
@@ -45,16 +48,15 @@ function isStyleFile(fileName) {
 }
 
 function rebuildStyles(rootFilePath, outputDir) {
-    renderCss(rootFilePath).then(({ css }) => {
-        const extToDelete = '.min.css';
-        console.log(`Removing previously generated files (*${extToDelete}) in ${outputDir}`);
-        removeAllFilesSync(outputDir, name => name.endsWith(extToDelete));
-        const fileBaseName = rootFilePath.split('/').pop().split('.').shift();
-        const hash = getContentHash(css).substring(0, 8);
-        const newFilePath = `${outputDir}/${fileBaseName}-${hash}.min.css`;
-        console.log('Writing to ', newFilePath);
-        writeFileSync(newFilePath, css, { encoding: 'utf8' });
-    });
+    const { code } = renderCss(rootFilePath);
+    const extToDelete = '.min.css';
+    console.log(`Removing previously generated files (*${extToDelete}) in ${outputDir}`);
+    removeAllFilesSync(outputDir, name => name.endsWith(extToDelete));
+    const fileBaseName = rootFilePath.split('/').pop().split('.').shift();
+    const hash = getContentHash(code).substring(0, 8);
+    const newFilePath = `${outputDir}/${fileBaseName}-${hash}.min.css`;
+    console.log('Writing to ', newFilePath);
+    writeFileSync(newFilePath, code);
 }
 
 function watchLessDirectory(path, callback) {

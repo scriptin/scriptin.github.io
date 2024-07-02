@@ -9,7 +9,7 @@ watch('./less', (eventType, filename) => {
 
     if (eventType === 'change') {
         console.log('Rebuilding styles...');
-        execSync('lessc less/style.less --clean-css css/style.min.css');
+        execSync('lessc less/style.less --clean-css assets/css/style.min.css');
     } else {
         console.log(`Ignored event type ${eventType} on file ${filename}`);
     }

@@ -6,7 +6,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "styles:build": "lessc less/style.less --clean-css css/style.min.css",
+    "styles:build": "lessc less/style.less --clean-css assets/css/style.min.css",
     "styles:watch": "node watch-styles.js"
   },
   "author": "Dmitry Shpika",

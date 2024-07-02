@@ -49,7 +49,11 @@
                 src: url(/assets/fonts/Oswald.ttf) format("truetype");
             }
         </style>
-        <link href="/assets/css/style.min.css" rel="stylesheet" type="text/css">
+        {% for css in site.static_files %}
+            {% if css.path contains 'assets/css/' %}
+                <link href="{{ site.baseurl }}{{ css.path }}" rel="stylesheet" type="text/css">
+            {% endif %}
+        {% endfor %}
         <link href="/favicon.ico" rel="shortcut icon">
         <link href="{{ site.data.template.author.homepage }}" rel="author">
     </head>

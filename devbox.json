@@ -13,9 +13,6 @@
       "serve": [
         "bundle exec $GEM_HOME/bin/jekyll serve --livereload --drafts --unpublished --future --host 0.0.0.0 --port 4000 --config _config.yml,_config_dev.yml"
       ],
-      "styles:build": [
-        "npm run styles:build"
-      ],
       "styles:watch": [
         "npm run styles:watch"
       ]

@@ -171,6 +171,29 @@ blockquote {
     padding: 1rem 1.5rem;
 }
 
+.card, .card-light {
+    h1:first-child, h2:first-child, h3:first-child, h4:first-child, h5:first-child, h6:first-child {
+        margin-top: calc(var(--font-size-normal) / 2);
+    }
+    p {
+        margin-bottom: .5em;
+    }
+}
+
+.tags {
+    list-style: none;
+    margin: 0;
+    li {
+        margin: 0 0 .3rem 0;
+        color: var(--darker-grey);
+        display: inline-block;
+        font-size: var(--font-size-small);
+        padding: .1rem .3rem;
+        border: .1rem solid var(--light-grey);
+        border-radius: .2rem;
+    }
+}
+
 /* https://css-tricks.com/snippets/css/prevent-long-urls-from-breaking-out-of-container/ */
 .dont-break-out {
     overflow-wrap: break-word;

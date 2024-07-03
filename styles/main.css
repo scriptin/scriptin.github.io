@@ -186,11 +186,12 @@ blockquote {
     li {
         margin: 0 0 .3rem 0;
         color: var(--darker-grey);
+        background: var(--lighter-grey);
         display: inline-block;
         font-size: var(--font-size-small);
-        padding: .1rem .3rem;
-        border: .1rem solid var(--light-grey);
-        border-radius: .2rem;
+        padding: .1rem .4rem;
+        /*border: .1rem solid var(--light-grey);*/
+        border-radius: .4rem;
     }
 }
 

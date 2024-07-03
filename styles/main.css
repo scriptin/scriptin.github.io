@@ -333,7 +333,7 @@ main {
             &:last-child {
                 margin-bottom: 0;
             }
-            .time {
+            time {
                 display: inline-block;
                 min-width: 12ch;
                 @media screen and (width < 90ch) {

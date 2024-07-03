@@ -4,6 +4,14 @@ environment: production
 production_url: https://scriptin.github.io
 permalink: /:year-:month-:day/:title.html
 
+collections:
+  projects:
+    order: # Requires Jekyll 4.0, temporarily using 'date' field instead
+      - jmdict-simplified.md
+      - kanji-frequency.md
+      - is-han.md
+      - topokanji.md
+
 exclude:
   - "README.md"
   - "devbox.json"

@@ -37,64 +37,17 @@ title: Welcome!
         My FOSS projects
     </h2>
     <div class="projects">
+        {% for project in site.projects %}
         <div class="card-light">
-            <h3>jmdict-simplified</h3>
-            <p>
-                <a href="https://github.com/scriptin/jmdict-simplified">jmdict-simplified</a>
-                is a user-friendly JSON version of <a href="http://www.edrdg.org/jmdict/j_jmdict.html">JMdict</a>,
-                JMnedict, Kanjidic, and Kradfile/Radkfile (see
-                <a href="https://scriptin.github.io/jmdict-simplified/">documentation</a>),
-                created out of frustration after struggling with the original XML files.
-                Includes Node.js libraries.
-            </p>
+            <h3>{{ project.title }}</h3>
+            <p>{{ project.content | markdownify }}</p>
             <ul class="tags">
-                <li>Kotlin</li>
-                <li>JavaScript</li>
-                <li>Node.js</li>
-                <li>Parser</li>
-                <li>JSON</li>
-                <li>XML</li>
+                {% for tag in project.tags %}
+                    <li>{{ tag }}</li>
+                {% endfor %}
             </ul>
         </div>
-        <div class="card-light">
-            <h3>Kanji Frequency</h3>
-            <p>
-                <a href="https://scriptin.github.io/kanji-frequency/">Kanji Frequency</a>
-                is a unique dataset of frequencies of Japanese kanji characters, maintained since 2015.
-                Includes data from multiple corpora, covering most styles (e.g. academic writing, fiction books)
-                of Japanese language.
-            </p>
-            <ul class="tags">
-                <li>JavaScript</li>
-                <li>Web-scraping</li>
-                <li>Data</li>
-                <li>Statistics</li>
-            </ul>
-        </div>
-        <div class="card-light">
-            <h3>is-han</h3>
-            <p>
-                <a href="https://github.com/scriptin/is-han">is-han</a> is a small Node.js library
-                for properly detecting Han characters (Kanji, Hanzi, Hanja). Because, apparently,
-                it's not as simple as just using a regex with two code points.
-            </p>
-            <ul class="tags">
-                <li>JavaScript</li>
-                <li>Node.js</li>
-            </ul>
-        </div>
-        <div class="card-light">
-            <h3>TopoKanji</h3>
-            <p>
-                <a href="https://github.com/scriptin/topokanji">TopoKanji</a> is an attempt to create
-                a meaningful ordering of Japanese kanji characters for foreign learners
-                based on character decomposition and frequency in texts.
-            </p>
-            <ul class="tags">
-                <li>JavaScript</li>
-                <li>Data</li>
-            </ul>
-        </div>
+        {% endfor %}
     </div>
 </section>
 

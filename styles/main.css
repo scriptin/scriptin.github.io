@@ -323,7 +323,7 @@ main {
         grid-template-columns: 1fr;
         grid-template-rows: 1fr;
         justify-items: start;
-        align-items: stretch;
+        align-items: start;
         justify-content: start;
         gap: 1rem;
         margin-bottom: 1.5rem;

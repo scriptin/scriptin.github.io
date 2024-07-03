@@ -21,36 +21,6 @@
     --title-height: 8rem;
 }
 
-/* reusable components */
-
-.card {
-    background: linear-gradient(
-        to top right,
-        var(--light-grey),
-        color-mix(in hsl, black 10%, var(--light-grey))
-    );
-    border-radius: .5rem;
-    padding: 1rem 1.5rem;
-}
-
-.card-light {
-    background: linear-gradient(
-        to top right,
-        color-mix(in hsl, black 5%, var(--lighter-grey)),
-        color-mix(in hsl, black 10%, var(--lighter-grey))
-    );
-    border-radius: .5rem;
-    padding: 1rem 1.5rem;
-}
-
-/* https://css-tricks.com/snippets/css/prevent-long-urls-from-breaking-out-of-container/ */
-.dont-break-out {
-    overflow-wrap: break-word;
-    word-wrap: break-word;
-    word-break: break-word;
-    hyphens: auto;
-}
-
 /* general styles */
 
 body {
@@ -177,6 +147,36 @@ blockquote {
     footer {
         color: var(--darker-grey);
     }
+}
+
+/* reusable components */
+
+.card {
+    background: linear-gradient(
+        to top right,
+        var(--light-grey),
+        color-mix(in hsl, black 10%, var(--light-grey))
+    );
+    border-radius: .5rem;
+    padding: 1rem 1.5rem;
+}
+
+.card-light {
+    background: linear-gradient(
+        to top right,
+        color-mix(in hsl, black 5%, var(--lighter-grey)),
+        color-mix(in hsl, black 10%, var(--lighter-grey))
+    );
+    border-radius: .5rem;
+    padding: 1rem 1.5rem;
+}
+
+/* https://css-tricks.com/snippets/css/prevent-long-urls-from-breaking-out-of-container/ */
+.dont-break-out {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
+    hyphens: auto;
 }
 
 /* main offset */

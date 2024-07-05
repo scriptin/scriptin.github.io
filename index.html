@@ -16,26 +16,35 @@ title: Welcome!
         >
         <div class="speech-bubble">Hello there!</div>
     </div>
-    <p class="card">
-        I create software for a living and as a hobby, mostly web applications and libraries in TypeScript.
-        Starting from my teenage years, I experimented with a wide variety of programming languages,
-        ranging from Assembly to functional programming, and have written and read tons
-        of code, in projects of all sizes.
-    </p>
-    <p class="card">
-        I have a degree in IT security, and even though I've never worked
-        as a security engineer, SQL injections are things I know about and look for
-        when I write or review code. I even made a small research project about
-        <a href="https://github.com/scriptin/node-timing-attack">timing attacks in Node.js</a>.
-    </p>
-    <p class="card">
-        You can also find
-        <a href="https://tatoeba.org/en/user/profile/scriptin">me on Tatoeba.org</a>,
-        where I study foreign languages and contribute sentences.
-    </p>
-    <h2>
-        My FOSS projects
-    </h2>
+    <div class="about-me">
+        <div class="card">
+            <p>
+                I create software for a living and as a hobby, mostly web applications and libraries in TypeScript.
+                Starting from my teenage years, I experimented with a wide variety of programming languages,
+                ranging from Assembly to functional programming, and have written and read tons
+                of code, in projects of all sizes.
+            </p>
+        </div>
+        <div class="card">
+            <p>
+                I have a degree in IT security, and even though I've never worked
+                as a security engineer, SQL injections are things I know about and look for
+                when I write or review code. I even made a small research project about
+                <a href="https://github.com/scriptin/node-timing-attack">timing attacks in Node.js</a>.
+            </p>
+        </div>
+        <div class="card">
+            <p>
+                You can also find
+                <a href="https://tatoeba.org/en/user/profile/scriptin">me on Tatoeba.org</a>,
+                where I study foreign languages and contribute sentences.
+            </p>
+        </div>
+    </div>
+</section>
+
+<section>
+    <h2>My FOSS projects</h2>
     <div class="projects">
         {% for project in site.projects %}
         <div class="card-light">

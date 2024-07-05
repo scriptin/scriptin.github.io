@@ -361,7 +361,6 @@ main {
     }
     .posts {
         .post {
-            margin-bottom: 0.7rem;
             &:last-child {
                 margin-bottom: 0;
             }

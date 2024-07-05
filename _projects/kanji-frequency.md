@@ -1,7 +1,7 @@
 ---
 title: Kanji Frequency
 links:
-  - title: Read
+  - title: Explore
     url: https://scriptin.github.io/kanji-frequency/
   - title: GitHub
     url: https://github.com/scriptin/kanji-frequency

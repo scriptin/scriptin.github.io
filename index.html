@@ -47,15 +47,25 @@ title: Welcome!
     <h2>My FOSS projects</h2>
     <div class="projects">
         {% for project in site.projects %}
-        <div class="card-light">
-            <h3>{{ project.title }}</h3>
-            <p>{{ project.content | markdownify }}</p>
-            <ul class="tags">
-                {% for tag in project.tags %}
-                    <li>{{ tag }}</li>
-                {% endfor %}
-            </ul>
-        </div>
+            <div class="card-light">
+                <h3>{{ project.title }}</h3>
+                <ul class="project-links list-unstyled">
+                    {% for link in project.links %}
+                        <li>
+                            <a target="_blank" href="{{- link.url -}}">{{- link.title -}}</a>
+                            {%- if forloop.last == false -%}
+                                &nbsp;&bull;
+                            {%- endif -%}
+                        </li>
+                    {% endfor %}
+                </ul>
+                <p>{{- project.content -}}</p>
+                <ul class="tags">
+                    {% for tag in project.tags %}
+                        <li>{{ tag }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
         {% endfor %}
     </div>
 </section>
@@ -64,12 +74,12 @@ title: Welcome!
     <h2>Blog</h2>
     <ul class="posts list-unstyled card-light">
         {% for post in site.posts %}
-        <li class="post">
-            <time class="published-date" datetime="{{ post.date | date: '%Y-%m-%d' }}">
-                {{ post.date | date: "%d %b %Y" }}
-            </time>
-            <a href="{{ post.url }}">{{ post.title }}</a>
-        </li>
+            <li class="post">
+                <time class="published-date" datetime="{{ post.date | date: '%Y-%m-%d' }}">
+                    {{ post.date | date: "%d %b %Y" }}
+                </time>
+                <a href="{{ post.url }}">{{ post.title }}</a>
+            </li>
         {% endfor %}
     </ul>
 </section>

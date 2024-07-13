@@ -47,9 +47,16 @@ a {
         color: var(--link-normal);
         text-decoration: underline;
     }
-    &:hover, &:active {
-        color: var(--link-hover);
+    &:hover, &:active, &:focus-visible   {
+        color: var(--contrast-fg);
         text-decoration: none;
+        background: linear-gradient(
+            to top right,
+            var(--link-hover),
+            hsl(from var(--link-hover) h s calc(l + var(--l-shift-medium)))
+        );
+        outline: .1rem solid var(--link-hover);
+        border-radius: .1rem;
     }
 }
 
@@ -247,10 +254,14 @@ header {
         a:link, a:visited, a:active {
             color: var(--normal-fg);
         }
-        a:hover {
+        a:hover, a:focus-visible {
             color: var(--link-hover);
+            background: none;
+            outline: none;
             .comment-mute {
                 color: hsl(from var(--link-hover) h s calc(l + var(--l-shift-strong)));
+                background: none;
+                outline: none;
             }
         }
         /* Precise alignment by letter shape */

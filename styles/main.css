@@ -176,22 +176,23 @@ blockquote {
     h1, h2, h3, h4, h5, h6, p, ul, ol {
         margin: 0;
     }
-    .tags:last-child {
+    *:last-child {
         margin-top: auto;
     }
 }
 
 .tags {
     list-style: none;
-    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: .3rem;
     li {
-        margin: 0 0 .3rem 0;
+        margin: 0;
         color: var(--darker-grey);
         background: var(--lighter-grey);
         display: inline-block;
         font-size: var(--font-size-small);
         padding: .1rem .4rem;
-        /*border: .1rem solid var(--light-grey);*/
         border-radius: .4rem;
     }
 }

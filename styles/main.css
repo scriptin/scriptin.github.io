@@ -38,7 +38,7 @@
 /* general styles */
 
 body {
-    font-family: sans-serif;
+    font-family: system-ui;
     color: var(--contrast-fg);
     background-color: var(--contrast-bg);
     font-size: var(--font-size-normal);

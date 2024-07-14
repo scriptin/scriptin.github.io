@@ -1,7 +1,6 @@
 .highlight {
   color: var(--ctp-mocha-text);
   background-color: var(--ctp-mocha-crust);
-  outline: 0.9rem solid var(--ctp-mocha-crust);
 }
 .highlight .c   { color: var(--ctp-mocha-subtext0); font-style: italic } /* Comment */
 .highlight .err { color: var(--ctp-mocha-red) } /* Error */

@@ -28,6 +28,11 @@
     --font-size-normal: 1.1rem;
     --font-size-small: 0.9rem;
     --title-height: 8rem;
+
+    /* Border radius */
+    --border-radius-small: 0.1rem;
+    --border-radius-medium: 0.3rem;
+    --border-radius-big: 0.5rem;
 }
 
 /* general styles */
@@ -56,7 +61,7 @@ a {
             hsl(from var(--link-hover) h s calc(l + var(--l-shift-medium)))
         );
         outline: .1rem solid var(--link-hover);
-        border-radius: .1rem;
+        border-radius: var(--border-radius-small);
     }
 }
 
@@ -98,13 +103,13 @@ code, kbd, pre {
     background-color: hsl(from var(--normal-bg) h s calc(l + var(--l-shift-weak)));
     color: var(--normal-fg);
     padding: 0.1rem 0.2rem;
-    border-radius: 0.2rem;
+    border-radius: var(--border-radius-medium);
 }
 
 kbd {
     font-size: var(--font-size-small);
     padding: 0.1rem 0.4rem 0.2rem 0.4rem;
-    border-radius: 0.2rem;
+    border-radius: var(--border-radius-medium);
     color: var(--inverted-fg);
     border: 0;
     background-color: var(--inverted-bg);
@@ -114,12 +119,15 @@ kbd {
 pre {
     white-space: pre;
     font-size: var(--font-size-small);
-    /* Extra bottom margin to account for outline */
-    margin-bottom: calc(var(--font-size-small) * (var(--line-height) + 1));
     overflow-y: auto;
+    padding: .9rem;
     code {
         color: var(--inverted-fg);
     }
+}
+
+.highlight {
+    border-radius: var(--border-radius-medium);
 }
 
 /* Make sure that we don't override nested lists by providing a more specific rules */
@@ -139,7 +147,7 @@ ul.list-unstyled li, ol.list-unstyled li {
 }
 
 table {
-    border-radius: 0.3rem;
+    border-radius: var(--border-radius-medium);
     overflow: hidden;
     background-color: var(--contrast-bg);
     tr {
@@ -184,7 +192,7 @@ blockquote {
     display: flex;
     flex-direction: column;
     gap: .5rem;
-    border-radius: .5rem;
+    border-radius: var(--border-radius-big);
     padding: 1rem 1.5rem;
     h1, h2, h3, h4, h5, h6, p, ul, ol {
         margin: 0;
@@ -206,7 +214,7 @@ blockquote {
         display: inline-block;
         font-size: var(--font-size-small);
         padding: .1rem .4rem;
-        border-radius: .4rem;
+        border-radius: var(--border-radius-medium);
     }
 }
 
@@ -319,7 +327,7 @@ header {
             hsl(from var(--normal-bg) h s calc(l - var(--l-shift-medium)))
         );
         padding: .5rem 1rem;
-        border-radius: .5rem .5rem .5rem 0;
+        border-radius: var(--border-radius-big) var(--border-radius-big) var(--border-radius-big) 0;
         font-size: calc(var(--font-size-normal) * 1.4);
         &::before {
             content: '';

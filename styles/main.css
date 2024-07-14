@@ -214,20 +214,9 @@ blockquote {
 .card {
     background: linear-gradient(
         to top right,
-        var(--normal-bg),
-        hsl(from var(--normal-bg) h s calc(l - var(--l-shift-medium)))
-    );
-}
-
-.card-light {
-    background: linear-gradient(
-        to top right,
         hsl(from var(--contrast-bg) h s calc(l - var(--l-shift-weak))),
         hsl(from var(--contrast-bg) h s calc(l - var(--l-shift-medium)))
     );
-}
-
-.card, .card-light {
     display: flex;
     flex-direction: column;
     gap: .5rem;
@@ -364,8 +353,7 @@ header {
     }
 
     .speech-bubble {
-        font-family: 'Oswald', sans-serif;
-        font-weight: 400;
+        font-weight: bold;
         position: relative;
         display: block;
         background: linear-gradient(

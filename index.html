@@ -84,7 +84,7 @@ layout: default
     <h2>My FOSS projects</h2>
     <div class="projects">
         {% for project in site.projects %}
-            <div class="card-light">
+            <div class="card">
                 <h3>{{ project.title }}</h3>
                 <ul class="project-links list-unstyled">
                     {% for link in project.links %}
@@ -109,7 +109,7 @@ layout: default
 
 <section>
     <h2>Blog</h2>
-    <ul class="posts list-unstyled card-light">
+    <ul class="posts list-unstyled card">
         {% for post in site.posts %}
             <li class="post">
                 <time class="published-date" datetime="{{ post.date | date: '%Y-%m-%d' }}">

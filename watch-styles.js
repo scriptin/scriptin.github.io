@@ -1,11 +1,11 @@
-import { watch, readFileSync, writeFileSync, readdirSync, unlinkSync } from 'node:fs';
+import { watch, writeFileSync, readdirSync, unlinkSync } from 'node:fs';
 import path from 'node:path';
 import { createHash } from 'node:crypto';
 import browserslist from 'browserslist';
 import { bundle, browserslistToTargets } from 'lightningcss';
 
-const SOURCE_PATH = './styles';
-const ROOT_FILE_PATH = `${SOURCE_PATH}/main.css`;
+const SOURCE_DIR = './styles';
+const ROOT_FILE_PATH = `${SOURCE_DIR}/main.css`;
 const OUTPUT_DIR = './assets/css';
 
 const targets = browserslistToTargets(browserslist('>= 0.25%'))
@@ -69,4 +69,4 @@ function rebuildCallback() {
 
 // Rebuild when starting, just in case this script wasn't running when files were edited
 rebuildCallback();
-watchLessDirectory(SOURCE_PATH, rebuildCallback);
+watchLessDirectory(SOURCE_DIR, rebuildCallback);

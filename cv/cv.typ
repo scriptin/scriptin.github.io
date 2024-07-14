@@ -198,9 +198,9 @@
   [
     == Contacts
 
-    *Belgrade, Serbia* \
-    *web*: #link("scriptin.github.io") \
-    *email*: #link("scrptn@gmail.com") \
+    *LinkedIn*: #link("https://www.linkedin.com/in/dmitry-shpika/")[/in/dmitry-shpika] \
+    *Web*: #link("https://scriptin.github.io")[scriptin.github.io] \
+    *Email*: #link("scrptn@gmail.com") \
 
     == Technical skills
 

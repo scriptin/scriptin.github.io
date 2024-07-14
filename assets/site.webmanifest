@@ -1,0 +1,22 @@
+{
+    "lang": "en",
+    "dir": "ltr",
+    "name": "Dmitry Shpika",
+    "short_name": "Dmitry Shpika",
+    "theme_color": "#e66819",
+    "background_color": "#e5eaeb",
+    "start_url": "/",
+    "display": "standalone",
+    "icons": [
+        {
+            "src": "/assets/favicon/android-chrome-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/assets/favicon/android-chrome-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}

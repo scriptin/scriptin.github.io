@@ -268,9 +268,6 @@ header {
                 color: hsl(from var(--link-hover) h s calc(l + var(--l-shift-strong)));
             }
         }
-        /* Precise alignment by letter shape */
-        position: relative;
-        left: -0.3rem;
     }
     .subtitle {
         font-family: 'JetBrains Mono', monospace;

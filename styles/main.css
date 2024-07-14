@@ -62,6 +62,7 @@ a {
 
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Oswald', sans-serif;
+    font-weight: 400;
     line-height: 1em;
     margin: var(--font-size-normal) 0 var(--font-size-normal) 0;
     text-wrap: balance;
@@ -246,13 +247,18 @@ header {
         font-size: calc(var(--title-height) / 2.5);
         letter-spacing: -0.1rem;
         line-height: calc(var(--title-height) / 2.5);
-        font-weight: 300;
+        font-weight: 400;
+        .comment-mute {
+            font-weight: 300;
+        }
         a:link, a:visited, a:hover, a:active {
-            text-shadow: 0.05rem 0.05rem hsl(from var(--normal-fg) h s calc(l - var(--l-shift-strong)));
             text-decoration: none;
         }
         a:link, a:visited, a:active {
             color: var(--normal-fg);
+            .comment-mute {
+                color: hsl(from var(--normal-fg) h s calc(l + var(--l-shift-strong)));
+            }
         }
         a:hover, a:focus-visible {
             color: var(--link-hover);
@@ -260,17 +266,11 @@ header {
             outline: none;
             .comment-mute {
                 color: hsl(from var(--link-hover) h s calc(l + var(--l-shift-strong)));
-                background: none;
-                outline: none;
             }
         }
         /* Precise alignment by letter shape */
         position: relative;
         left: -0.3rem;
-
-        .comment-mute {
-            color: hsl(from var(--normal-fg) h s calc(l + var(--l-shift-strong)));
-        }
     }
     .subtitle {
         font-family: 'JetBrains Mono', monospace;
@@ -313,6 +313,7 @@ header {
 
     .speech-bubble {
         font-family: 'Oswald', sans-serif;
+        font-weight: 400;
         position: relative;
         display: block;
         background: linear-gradient(
@@ -323,8 +324,6 @@ header {
         padding: .5rem 1rem;
         border-radius: .5rem .5rem .5rem 0;
         font-size: calc(var(--font-size-normal) * 1.4);
-        color: var(--normal-fg);
-        text-shadow: 1px 1px 0 var(--contrast-bg);
         &::before {
             content: '';
             position: absolute;

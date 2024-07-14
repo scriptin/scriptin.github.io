@@ -63,6 +63,45 @@ a {
         outline: .1rem solid var(--link-hover);
         border-radius: var(--border-radius-small);
     }
+
+    &.button.small {
+        font-size: var(--font-size-small);
+    }
+
+    &.button {
+        box-sizing: border-box;
+        display: inline-flex;
+        align-content: center;
+        justify-content: center;
+        align-items: center;
+        gap: .3rem;
+        &:link, &:visited, &:hover, &:active, &:focus-visible {
+            color: var(--contrast-fg);
+            & svg path {
+                fill: var(--normal-fg);
+            }
+            outline: none;
+            text-decoration: none;
+            padding: .2rem .5rem;
+            border-radius: var(--border-radius-medium);
+        }
+        &:link, &:visited {
+            border: .1rem solid var(--link-normal);
+            background: linear-gradient(
+                to top,
+                hsl(from var(--contrast-bg) h s calc(l - var(--l-shift-weak))),
+                hsl(from var(--contrast-bg) h s calc(l - var(--l-shift-strong)))
+            );
+        }
+        &:hover, &:active, &:focus-visible {
+            border: .1rem solid var(--link-hover);
+            background: linear-gradient(
+                to top,
+                var(--contrast-bg),
+                hsl(from var(--contrast-bg) h s calc(l - var(--l-shift-medium)))
+            );
+        }
+    }
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -197,7 +236,7 @@ blockquote {
     h1, h2, h3, h4, h5, h6, p, ul, ol {
         margin: 0;
     }
-    *:last-child {
+    & > *:last-child {
         margin-top: auto;
     }
 }
@@ -216,6 +255,14 @@ blockquote {
         padding: .1rem .4rem;
         border-radius: var(--border-radius-medium);
     }
+}
+
+.buttons {
+    display: flex;
+    gap: .5rem;
+    align-content: flex-start;
+    justify-content: flex-start;
+    align-items: center;
 }
 
 /* https://css-tricks.com/snippets/css/prevent-long-urls-from-breaking-out-of-container/ */

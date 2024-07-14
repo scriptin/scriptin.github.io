@@ -18,6 +18,7 @@ exclude:
   - "devbox.lock"
   - ".devbox"
   - "styles"
+  - "cv"
   - "node_modules"
   - "package.json"
   - "package-lock.json"

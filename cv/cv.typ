@@ -43,6 +43,28 @@
   #block(it.body)
 ]
 
+#let history_record(content, title: "", place: "Self-employed", from: "", to: "", type: "") = [
+  #let inset_left = 0.2cm
+  #let inset_y = 0.1cm
+  #block(
+    stroke: (left: 1pt + bg_color, rest: none),
+    inset: (left: inset_left, right: 0cm, y: inset_y),
+    above: 0.6cm,
+    below: 0cm,
+  )[
+    === #title
+  ]
+  #block(inset: (
+    left: inset_left, right: 0cm, y: inset_y),
+  )[
+    *#place*
+
+    #from #sym.arrow.r #to #sym.dot.op #type
+
+    #content
+  ]
+]
+
 = Dmitry Shpika
 
 #line(length: 100%, stroke: bg_color)
@@ -52,6 +74,7 @@
   gutter: 1cm,
   [
     == Professional summary
+
 
     #par(justify: true)[
       Software Engineer with over 12 years of experience specializing in full-stack
@@ -64,136 +87,142 @@
     ]
 
 
-
     == Work history
 
 
-
-    === Software Engineer
-
-    *Self-employed*
-
-    May 2023 #sym.arrow.r Present #sym.dot.op Part-time / freelance
-
-    Responsibilities: Developing a personal
-    language learning application project.
-
-
-
-    === Senior Software Engineer
-
-    *Picsart, Inc.*
-
-    Oct 2021 #sym.arrow.r May 2023 #sym.dot.op Full-time
-
-    Responsibilities: Developing internal tools and libraries for image processing.
-    Developing new functionality of the web application. Participating in engineering decision-making
-    by creating and reviewing technical proposals. Mentoring junior developers.
-
-    Achievements:
-    - Developed and maintained an internal tool for converting vector graphics into an internal format,
-      used by a company's content team of several people, accelerating and simplifying their work as a result.
-    - Created a library for pre-processing vector images, which was subsequently integrated into several
-      internal tools.
-    - Added several new features to the main web application.
-    - Proposed an improvement for unit testing policy and process, which was partially implemented.
+    #history_record(
+      title: [Software Engineer],
+      from: [May 2023],
+      to: [Present],
+      type: [Part-time / freelance],
+    )[
+      Responsibilities: Developing a personal
+      language learning application project.
+    ]
 
 
+    #history_record(
+      title: [Senior Software Engineer],
+      place: [Picsart, Inc.],
+      from: [Oct 2021],
+      to: [May 2023],
+      type: [Full-time],
+    )[
+      Responsibilities: Developing internal tools and libraries for image processing.
+      Developing new functionality of the web application. Participating in engineering decision-making
+      by creating and reviewing technical proposals. Mentoring junior developers.
 
-    === Software Engineer
-
-    *Swift Invention, Inc.*
-
-    Jul 2015 #sym.arrow.r Sep 2021 #sym.dot.op Full-time / contactor
-
-    Responsibilities: Maintaining, developing and testing Java web applications (Spring),
-    Scala ETL tools for dealing with tabular data and social network graphs.
-    Designing, developing, and maintaining B2B apps (TypeScript, React, GraphQL).
-
-    Achievements:
-    - Fully rewritten (in a team of 4 engineers) a large social network graph web application (Java, Spring),
-      created and maintained an accompanying Extract-Transform-Load (ETL) tool (Scala).
-    - As a leading frontend engineer, designed, developed, and maintained (team of 3-5 engineers)
-      a B2B web application (React/Express, GraphQL API). Integrated 3rd party services for geographic/address
-      data and payments.
-    - Developed and launched several smaller web applications and sites for corporate clients.
-
-
-
-    === Software Engineer
-
-    *Teligent LLC*
-
-    May 2014 #sym.arrow.r Apr 2015 #sym.dot.op Full-time
-
-    Responsibilities: Maintaining, developing and testing several Java web applications for corporate clients,
-    written with internally-developed tech based on Spring Framework and Hibernate ORM.
-
-    Achievements:
-    - Extended functionality of account management portals with tens of thousands of users
-      for corporate clients (telecommunication companies).
-    - Integrated critical 3rd party services: billing, SMS notifications.
+      Achievements:
+      - Developed and maintained an internal tool for converting vector graphics into an internal format,
+        used by a company's content team of several people, accelerating and simplifying their work as a result.
+      - Created a library for pre-processing vector images, which was subsequently integrated into several
+        internal tools.
+      - Added several new features to the main web application.
+      - Proposed an improvement for unit testing policy and process, which was partially implemented.
+    ]
 
 
+    #history_record(
+      title: [Software Engineer],
+      place: [Swift Invention, Inc.],
+      from: [Jul 2015],
+      to: [Sep 2021],
+      type: [Full-time / contactor],
+    )[
+      Responsibilities: Maintaining, developing and testing Java web applications (Spring),
+      Scala ETL tools for dealing with tabular data and social network graphs.
+      Designing, developing, and maintaining B2B apps (TypeScript, React, GraphQL).
 
-    === Software Engineer
-
-    *Self-employed*
-
-    May 2013 #sym.arrow.r Feb 2014 #sym.dot.op Part-time / freelance
-
-    Achievements:
-    - In a personal project, created a largest dataset of character frequencies for Japanese language,
-      as well as several tools and datasets for studying Japanese language.
-
+      Achievements:
+      - Fully rewritten (in a team of 4 engineers) a large social network graph web application (Java, Spring),
+        created and maintained an accompanying Extract-Transform-Load (ETL) tool (Scala).
+      - As a leading frontend engineer, designed, developed, and maintained (team of 3-5 engineers)
+        a B2B web application (React/Express, GraphQL API). Integrated 3rd party services for geographic/address
+        data and payments.
+      - Developed and launched several smaller web applications and sites for corporate clients.
+    ]
 
 
-    === Software Engineer
+    #history_record(
+      title: [Software Engineer],
+      place: [Teligent LLC],
+      from: [May 2014],
+      to: [Apr 2015],
+      type: [Full-time],
+    )[
+      Responsibilities: Maintaining, developing and testing several Java web applications for corporate clients,
+      written with internally-developed tech based on Spring Framework and Hibernate ORM.
 
-    *Bank Pervomaisky (PJSC)*
+      Achievements:
+      - Extended functionality of account management portals with tens of thousands of users
+        for corporate clients (telecommunication companies).
+      - Integrated critical 3rd party services: billing, SMS notifications.
+    ]
 
-    Feb 2011 #sym.arrow.r Apr 2013 #sym.dot.op Full-time
 
-    Responsibilities: Web-application development and maintenance,
-    primarily corporate sites and legacy CRM-systems. Integration with internal SQL Server database.
-    Developing and maintaining websites for partner companies.
+    #history_record(
+      title: [Software Engineer],
+      from: [May 2013],
+      to: [Feb 2014],
+      type: [Part-time / freelance],
+    )[
+      Achievements:
+      - In a personal project, created a largest dataset of character frequencies for Japanese language,
+        as well as several tools and datasets for studying Japanese language.
+    ]
 
-    Achievements:
-    - Developed, tested and deployed main website (tens of thousands of users monthly) on Drupal 6..
-    - Designed, developed, deployed, and maintained a corporate CRM system with several hundreds of users.
-    - Implemented multiple complex forms integrated with the internal CRM,
-      including credit score calculations, business rules validations, and notifications.
 
+    #history_record(
+      title: [Software Engineer],
+      place: [Bank Pervomaisky (PJSC)],
+      from: [Feb 2011],
+      to: [Apr 2013],
+      type: [Full-time],
+    )[
+      Responsibilities: Web-application development and maintenance,
+      primarily corporate sites and legacy CRM-systems. Integration with internal SQL Server database.
+      Developing and maintaining websites for partner companies.
+
+      Achievements:
+      - Developed, tested and deployed main website (tens of thousands of users monthly) on Drupal 6..
+      - Designed, developed, deployed, and maintained a corporate CRM system with several hundreds of users.
+      - Implemented multiple complex forms integrated with the internal CRM,
+        including credit score calculations, business rules validations, and notifications.
+    ]
 
 
     == Education
 
 
+    #history_record(
+      title: [Information security specialist],
+      place:[
+        #link("https://kubstu.ru/")[Kuban State Technological University] (KubSTU), Krasnodar, Russia
+      ],
+      from: [2005],
+      to: [2010],
+      type: [Higher education],
+    )[
+      Specialty: "Organization and technologies of information security"
 
-    === Information security specialist
-
-    *#link("https://kubstu.ru/")[Kuban State Technological University] (KubSTU), Krasnodar, Russia*
-
-    2005 #sym.arrow.r 2010 #sym.dot.op Higher education
-
-    Specialty: "Organization and technologies of information security"
-
-    Achievements:
-    - Diploma with distinction
-    - Defended thesis: "Usage of polygraph systems in public education institutions"
+      Achievements:
+      - Diploma with distinction
+      - Defended thesis: "Usage of polygraph systems in public education institutions"
+    ]
 
 
-
-    === High school
-
-    *School of General education \#42, Krasnodar, Russia*
-
-    1995 #sym.arrow.r 2005 #sym.dot.op Primary/secondary education
-
-    Achievements:
-    - Certificate of completion with distinction
-    - Silver medal
-    - Several non-podium places (4th and below) on city-wide school olympiads on Math and Physics
+    #history_record(
+      title: [High school],
+      place: [School of General education \#42, Krasnodar, Russia],
+      from: [1995],
+      to: [2005],
+      type: [Primary/secondary education],
+    )[
+      Achievements:
+      - Certificate of completion with distinction
+      - Silver medal
+      - Several non-podium places (4th and below) on city-wide school olympiads on Math and Physics
+    ]
   ],
   [
     == Contacts

@@ -47,7 +47,7 @@
   #let inset_left = 0.2cm
   #let inset_y = 0.1cm
   #block(
-    stroke: (left: 1pt + bg_color, rest: none),
+    stroke: (left: 2pt + bg_color, rest: none),
     inset: (left: inset_left, right: 0cm, y: inset_y),
     above: 0.6cm,
     below: 0cm,
@@ -67,7 +67,10 @@
 
 = Dmitry Shpika
 
-#line(length: 100%, stroke: bg_color)
+#line(
+  length: 100%,
+  stroke: 2pt + gradient.linear(bg_color, white)
+)
 
 #grid(
   columns: (5fr, 3fr),

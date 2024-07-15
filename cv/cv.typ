@@ -232,6 +232,7 @@
 
     *LinkedIn*: #link("https://www.linkedin.com/in/dmitry-shpika/")[/in/dmitry-shpika] \
     *Web*: #link("https://scriptin.github.io")[scriptin.github.io] \
+    *GitHub*: #link("https://github.com/scriptin")[github.com/scriptin] \
 
     == Technical skills
 

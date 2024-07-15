@@ -270,28 +270,18 @@
     - IT consulting
     - Creative writing
 
-    #let cell_gutter = 0.1em
-    #let cell_size = 0.7em
-    #let skill_level(val, max) = block(
-      width: max * cell_size + (max - 1) * cell_gutter,
-      grid(
-        columns: range(0, max).map(it => 1fr),
-        stroke: none,
-        gutter: cell_gutter,
-        inset: 0pt,
-        ..range(1, max+1).map(n =>
-          grid.cell(
-            inset: 0pt,
-            align: center + bottom,
-            rect(
-              width: cell_size,
-              height: cell_size,
-              radius: 50%,
-              inset: 0pt,
-              stroke: none,
-              fill: if (n <= val) { fg_color } else { bg_color }
-            )
-          )
+
+    #let skill_level(val, max) = stack(
+      dir: ltr,
+      spacing: 0.2em,
+      ..range(1, max+1).map(n =>
+        rect(
+          width: 0.7em,
+          height: 0.7em,
+          radius: 50%,
+          inset: 0pt,
+          stroke: 1pt + fg_color,
+          fill: if (n <= val) { fg_color } else { white }
         )
       )
     )

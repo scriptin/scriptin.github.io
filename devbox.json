@@ -18,7 +18,7 @@
         "npm run styles:watch"
       ],
       "cv:watch": [
-        "typst watch --font-path assets/fonts cv/cv.typ files/Dmitry_Shpika_CV.pdf"
+        "typst watch --font-path assets/fonts cv/main.typ files/Dmitry_Shpika_CV.pdf"
       ]
     }
   }

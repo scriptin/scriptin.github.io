@@ -64,6 +64,14 @@
     </head>
     <body>
         <header>
+            <div class="theme-switch" style="display: none;">
+                <form name="theme-switch">
+                    <input type="radio" name="theme" id="theme-switch-light" value="light">
+                    <label for="theme-switch-light">Light</label>
+                    <input type="radio" name="theme" id="theme-switch-dark" value="dark" checked="checked">
+                    <label for="theme-switch-dark">Dark</label>
+                </form>
+            </div>
             <div class="title">
                 <a href="/">
                     {{ site.data.template.author.fullname }}
@@ -126,5 +134,35 @@
                 <a href="https://github.com/scriptin/scriptin.github.io">source code</a>
             </p>
         </footer>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                const DEFAULT_THEME = 'dark';
+
+                // Make the switch visible - if JS is disabled, it won't work anyway
+                document.querySelector('.theme-switch')?.removeAttribute('style');
+
+                // Set the theme from localStorage, or default
+                const theme = window.localStorage.getItem('theme') ?? DEFAULT_THEME;
+                document.body.dataset.theme = theme;
+                document.forms['theme-switch']['theme'].value = theme;
+
+                // On switch...
+                document.querySelector('.theme-switch form')?.addEventListener('change', (e) => {
+                    const theme = e.target.value;
+                    window.localStorage.setItem('theme', theme);
+                    document.body.dataset.theme = theme;
+
+                    // Cool transition
+                    const styleEl = document.createElement('style');
+                    styleEl.textContent = '* { transition: color, background-color 0.3s; }';
+                    document.body.appendChild(styleEl);
+
+                    // Cleanup cool transition
+                    setTimeout(() => {
+                        document.body.removeChild(styleEl);
+                    }, 350);
+                });
+            });
+        </script>
     </body>
 </html>

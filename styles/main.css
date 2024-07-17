@@ -218,6 +218,7 @@ blockquote {
         hsl(from var(--contrast-bg) h s calc(l - var(--l-shift-medium)))
     );
     display: flex;
+    width: 100%;
     flex-direction: column;
     gap: .5rem;
     border-radius: var(--border-radius-big);
@@ -248,6 +249,7 @@ blockquote {
 
 .buttons {
     display: flex;
+    flex-wrap: wrap;
     gap: .5rem;
     align-content: flex-start;
     justify-content: flex-start;
@@ -432,6 +434,7 @@ main {
         margin-bottom: 0;
     }
     .posts {
+        gap: 0.8rem;
         .post {
             &:last-child {
                 margin-bottom: 0;

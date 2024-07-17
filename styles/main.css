@@ -4,16 +4,16 @@
 
 :root {
     /* Changes of lightness */
-    --l-shift-weak: 6;
-    --l-shift-medium: 12;
-    --l-shift-strong: 18;
+    --l-shift-weak: 1.06;
+    --l-shift-medium: 1.12;
+    --l-shift-strong: 1.18;
 
     /* Colors */
     --normal-fg: #27353B;
     --normal-bg: #B1BFC4;
 
-    --contrast-fg: hsl(from var(--normal-fg) h s calc(l - var(--l-shift-strong)));
-    --contrast-bg: hsl(from var(--normal-bg) h s calc(l + var(--l-shift-strong)));
+    --contrast-fg: hsl(from var(--normal-fg) h s calc(l / var(--l-shift-strong)));
+    --contrast-bg: hsl(from var(--normal-bg) h s calc(l * var(--l-shift-strong)));
 
     --inverted-fg: #F3F3F3;
     --inverted-bg: #27353B;
@@ -24,27 +24,27 @@
     --link-hover: #E66819;
 
     --link-bg-from: var(--link-hover);
-    --link-bg-to: hsl(from var(--link-hover) h s calc(l + var(--l-shift-medium)));
+    --link-bg-to: hsl(from var(--link-hover) h s calc(l * var(--l-shift-medium)));
 
-    --button-bg-from: hsl(from var(--contrast-bg) h s calc(l - var(--l-shift-weak)));
-    --button-bg-to: hsl(from var(--contrast-bg) h s calc(l - var(--l-shift-strong)));
+    --button-bg-from: hsl(from var(--contrast-bg) h s calc(l / var(--l-shift-weak)));
+    --button-bg-to: hsl(from var(--contrast-bg) h s calc(l / var(--l-shift-strong)));
     --button-bg-hover-from: var(--contrast-bg);
-    --button-bg-hover-to: hsl(from var(--contrast-bg) h s calc(l - var(--l-shift-medium)));
+    --button-bg-hover-to: hsl(from var(--contrast-bg) h s calc(l / var(--l-shift-medium)));
 
-    --card-bg-from: hsl(from var(--contrast-bg) h s calc(l - var(--l-shift-weak)));
-    --card-bg-to: hsl(from var(--contrast-bg) h s calc(l - var(--l-shift-medium)));
+    --card-bg-from: hsl(from var(--contrast-bg) h s calc(l / var(--l-shift-weak)));
+    --card-bg-to: hsl(from var(--contrast-bg) h s calc(l / var(--l-shift-medium)));
 
     --speech-bubble-bg-from: var(--normal-bg);
-    --speech-bubble-bg-to: hsl(from var(--normal-bg) h s calc(l - var(--l-shift-medium)));
+    --speech-bubble-bg-to: hsl(from var(--normal-bg) h s calc(l / var(--l-shift-medium)));
 
-    --code-inline-bg: hsl(from var(--normal-bg) h s calc(l + var(--l-shift-weak)));
+    --code-inline-bg: hsl(from var(--normal-bg) h s calc(l * var(--l-shift-weak)));
 
-    --kbd-box-shadow: hsl(from var(--inverted-bg) h s calc(l - var(--l-shift-strong)));
+    --kbd-box-shadow: hsl(from var(--inverted-bg) h s calc(l / var(--l-shift-strong)));
 
-    --table-even-row: hsl(from var(--contrast-bg) h s calc(l - var(--l-shift-weak)));
+    --table-even-row: hsl(from var(--contrast-bg) h s calc(l / var(--l-shift-weak)));
 
-    --comment-mute: hsl(from var(--normal-fg) h s calc(l + var(--l-shift-strong)));
-    --comment-mute-hover: hsl(from var(--link-hover) h s calc(l + var(--l-shift-strong)));
+    --comment-mute: hsl(from var(--normal-fg) h s calc(l * var(--l-shift-strong)));
+    --comment-mute-hover: hsl(from var(--link-hover) h s calc(l * var(--l-shift-strong)));
 
     /* Text sizes */
     --line-height: 1.4;
@@ -368,6 +368,14 @@ header {
         padding: 0;
         width: 100px;
         height: 100px;
+        transition: border-color 0.3s;
+
+        &:active, &:hover, &:focus-visible {
+            outline: none;
+            border-color: var(--link-hover);
+            transition: border-color 0.3s;
+        }
+
         .avatar {
             transform: scale(1);
             transition: all 0.3s;

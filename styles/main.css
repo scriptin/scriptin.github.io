@@ -20,11 +20,8 @@
 
     --normal-border: var(--normal-bg);
 
-    --link-normal: #662711;
+    --link-normal: #511600;
     --link-hover: #E66819;
-
-    --link-bg-from: var(--link-hover);
-    --link-bg-to: hsl(from var(--link-hover) h s calc(l * (1 + var(--l-shift-medium))));
 
     --button-bg-from: hsl(from var(--contrast-bg) h s calc(l * (1 - var(--l-shift-weak))));
     --button-bg-to: hsl(from var(--contrast-bg) h s calc(l * (1 - var(--l-shift-strong))));
@@ -70,24 +67,17 @@ body {
 
 a {
     color: var(--link-normal);
+    text-decoration: underline;
+    text-decoration-style: solid;
+    text-decoration-thickness: .09rem;
+    text-underline-offset: 0.2rem;
     cursor: pointer;
-    box-sizing: content-box;
-    box-decoration-break: clone;
     &:link, &:visited {
-        color: var(--link-normal);
-        text-decoration: underline;
-        border: .1rem solid transparent;
+        text-decoration-color: var(--link-normal);
     }
-    &:hover, &:active, &:focus-visible   {
+    &:hover, &:active, &:focus-visible {
         color: var(--contrast-fg);
-        text-decoration: none;
-        background: linear-gradient(
-            to top right,
-            var(--link-bg-from),
-            var(--link-bg-to)
-        );
-        border: .1rem solid var(--link-hover);
-        border-radius: var(--border-radius-medium);
+        text-decoration-color: var(--link-hover);
     }
 
     &.button.small {
@@ -325,7 +315,6 @@ header {
         }
         a:link, a:visited, a:hover, a:active, a:focus-visible {
             text-decoration: none;
-            border: none;
         }
         a:link, a:visited, a:active {
             color: var(--normal-fg);

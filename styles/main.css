@@ -23,6 +23,29 @@
     --link-normal: #662711;
     --link-hover: #E66819;
 
+    --link-bg-from: var(--link-hover);
+    --link-bg-to: hsl(from var(--link-hover) h s calc(l + var(--l-shift-medium)));
+
+    --button-bg-from: hsl(from var(--contrast-bg) h s calc(l - var(--l-shift-weak)));
+    --button-bg-to: hsl(from var(--contrast-bg) h s calc(l - var(--l-shift-strong)));
+    --button-bg-hover-from: var(--contrast-bg);
+    --button-bg-hover-to: hsl(from var(--contrast-bg) h s calc(l - var(--l-shift-medium)));
+
+    --card-bg-from: hsl(from var(--contrast-bg) h s calc(l - var(--l-shift-weak)));
+    --card-bg-to: hsl(from var(--contrast-bg) h s calc(l - var(--l-shift-medium)));
+
+    --speech-bubble-bg-from: var(--normal-bg);
+    --speech-bubble-bg-to: hsl(from var(--normal-bg) h s calc(l - var(--l-shift-medium)));
+
+    --code-inline-bg: hsl(from var(--normal-bg) h s calc(l + var(--l-shift-weak)));
+
+    --kbd-box-shadow: hsl(from var(--inverted-bg) h s calc(l - var(--l-shift-strong)));
+
+    --table-even-row: hsl(from var(--contrast-bg) h s calc(l - var(--l-shift-weak)));
+
+    --comment-mute: hsl(from var(--normal-fg) h s calc(l + var(--l-shift-strong)));
+    --comment-mute-hover: hsl(from var(--link-hover) h s calc(l + var(--l-shift-strong)));
+
     /* Text sizes */
     --line-height: 1.4;
     --font-size-normal: 1.1rem;
@@ -57,8 +80,8 @@ a {
         text-decoration: none;
         background: linear-gradient(
             to top right,
-            var(--link-hover),
-            hsl(from var(--link-hover) h s calc(l + var(--l-shift-medium)))
+            var(--link-bg-from),
+            var(--link-bg-to)
         );
         outline: .1rem solid var(--link-hover);
         border-radius: var(--border-radius-small);
@@ -89,16 +112,16 @@ a {
             border: .1rem solid var(--link-normal);
             background: linear-gradient(
                 to top,
-                hsl(from var(--contrast-bg) h s calc(l - var(--l-shift-weak))),
-                hsl(from var(--contrast-bg) h s calc(l - var(--l-shift-strong)))
+                var(--button-bg-from),
+                var(--button-bg-to)
             );
         }
         &:hover, &:active, &:focus-visible {
             border: .1rem solid var(--link-hover);
             background: linear-gradient(
                 to top,
-                var(--contrast-bg),
-                hsl(from var(--contrast-bg) h s calc(l - var(--l-shift-medium)))
+                var(--button-bg-hover-from),
+                var(--button-bg-hover-to)
             );
         }
     }
@@ -139,7 +162,7 @@ code, kbd, pre {
 
 :not(pre) > code {
     border: 0;
-    background-color: hsl(from var(--normal-bg) h s calc(l + var(--l-shift-weak)));
+    background-color: var(--code-inline-bg);
     color: var(--normal-fg);
     padding: 0.1rem 0.2rem;
     border-radius: var(--border-radius-medium);
@@ -152,7 +175,7 @@ kbd {
     color: var(--inverted-fg);
     border: 0;
     background-color: var(--inverted-bg);
-    box-shadow: inset -0.1rem -0.2rem 0 hsl(from var(--inverted-bg) h s calc(l - var(--l-shift-strong)));
+    box-shadow: inset -0.1rem -0.2rem 0 var(--kbd-box-shadow);
 }
 
 pre {
@@ -191,7 +214,7 @@ table {
     background-color: var(--contrast-bg);
     tr {
         &:nth-child(2n) {
-            background-color: hsl(from var(--contrast-bg) h s calc(l - var(--l-shift-weak)));
+            background-color: var(--table-even-row);
         }
         th {
             background-color: var(--inverted-bg);
@@ -214,8 +237,8 @@ blockquote {
 .card {
     background: linear-gradient(
         to top right,
-        hsl(from var(--contrast-bg) h s calc(l - var(--l-shift-weak))),
-        hsl(from var(--contrast-bg) h s calc(l - var(--l-shift-medium)))
+        var(--card-bg-from),
+        var(--card-bg-to)
     );
     display: flex;
     width: 100%;
@@ -303,7 +326,7 @@ header {
         a:link, a:visited, a:active {
             color: var(--normal-fg);
             .comment-mute {
-                color: hsl(from var(--normal-fg) h s calc(l + var(--l-shift-strong)));
+                color: var(--comment-mute);
             }
         }
         a:hover, a:focus-visible {
@@ -311,7 +334,7 @@ header {
             background: none;
             outline: none;
             .comment-mute {
-                color: hsl(from var(--link-hover) h s calc(l + var(--l-shift-strong)));
+                color: var(--comment-mute-hover);
             }
         }
     }
@@ -360,8 +383,8 @@ header {
         display: block;
         background: linear-gradient(
             to top right,
-            var(--normal-bg),
-            hsl(from var(--normal-bg) h s calc(l - var(--l-shift-medium)))
+            var(--speech-bubble-bg-from),
+            var(--speech-bubble-bg-to)
         );
         padding: .5rem 1rem;
         border-radius: var(--border-radius-big) var(--border-radius-big) var(--border-radius-big) 0;

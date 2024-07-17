@@ -4,16 +4,16 @@
 
 :root {
     /* Changes of lightness */
-    --l-shift-weak: 1.06;
-    --l-shift-medium: 1.12;
-    --l-shift-strong: 1.18;
+    --l-shift-weak: 0.06;
+    --l-shift-medium: 0.12;
+    --l-shift-strong: 0.18;
 
     /* Colors */
     --normal-fg: #27353B;
     --normal-bg: #B1BFC4;
 
-    --contrast-fg: hsl(from var(--normal-fg) h s calc(l / var(--l-shift-strong)));
-    --contrast-bg: hsl(from var(--normal-bg) h s calc(l * var(--l-shift-strong)));
+    --contrast-fg: hsl(from var(--normal-fg) h s calc(l * (1 - var(--l-shift-strong))));
+    --contrast-bg: hsl(from var(--normal-bg) h s calc(l * (1 + var(--l-shift-strong))));
 
     --inverted-fg: #F3F3F3;
     --inverted-bg: #27353B;
@@ -24,27 +24,27 @@
     --link-hover: #E66819;
 
     --link-bg-from: var(--link-hover);
-    --link-bg-to: hsl(from var(--link-hover) h s calc(l * var(--l-shift-medium)));
+    --link-bg-to: hsl(from var(--link-hover) h s calc(l * (1 + var(--l-shift-medium))));
 
-    --button-bg-from: hsl(from var(--contrast-bg) h s calc(l / var(--l-shift-weak)));
-    --button-bg-to: hsl(from var(--contrast-bg) h s calc(l / var(--l-shift-strong)));
+    --button-bg-from: hsl(from var(--contrast-bg) h s calc(l * (1 - var(--l-shift-weak))));
+    --button-bg-to: hsl(from var(--contrast-bg) h s calc(l * (1 - var(--l-shift-strong))));
     --button-bg-hover-from: var(--contrast-bg);
-    --button-bg-hover-to: hsl(from var(--contrast-bg) h s calc(l / var(--l-shift-medium)));
+    --button-bg-hover-to: hsl(from var(--contrast-bg) h s calc(l * (1 - var(--l-shift-medium))));
 
-    --card-bg-from: hsl(from var(--contrast-bg) h s calc(l / var(--l-shift-weak)));
-    --card-bg-to: hsl(from var(--contrast-bg) h s calc(l / var(--l-shift-medium)));
+    --card-bg-from: hsl(from var(--contrast-bg) h s calc(l * (1 - var(--l-shift-weak))));
+    --card-bg-to: hsl(from var(--contrast-bg) h s calc(l * (1 - var(--l-shift-medium))));
 
     --speech-bubble-bg-from: var(--normal-bg);
-    --speech-bubble-bg-to: hsl(from var(--normal-bg) h s calc(l / var(--l-shift-medium)));
+    --speech-bubble-bg-to: hsl(from var(--normal-bg) h s calc(l * (1 - var(--l-shift-medium))));
 
-    --code-inline-bg: hsl(from var(--normal-bg) h s calc(l * var(--l-shift-weak)));
+    --code-inline-bg: hsl(from var(--normal-bg) h s calc(l * (1 + var(--l-shift-weak))));
 
-    --kbd-box-shadow: hsl(from var(--inverted-bg) h s calc(l / var(--l-shift-strong)));
+    --kbd-box-shadow: hsl(from var(--inverted-bg) h s 0);
 
-    --table-even-row: hsl(from var(--contrast-bg) h s calc(l / var(--l-shift-weak)));
+    --table-even-row: hsl(from var(--contrast-bg) h s calc(l * (1 - var(--l-shift-weak))));
 
-    --comment-mute: hsl(from var(--normal-fg) h s calc(l * var(--l-shift-strong)));
-    --comment-mute-hover: hsl(from var(--link-hover) h s calc(l * var(--l-shift-strong)));
+    --comment-mute: hsl(from var(--normal-fg) h s calc(l * (1 + var(--l-shift-strong))));
+    --comment-mute-hover: hsl(from var(--link-hover) h s calc(l * (1 + var(--l-shift-strong))));
 
     /* Text sizes */
     --line-height: 1.4;
@@ -71,9 +71,12 @@ body {
 a {
     color: var(--link-normal);
     cursor: pointer;
+    box-sizing: content-box;
+    box-decoration-break: clone;
     &:link, &:visited {
         color: var(--link-normal);
         text-decoration: underline;
+        border: .1rem solid transparent;
     }
     &:hover, &:active, &:focus-visible   {
         color: var(--contrast-fg);
@@ -83,8 +86,8 @@ a {
             var(--link-bg-from),
             var(--link-bg-to)
         );
-        outline: .1rem solid var(--link-hover);
-        border-radius: var(--border-radius-small);
+        border: .1rem solid var(--link-hover);
+        border-radius: var(--border-radius-medium);
     }
 
     &.button.small {
@@ -320,8 +323,9 @@ header {
         .comment-mute {
             font-weight: 300;
         }
-        a:link, a:visited, a:hover, a:active {
+        a:link, a:visited, a:hover, a:active, a:focus-visible {
             text-decoration: none;
+            border: none;
         }
         a:link, a:visited, a:active {
             color: var(--normal-fg);

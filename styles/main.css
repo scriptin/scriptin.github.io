@@ -30,6 +30,7 @@
 
     --card-bg-from: hsl(from var(--contrast-bg) h s calc(l * (1 + var(--l-shift-medium))));
     --card-bg-to: hsl(from var(--contrast-bg) h s calc(l * (1 + var(--l-shift-strong))));
+    --card-border: hsl(from var(--contrast-bg) h s calc(l * (1 + 2 * var(--l-shift-strong))));
 
     --speech-bubble-bg-from: hsl(from var(--normal-bg) h s calc(l * (1 + var(--l-shift-medium))));
     --speech-bubble-bg-to: hsl(from var(--normal-bg) h s calc(l * (1 + var(--l-shift-strong))));
@@ -52,6 +53,7 @@
     --title-height: 8rem;
 
     /* Border radius */
+    --border-width: 0.1rem;
     --border-radius-small: 0.1rem;
     --border-radius-medium: 0.3rem;
     --border-radius-big: 0.5rem;
@@ -85,6 +87,7 @@ body[data-theme=light] {
 
     --card-bg-from: hsl(from var(--contrast-bg) h s calc(l * (1 - var(--l-shift-weak))));
     --card-bg-to: hsl(from var(--contrast-bg) h s calc(l * (1 - var(--l-shift-medium))));
+    --card-border: hsl(from var(--contrast-bg) h s calc(l * (1 - 1.5 * var(--l-shift-medium))));
 
     --speech-bubble-bg-from: var(--normal-bg);
     --speech-bubble-bg-to: hsl(from var(--normal-bg) h s calc(l * (1 - var(--l-shift-medium))));
@@ -290,6 +293,7 @@ blockquote {
     width: 100%;
     flex-direction: column;
     gap: .5rem;
+    border: var(--border-width) solid var(--card-border);
     border-radius: var(--border-radius-big);
     padding: 1rem 1.5rem;
     h1, h2, h3, h4, h5, h6, p, ul, ol {
@@ -467,7 +471,7 @@ header {
 
     .avatar-container {
         overflow: hidden;
-        border: .1rem solid var(--normal-border);
+        border: var(--border-width) solid var(--normal-border);
         border-radius: 50%;
         margin: 0;
         padding: 0;

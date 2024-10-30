@@ -56,6 +56,6 @@
   [*Russian*], [Native], [#skill_level_bar(6)],
   [*English*], [C1], [#skill_level_bar(5)],
   [*Spanish*], [B1], [#skill_level_bar(3)],
-  [*German*], [A1], [#skill_level_bar(1)],
+  [*German*], [A2], [#skill_level_bar(2)],
   [*Japanese*], [A1], [#skill_level_bar(1)],
 )

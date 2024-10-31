@@ -1,7 +1,6 @@
 ---
 layout: post
 title: All the programming languages I have ever used
-published: false
 ---
 At the moment of writing this I'm actively looking for a job, and application forms often ask about previous experience with certain programming languages, frameworks, and libraries. Filling these forms and thinking about it later has brought back some memories, both dear and horrifying, which I've decided to write down.
 

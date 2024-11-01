@@ -1,9 +1,9 @@
 {
   "packages": [
-    "ruby@2.7.4",
-    "bundler@2.1.4",
     "nodejs@22.3.0",
-    "typst@0.11.1"
+    "typst@0.11.1",
+    "ruby@3.3.5",
+    "bundler@2.5.16"
   ],
   "shell": {
     "init_hook": [

@@ -115,6 +115,10 @@ My [jmdict-simplified](https://github.com/scriptin/jmdict-simplified) project wa
 
 ## Honorable mentions
 
+### Coq and Lean
+
+I've dabbled in Math, played with a couple of [proof assistants](https://en.wikipedia.org/wiki/Proof_assistant), mostly Coq. Awsome technology for those who have a strong mathematical background, which unfortunately is not me. But I had fun proving a few simple theorems while following tutorials.
+
 ### Haskell
 
 While I haven't really finished any projects in Haskell, I've made multiple attempts at learning it on my own (using **[Learn You a Haskell](https://learnyouahaskell.com/)**). Unlike my C/C++ university course, I haven't even used Haskell for the purpose of passing an exam, so it can't go into the main list.

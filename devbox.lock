@@ -178,54 +178,6 @@
           "store_path": "/nix/store/3f0km601raxi1vms013ahxnn0v92qn74-ruby-3.3.5"
         }
       }
-    },
-    "typst@0.11.1": {
-      "last_modified": "2024-07-07T16:08:25Z",
-      "resolved": "github:NixOS/nixpkgs/ab82a9612aa45284d4adf69ee81871a389669a9e#typst",
-      "source": "devbox-search",
-      "version": "0.11.1",
-      "systems": {
-        "aarch64-darwin": {
-          "outputs": [
-            {
-              "name": "out",
-              "path": "/nix/store/lh0jj3dknwh74bhlwhpmnpjrhkkjs9wl-typst-0.11.1",
-              "default": true
-            }
-          ],
-          "store_path": "/nix/store/lh0jj3dknwh74bhlwhpmnpjrhkkjs9wl-typst-0.11.1"
-        },
-        "aarch64-linux": {
-          "outputs": [
-            {
-              "name": "out",
-              "path": "/nix/store/5fsf778ny91dx6s4hv2lkagkdaqx5rpw-typst-0.11.1",
-              "default": true
-            }
-          ],
-          "store_path": "/nix/store/5fsf778ny91dx6s4hv2lkagkdaqx5rpw-typst-0.11.1"
-        },
-        "x86_64-darwin": {
-          "outputs": [
-            {
-              "name": "out",
-              "path": "/nix/store/9qk05jlajbykg9mc5piragkvqx3zdpwq-typst-0.11.1",
-              "default": true
-            }
-          ],
-          "store_path": "/nix/store/9qk05jlajbykg9mc5piragkvqx3zdpwq-typst-0.11.1"
-        },
-        "x86_64-linux": {
-          "outputs": [
-            {
-              "name": "out",
-              "path": "/nix/store/46i689gaj31jcx0plx6p4qx83izp2g9b-typst-0.11.1",
-              "default": true
-            }
-          ],
-          "store_path": "/nix/store/46i689gaj31jcx0plx6p4qx83izp2g9b-typst-0.11.1"
-        }
-      }
     }
   }
 }

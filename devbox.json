@@ -1,7 +1,6 @@
 {
   "packages": [
     "nodejs@22.3.0",
-    "typst@0.11.1",
     "ruby@3.3.5",
     "bundler@2.5.16"
   ],
@@ -16,9 +15,6 @@
       ],
       "styles:watch": [
         "npm run styles:watch"
-      ],
-      "cv:watch": [
-        "typst watch --font-path assets/fonts cv/main.typ files/Dmitry_Shpika_CV.pdf"
       ]
     }
   }
